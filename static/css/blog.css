@@ -557,7 +557,7 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
     gap: 8px;
 }
 
-.skill-tag {
+.name-tag {
     font-size: 0.8rem;
     font-weight: 500;
     color: var(--color-silver);
