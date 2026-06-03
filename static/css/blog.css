@@ -46,6 +46,8 @@ body.light-theme {
     
     --shadow-soft: 0 15px 35px -5px rgba(99, 102, 241, 0.05);
     --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.06);
+    /* --- custom colors --- */
+    --akiva-bg: linear-gradient(30deg, #FFF, #ff0000, #ffac00, #fff100, #0bff00,#00f6ff, #fff);
 }
 
 body.light-theme .navbar::before {
@@ -571,12 +573,12 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
 .tbrown {
     border: 2px solid rgb(176,38,255);
     color: rgb(255,255,255);
-    background: rgb(176,38,255) ;
+    background-image: url("../img/tbrown-bg.png");
 }
 .bbrown { 
     border: 2px solid rgb(176,38,255);
     color: rgb(255,255,255);
-    background: rgb(176,38,255);
+    background-image: url("../img/bbrown-bg.png");
 }
 .jabrown { 
     border: 2px solid rgb(57,255,20);
@@ -594,9 +596,10 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
     background: rgb(31,81,255);
 }
 .abrown {
-    border: 2px solid rgb(255,19,240);
+    border: 2px solid rgb(255,16,240);
     color: rgb(255,255,255);
-    background: rgb(255,19,240);
+    background: linear-gradient(30deg, #FFF, #ff0000, #ffac00, #fff100, #0bff00,#00f6ff, #fff);
+    text-shadow: 2px 2px 2px #000, -2px -2px 2px #000, 2px -2px 2px #000, -2px 2px 2px #000;
 }
 .zbrown {
     border: 2px solid rgb(31,81,255);
