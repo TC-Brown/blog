@@ -598,13 +598,12 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
 .abrown {
     border: 2px solid rgb(255,16,240);
     color: rgb(255,255,255);
-    background: linear-gradient(30deg, #FFF, #ff0000, #ffac00, #fff100, #0bff00,#00f6ff, #fff);
-    text-shadow: 2px 2px 2px #000, -2px -2px 2px #000, 2px -2px 2px #000, -2px 2px 2px #000;
+    background-image: url(../img/abrown-bg.png);
 }
 .zbrown {
     border: 2px solid rgb(31,81,255);
     color: rgb(255,255,255);
-    background: rgb(31,81,255);
+    background-image: url(../img/zbrown-bg.png);
 }
 
 .skill-tag:hover {
