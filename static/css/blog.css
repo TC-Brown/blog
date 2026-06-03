@@ -75,11 +75,12 @@ body.light-theme .profile-img {
 }
 
 body.light-theme .nav-link:hover {
-    background: rgba(15, 23, 42, 0.04);
+    
+    background: rgb(176,38,255);
 }
 
 body.light-theme .nav-link.active {
-    background: rgba(99, 102, 241, 0.08);
+    background: rgb(57,255,20);
     border-color: rgba(99, 102, 241, 0.15);
 }
 
@@ -156,11 +157,12 @@ a {
     transition: var(--transition-smooth);
 }
 
-.nav-brand:hover .profile-img {
+/* .nav-brand:hover .profile-img {
     transform: rotate(5deg) scale(1.05);
     border-color: var(--color-emerald);
     border-radius: 24%;
 }
+*/
 
 .name {
     font-weight: 800;
@@ -315,8 +317,8 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
     }
 
     .profile-img {
-        width: 90px;
-        height: 90px;
+        width: 250px;
+        height: 250px;
         border: 3px solid rgba(255, 255, 255, 0.08);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     }
@@ -345,14 +347,14 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
 
     .nav-link:hover {
         color: var(--color-white);
-        background: rgba(255, 255, 255, 0.04);
+        background: rgb(176,38,255);
         border-color: rgba(255, 255, 255, 0.05);
         transform: translateX(-4px);
     }
 
     .nav-link.active {
         color: var(--color-white);
-        background: rgba(99, 102, 241, 0.12);
+        background: rgb(57,255,20);
         border: 1px solid rgba(99, 102, 241, 0.25);
         box-shadow: var(--shadow-glow);
     }
@@ -562,10 +564,44 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
     font-weight: 500;
     color: var(--color-silver);
     background: rgba(255, 255, 255, 0.03);
-    border: var(--border);
     padding: 6px 12px;
     border-radius: 30px;
     transition: var(--transition-smooth);
+}
+.tbrown {
+    border: 2px solid rgb(176,38,255);
+    color: rgb(255,255,255);
+    background: rgb(176,38,255) ;
+}
+.bbrown { 
+    border: 2px solid rgb(176,38,255);
+    color: rgb(255,255,255);
+    background: rgb(176,38,255);
+}
+.jabrown { 
+    border: 2px solid rgb(57,255,20);
+    color: rgb(255,255,255);
+    background: rgb(57,255,20);
+}
+.cabrown {
+    border: rgb(255,7,58);
+    color: rgb(255,255,255);
+    background: rgb(255,7,58);
+}
+.dabrown {
+    border: 2px solid rgb(31,81,255);
+    color: rgb(255,255,255);
+    background: rgb(31,81,255);
+}
+.abrown {
+    border: 2px solid rgb(255,19,240);
+    color: rgb(255,255,255);
+    background: rgb(255,19,240);
+}
+.zbrown {
+    border: 2px solid rgb(31,81,255);
+    color: rgb(255,255,255);
+    background: rgb(31,81,255);
 }
 
 .skill-tag:hover {
@@ -727,9 +763,9 @@ footer {
     }
 
     .profile-img {
-        width: 40px;
-        height: 40px;
-        border: 2px solid rgba(255, 255, 255, 0.1);
+        width: 70px;
+        height: 70px;
+        border: 2px solid rgb(255, 255, 255);
     }
 
     .name {
@@ -749,7 +785,7 @@ footer {
         right: 0;
         width: 280px;
         height: calc(100vh - var(--navbar-height));
-        background: rgba(12, 18, 28, 0.98);
+        background: rgb(0, 0, 0);
         border-left: var(--border);
         backdrop-filter: var(--backdrop-blur);
         -webkit-backdrop-filter: var(--backdrop-blur);
