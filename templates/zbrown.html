@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z.G. Brown | Retro Arcade</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../static/css/zbrown.css">
+</head>
+<body class="dark-theme">
+    <!-- Neon Background Grid & Effects -->
+    <div class="neon-grid"></div>
+    <div class="glow-orb orb-blue"></div>
+    <div class="glow-orb orb-pink"></div>
+
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="back-btn">
+                <span class="btn-arrow">←</span> Home
+            </a>
+            
+            <div class="nav-title">Z-ARCADE</div>
+
+            <!-- Theme Toggle -->
+            <button class="theme-toggle" aria-label="Toggle dark/light mode" id="themeToggle">
+                <!-- Light Mode (Sun Icon) -->
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M3 12h2.25m-.386-6.364l1.591 1.591M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z" />
+                </svg>
+                <!-- Dark Mode (Moon Icon) -->
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="avatar-container">
+                <div class="avatar-glow"></div>
+                <div class="avatar-inner">
+                    <!-- Retro Pixel Gamepad SVG -->
+                    <svg viewBox="0 0 100 100" class="avatar-svg" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="35" width="60" height="30" rx="10" fill="#000" stroke="#00f0ff" stroke-width="4"/>
+                        <circle cx="35" cy="50" r="6" fill="#ff007f"/>
+                        <circle cx="65" cy="50" r="6" fill="#ff007f"/>
+                        <path d="M45 50 H55 M50 45 V55" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <h1 class="neon-text-pink">Z.G. Brown</h1>
+            <p class="subtitle">Welcome to my personal neon arcade playground!</p>
+            
+            <div class="badge-container">
+                <span class="badge neon-blue-border">🎮 Playful</span>
+                <span class="badge neon-pink-border">⚡ Energetic</span>
+                <span class="badge neon-white-border">🚀 Explorer</span>
+            </div>
+        </section>
+
+        <!-- Interactive Game Playground -->
+        <section class="game-container card neon-card">
+            <div class="card-header">
+                <h2>Neon Popper Mini-Game</h2>
+                <p>Pop the glowing neon bubbles to score points!</p>
+            </div>
+            <div class="game-hud">
+                <div class="hud-item">SCORE: <span id="scoreVal" class="neon-text-blue">0</span></div>
+                <div class="hud-item">HIGH SCORE: <span id="highScoreVal" class="neon-text-pink">0</span></div>
+                <button id="startGameBtn" class="game-btn">START GAME</button>
+            </div>
+            <div class="game-screen" id="gameScreen">
+                <canvas id="gameCanvas"></canvas>
+                <div id="gameOverlay" class="game-overlay">
+                    <span class="overlay-text">Click Start to Play!</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats and Bio Grid -->
+        <div class="info-grid">
+            <!-- Stats Card -->
+            <section class="card neon-card stats-card">
+                <h3>My Hero Stats</h3>
+                <div class="stats-list">
+                    <div class="stat-row">
+                        <span class="stat-label">Level</span>
+                        <span class="stat-value neon-text-blue">3</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Class</span>
+                        <span class="stat-value neon-text-pink">Dino-butterfly</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Ready to go home</span>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar neon-bg-blue" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Want a snack</span>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar neon-bg-pink" style="width: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hobbies & Interests -->
+            <section class="card neon-card hobbies-card">
+                <h3>My Favorites</h3>
+                <ul class="favorites-list">
+                    <li><span class="fav-icon">🪐</span> <strong>Exploration:</strong> Going to the Store!</li>
+                    <li><span class="fav-icon">👾</span> <strong>Playing:</strong> Coloring and collecting.</li>
+                    <li><span class="fav-icon">🍕</span> <strong>Food:</strong> Pizza (with lots of cheese) & Hotdogs.</li>
+                    <li><span class="fav-icon">🎨</span> <strong>Colors:</strong> Blue and Pink!</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Copyright &copy; 2026 The Brown Family | Made for Kids ⚡</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../static/js/zbrown.js"></script>
+</body>
+</html>
