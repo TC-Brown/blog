@@ -114,11 +114,14 @@ body.light-theme .skill-tag:hover {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 body {
     background: var(--primary-bg);
     color: var(--color-white);
     min-height: 100vh;
-    overflow-x: hidden;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
 }
@@ -795,11 +798,13 @@ footer {
         transition: var(--transition-smooth);
         pointer-events: none;
         box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.3);
+        visibility: hidden;
     }
 
     .nav-menu.open {
         transform: translateX(0);
         pointer-events: auto;
+        visibility: visible;
     }
 
     .nav-link {
