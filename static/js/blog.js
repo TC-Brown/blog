@@ -63,3 +63,8 @@ function nav(str) {
     window.location.href = `./templates/${str}.html`
     return window.location.href
 }
+
+function error() { 
+    window.location.href = "./error/error.html"
+    return window.location.href
+}

@@ -1,0 +1,123 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Container */
+.error-container {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    padding: 40px 20px;
+}
+
+/* Big 404 Text using the Green Color */
+.error-code {
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 1;
+    color: #217336;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Headings & Text */
+h1 {
+    font-size: 2.2rem;
+    color: #217599; /* Blue Color */
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #666666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Buttons Layout */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+/* Primary Button - Green */
+.btn-primary {
+    background-color: #217336;
+    color: #ffffff;
+    border: 2px solid #217336;
+}
+
+.btn-primary:hover {
+    background-color: #164e24;
+    border-color: #164e24;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(33, 115, 54, 0.3);
+}
+
+/* Secondary Button - Blue Outline */
+.btn-secondary {
+    background-color: transparent;
+    color: #217599;
+    border: 2px solid #217599;
+}
+
+.btn-secondary:hover {
+    background-color: #217599;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(33, 117, 153, 0.2);
+}
+
+/* Subtle floating animation for the 404 text */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .error-code {
+        font-size: 6rem;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    .action-buttons {
+        flex-direction: column;
+    }
+    .btn {
+        width: 100%;
+    }
+}
