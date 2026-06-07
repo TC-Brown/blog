@@ -73,7 +73,7 @@ body.light-theme .update-icon {
 }
 
 body.light-theme .profile-img {
-    border-color: rgba(15, 23, 42, 0.08);
+    border-color: rgba(255,255,255, 1);
 }
 
 body.light-theme .nav-link:hover {
@@ -158,13 +158,6 @@ a {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: var(--transition-smooth);
 }
-
-/* .nav-brand:hover .profile-img {
-    transform: rotate(5deg) scale(1.05);
-    border-color: var(--color-emerald);
-    border-radius: 24%;
-}
-*/
 
 .name {
     font-weight: 800;
@@ -570,6 +563,10 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
     border-radius: 30px;
     transition: var(--transition-smooth);
 }
+.name-tag:hover { 
+    border: 2px solid rgb(255,255,255);
+    background-color: rgba(255,255,255, 0.02);
+}
 .tbrown {
     border: 2px solid rgb(176,38,255);
     color: rgb(255,255,255);
@@ -767,7 +764,7 @@ footer {
     .profile-img {
         width: 70px;
         height: 70px;
-        border: 2px solid rgb(255, 255, 255);
+        border: 2px solid rgba(255, 255, 255, 0.08);
     }
 
     .name {
