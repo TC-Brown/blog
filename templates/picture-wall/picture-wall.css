@@ -1,0 +1,104 @@
+/* Reset & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212; /* Dark theme background */
+    color: #ffffff;
+    padding: 20px;
+}
+
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+/* Responsive Grid Setup */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+/* Gallery Item Styling */
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    height: 250px; /* Forces uniform height for cleaner grid rows */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps aspect ratio intact while filling space */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Hover Effects */
+.gallery-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(85%);
+}
+
+/* Lightbox Layout */
+.lightbox {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lightbox-content {
+    max-width: 85%;
+    max-height: 80%;
+    border-radius: 4px;
+    animation: zoomIn 0.3s ease;
+}
+
+#lightbox-caption {
+    margin-top: 15px;
+    color: #ccc;
+    font-size: 1.1rem;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #bbb;
+}
+
+/* Animation */
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
