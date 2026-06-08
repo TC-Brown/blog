@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ---- Other Functions for the pages ----
 
 function nav(str) { 
-    window.location.href = `./templates/about-tag/${str}.html`
+    window.location.href = `templates/about-tag/${str}.html`
     return window.location.href
 }
 
