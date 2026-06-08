@@ -61,16 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // page navigation functions
 
 function nav(str) { 
-    window.location.href = `templates/about-tag/${str}.html`
+    window.location.href = `templates/${str}.html`
     return window.location.href
 }
 
 function error() { 
     window.location.href = "./error/error.html"
-    return window.location.href
-}
-
-function goToWall() { 
-    window.location.href = "templates/picture-wall/picture-wall.html"
     return window.location.href
 }

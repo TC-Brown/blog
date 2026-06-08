@@ -573,12 +573,12 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
 .tbrown {
     border: 2px solid rgb(176,38,255);
     color: rgb(255,255,255);
-    background-image: url("../img/tbrown-bg.png");
+    background-image: url("../img/index-img/tbrown-bg.png");
 }
 .bbrown { 
     border: 2px solid rgb(176,38,255);
     color: rgb(255,255,255);
-    background-image: url("../img/bbrown-bg.png");
+    background-image: url("../img/index-img/bbrown-bg.png");
 }
 .jabrown { 
     border: 2px solid rgb(57,255,20);
@@ -598,12 +598,12 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
 .abrown {
     border: 2px solid rgb(255,16,240);
     color: rgb(255,255,255);
-    background-image: url(../img/abrown-bg.png);
+    background-image: url(../img/index-img/abrown-bg.png);
 }
 .zbrown {
     border: 2px solid rgb(31,81,255);
     color: rgb(255,255,255);
-    background-image: url(../img/zbrown-bg.png);
+    background-image: url(../img/index-img/zbrown-bg.png);
 }
 
 .skill-tag:hover {
