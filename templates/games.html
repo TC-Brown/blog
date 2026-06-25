@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Brown Family | Mini Games</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../static/css/games.css">
+</head>
+<body class="dark-theme">
+    <!-- Neon Background Grid & Effects -->
+    <div class="neon-grid"></div>
+    <div class="glow-orb orb-pink"></div>
+    <div class="glow-orb orb-blue"></div>
+
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="back-btn">
+                <span class="btn-arrow">←</span> Home
+            </a>
+            
+            <div class="nav-title">BROWN ARCADE</div>
+
+            <!-- Theme Toggle -->
+            <button class="theme-toggle" aria-label="Toggle dark/light mode" id="themeToggle">
+                <!-- Light Mode (Sun Icon) -->
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M3 12h2.25m-.386-6.364l1.591 1.591M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z" />
+                </svg>
+                <!-- Dark Mode (Moon Icon) -->
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="main-content">
+        
+        <!-- SECTION 1: HUB MENU (SELECTION GRID) -->
+        <section id="selectionGrid" class="hub-section">
+            <header class="hub-header">
+                <h1>ARCADE ROOM</h1>
+                <p class="subtitle">Choose a mini-game to play!</p>
+            </header>
+
+            <div class="games-grid">
+                <!-- Popper Game Tile -->
+                <div class="game-tile tile-blue" id="tilePopper">
+                    <div class="tile-icon">🔵</div>
+                    <h3>Neon Popper</h3>
+                    <p>Pop the rising neon bubbles before time runs out!</p>
+                    <span class="creator-badge">Z.G. Brown</span>
+                </div>
+
+                <!-- Heart Pop Game Tile -->
+                <div class="game-tile tile-pink" id="tileHeartpop">
+                    <div class="tile-icon">💖</div>
+                    <h3>Heart Pop!</h3>
+                    <p>Tap rising neon hearts and stars to pop them!</p>
+                    <span class="creator-badge">A.G. Brown</span>
+                </div>
+
+                <!-- Paint Canvas Tile -->
+                <div class="game-tile tile-white" id="tilePaint">
+                    <div class="tile-icon">🎨</div>
+                    <h3>Magic Paint</h3>
+                    <p>Draw with neon colors and drop sparkly stamps!</p>
+                    <span class="creator-badge">A.G. Brown</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: GAME ARENA CONTAINER -->
+        <section id="gameArena" class="arena-section" style="display: none;">
+            <button id="backToMenuBtn" class="back-menu-btn">← Back to Arcade</button>
+
+            <!-- GAME 1: NEON POPPER ARENA -->
+            <div id="popperPanel" class="game-panel" style="display: none;">
+                <div class="panel-header">
+                    <h2>Neon Popper</h2>
+                    <p>Pop the glowing neon bubbles to score points!</p>
+                </div>
+                <div class="game-hud">
+                    <div class="hud-item">SCORE: <span id="popScoreVal" class="neon-text-blue">0</span></div>
+                    <div class="hud-item">HIGH SCORE: <span id="popHighScoreVal" class="neon-text-white">0</span></div>
+                    <button id="startPopperBtn" class="game-btn btn-blue">START GAME</button>
+                </div>
+                <div class="game-screen screen-blue" id="popperScreen">
+                    <canvas id="popperCanvas"></canvas>
+                    <div id="popperOverlay" class="game-overlay">
+                        <span class="overlay-text text-blue">Tap Start to Play!</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME 2: HEART POP ARENA -->
+            <div id="heartpopPanel" class="game-panel" style="display: none;">
+                <div class="panel-header">
+                    <h2>Heart Pop!</h2>
+                    <p>Tap the rising neon hearts and stars to pop them!</p>
+                </div>
+                <div class="game-hud">
+                    <div class="hud-item">SCORE: <span id="heartScoreVal" class="neon-text-pink">0</span></div>
+                    <div class="hud-item">HIGH SCORE: <span id="heartHighScoreVal" class="neon-text-white">0</span></div>
+                    <button id="startHeartpopBtn" class="game-btn btn-pink">START GAME</button>
+                </div>
+                <div class="game-screen screen-pink" id="heartpopScreen">
+                    <canvas id="heartpopCanvas"></canvas>
+                    <div id="heartpopOverlay" class="game-overlay">
+                        <span class="overlay-text text-pink">Tap Start to Play!</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME 3: MAGIC PAINT ARENA -->
+            <div id="paintPanel" class="game-panel" style="display: none;">
+                <div class="panel-header">
+                    <h2>Magic Paint Canvas</h2>
+                    <p>Draw with neon colors or place magic stamps!</p>
+                </div>
+
+                <div class="paint-toolbar">
+                    <!-- Tool Select -->
+                    <div class="tool-group">
+                        <span class="group-label">TOOL:</span>
+                        <div class="btn-toggle-group">
+                            <button id="toolBrushBtn" class="toggle-btn active">🖌️ Draw</button>
+                            <button id="toolStampBtn" class="toggle-btn">⭐ Stamp</button>
+                        </div>
+                    </div>
+
+                    <!-- Brush Size -->
+                    <div class="tool-group">
+                        <span class="group-label">SIZE:</span>
+                        <div class="size-options">
+                            <button class="size-btn active" data-size="8" aria-label="Small Brush">
+                                <span class="dot dot-sm"></span>
+                            </button>
+                            <button class="size-btn" data-size="16" aria-label="Medium Brush">
+                                <span class="dot dot-md"></span>
+                            </button>
+                            <button class="size-btn" data-size="32" aria-label="Big Brush">
+                                <span class="dot dot-lg"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Colors -->
+                    <div class="tool-group">
+                        <span class="group-label">COLORS:</span>
+                        <div class="color-palette">
+                            <button class="color-btn active" data-color="#ff007f" style="background-color: #ff007f;" aria-label="Neon Pink"></button>
+                            <button class="color-btn" data-color="#ffffff" style="background-color: #ffffff;" aria-label="Neon White"></button>
+                            <button class="color-btn" data-color="#fffb00" style="background-color: #fffb00;" aria-label="Neon Yellow"></button>
+                            <button class="color-btn" data-color="#00f0ff" style="background-color: #00f0ff;" aria-label="Neon Cyan"></button>
+                            <button class="color-btn" data-color="#39ff14" style="background-color: #39ff14;" aria-label="Neon Green"></button>
+                            <button class="color-btn" data-color="#d800ff" style="background-color: #d800ff;" aria-label="Neon Purple"></button>
+                        </div>
+                    </div>
+
+                    <!-- Stamps -->
+                    <div class="tool-group" id="stampGroup" style="display: none;">
+                        <span class="group-label">STAMPS:</span>
+                        <div class="stamp-palette">
+                            <button class="stamp-btn active" data-stamp="💖" aria-label="Heart Stamp">💖</button>
+                            <button class="stamp-btn" data-stamp="⭐" aria-label="Star Stamp">⭐</button>
+                            <button class="stamp-btn" data-stamp="🦋" aria-label="Butterfly Stamp">🦋</button>
+                            <button class="stamp-btn" data-stamp="👑" aria-label="Crown Stamp">👑</button>
+                            <button class="stamp-btn" data-stamp="🦄" aria-label="Unicorn Stamp">🦄</button>
+                            <button class="stamp-btn" data-stamp="🌈" aria-label="Rainbow Stamp">🌈</button>
+                        </div>
+                    </div>
+
+                    <!-- Sound control -->
+                    <div class="tool-group">
+                        <span class="group-label">SOUND:</span>
+                        <button class="sound-toggle" aria-label="Toggle sound" id="paintSoundToggle">
+                            <!-- Sound On (Speaker Icon) -->
+                            <svg class="sound-on" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                            </svg>
+                            <!-- Sound Off (Muted Icon) -->
+                            <svg class="sound-off" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="20" height="20" style="display: none;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6L1.5 12m0 0l3 3m-3-3h12.75M9 4.72v14.56a.75.75 0 01-1.28.53L3 15.09M9 4.72L3 8.91" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div class="tool-group actions-group">
+                        <button id="clearPaintBtn" class="action-btn">✨ Clear</button>
+                    </div>
+                </div>
+
+                <div class="canvas-wrapper" id="paintScreen">
+                    <canvas id="paintCanvas"></canvas>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Copyright &copy; 2026 The Brown Family | T.C. Brown ⚡</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../static/js/game-popper.js"></script>
+    <script src="../static/js/game-heartpop.js"></script>
+    <script src="../static/js/game-paint.js"></script>
+    <script src="../static/js/main.js"></script>
+
+    <!-- Page Hub Router Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectionGrid = document.getElementById('selectionGrid');
+            const gameArena = document.getElementById('gameArena');
+            const backToMenuBtn = document.getElementById('backToMenuBtn');
+
+            // Panels
+            const popperPanel = document.getElementById('popperPanel');
+            const heartpopPanel = document.getElementById('heartpopPanel');
+            const paintPanel = document.getElementById('paintPanel');
+
+            let activeGameDestructor = null;
+
+            function showGame(gameKey) {
+                // Hide menu
+                selectionGrid.style.display = 'none';
+                gameArena.style.display = 'block';
+
+                // Hide all panels
+                popperPanel.style.display = 'none';
+                heartpopPanel.style.display = 'none';
+                paintPanel.style.display = 'none';
+
+                // Stop any previous active game
+                if (activeGameDestructor) {
+                    activeGameDestructor();
+                    activeGameDestructor = null;
+                }
+
+                // Show selected panel & initialize
+                if (gameKey === 'popper') {
+                    popperPanel.style.display = 'block';
+                    if (window.initPopperGame) {
+                        activeGameDestructor = window.initPopperGame();
+                    }
+                } else if (gameKey === 'heartpop') {
+                    heartpopPanel.style.display = 'block';
+                    if (window.initHeartPopGame) {
+                        activeGameDestructor = window.initHeartPopGame();
+                    }
+                } else if (gameKey === 'paint') {
+                    paintPanel.style.display = 'block';
+                    if (window.initPaintGame) {
+                        activeGameDestructor = window.initPaintGame();
+                    }
+                }
+            }
+
+            function showMenu() {
+                // Stop active game
+                if (activeGameDestructor) {
+                    activeGameDestructor();
+                    activeGameDestructor = null;
+                }
+
+                gameArena.style.display = 'none';
+                selectionGrid.style.display = 'block';
+
+                // Clear query parameter
+                history.pushState(null, '', window.location.pathname);
+            }
+
+            // Click Handlers for tiles
+            document.getElementById('tilePopper').addEventListener('click', () => {
+                showGame('popper');
+            });
+            document.getElementById('tileHeartpop').addEventListener('click', () => {
+                showGame('heartpop');
+            });
+            document.getElementById('tilePaint').addEventListener('click', () => {
+                showGame('paint');
+            });
+
+            backToMenuBtn.addEventListener('click', showMenu);
+
+            // Read URL Query Parameters (e.g. ?game=popper)
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameQuery = urlParams.get('game');
+            if (gameQuery) {
+                showGame(gameQuery);
+            }
+        });
+    </script>
+</body>
+</html>
