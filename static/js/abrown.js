@@ -362,8 +362,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         paintCtx.stroke();
         
-        // Add particles along trail
-  
         
         // Sound pitch based on vertical coordinate
         playDrawSound(coords.rawYPercent);
@@ -395,9 +393,6 @@ document.addEventListener('DOMContentLoaded', () => {
         paintCtx.textBaseline = 'middle';
         paintCtx.fillText(currentStamp, x, y);
         paintCtx.restore();
-
-        // Explosion of sparkly particles
-        addPaintParticles(x, y, currentColor, 12);
     }
 
     // Bind Drawing Listeners
