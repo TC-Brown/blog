@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
         paintCtx.stroke();
         
         // Add particles along trail
-        addPaintParticles(coords.x, coords.y, currentColor, 2);
+  
         
         // Sound pitch based on vertical coordinate
         playDrawSound(coords.rawYPercent);
