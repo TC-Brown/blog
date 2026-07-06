@@ -7,13 +7,14 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
-    color: #333333;
+    background-color: #0b0c10; 
+    color: #ffffff; 
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     padding: 20px;
+    overflow: hidden;
 }
 
 /* Container */
@@ -24,27 +25,29 @@ body {
     padding: 40px 20px;
 }
 
-/* Big 404 Text using the Green Color */
+/* Neon Red 404 Text with Pulsing Glow */
 .error-code {
     font-size: 8rem;
     font-weight: 900;
     line-height: 1;
-    color: #217336;
+    color: #ff0055; 
     margin-bottom: 20px;
     letter-spacing: -2px;
-    animation: float 4s ease-in-out infinite;
+    /* Changed animation to the pulse keyframe and removed float */
+    animation: neon-pulse 2s ease-in-out infinite alternate;
 }
 
 /* Headings & Text */
 h1 {
     font-size: 2.2rem;
-    color: #217599; /* Blue Color */
+    color: #ffffff; 
     margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 p {
     font-size: 1.1rem;
-    color: #666666;
+    color: #a9b7c6; 
     margin-bottom: 30px;
     line-height: 1.6;
 }
@@ -68,41 +71,52 @@ p {
     transition: all 0.3s ease;
 }
 
-/* Primary Button - Green */
+/* Primary Button - Neon Blue Glow */
 .btn-primary {
-    background-color: #217336;
-    color: #ffffff;
-    border: 2px solid #217336;
+    background-color: #00f0ff; 
+    color: #0b0c10;
+    border: 2px solid #00f0ff;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
 }
 
 .btn-primary:hover {
-    background-color: #164e24;
-    border-color: #164e24;
+    background-color: transparent;
+    color: #00f0ff;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(33, 115, 54, 0.3);
+    box-shadow: 0 0 20px #00f0ff;
 }
 
-/* Secondary Button - Blue Outline */
+/* Secondary Button - White Outline / Neon Glow */
 .btn-secondary {
     background-color: transparent;
-    color: #217599;
-    border: 2px solid #217599;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
 .btn-secondary:hover {
-    background-color: #217599;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #0b0c10;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(33, 117, 153, 0.2);
+    box-shadow: 0 0 15px #ffffff;
 }
 
-/* Subtle floating animation for the 404 text */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
+/* New Pulsing Glow Animation (Replaces the old float) */
+@keyframes neon-pulse {
+    0% {
+        text-shadow: 
+            0 0 4px #ff0055,
+            0 0 10px #ff0055,
+            0 0 20px #ff0055,
+            0 0 40px #ff0055;
     }
-    50% {
-        transform: translateY(-10px);
+    100% {
+        text-shadow: 
+            0 0 8px #ff0055,
+            0 0 25px #ff0055,
+            0 0 50px #ff0055,
+            0 0 80px #ff0055,
+            0 0 100px #ff0055;
     }
 }
 
