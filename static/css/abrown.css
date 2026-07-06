@@ -47,6 +47,7 @@ body.light-theme {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    user-select: none;
 }
 
 body {
