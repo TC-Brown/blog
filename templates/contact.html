@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Support</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            gap: 20px;
+        }
+
+        .back-btn-container {
+            max-width: 960px;
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 6px;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .back-btn:hover {
+            color: #3498db;
+            transform: translateX(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+
+        .back-btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .back-btn:hover svg {
+            transform: translateX(-2px);
+        }
+
+        .container {
+            max-width: 960px;
+            width: 100%;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Sidebar Info */
+        .info-sidebar {
+            flex: 1;
+            background: #2c3e50;
+            color: #fff;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .info-sidebar h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .info-sidebar p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #bdc3c7;
+        }
+
+        .contact-details {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        /* Form Styling */
+        .form-container {
+            flex: 1.5;
+            padding: 40px;
+        }
+
+        .form-container h2 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .form-container p {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #34495e;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .info-sidebar {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="back-btn-container">
+    <a href="../index.html" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back to Home
+    </a>
+</div>
+
+<div class="container">
+    <div class="info-sidebar">
+        <div>
+            <h2>Get in Touch</h2>
+            <p>Have questions or facing technical issues? Fill out the form, and our support team will get back to you.</p>
+        </div>
+        
+        <div class="contact-details">
+            <div class="contact-item">
+                <strong>Email Us</strong>
+                support@yourdomain.com
+            </div>
+            <div class="contact-item">
+                <strong>Call Us</strong>
+                +1 (800) 123-4567
+            </div>
+            <div class="contact-item">
+                <strong>Hours</strong>
+                Mon - Fri, 9:00 AM - 6:00 PM CST
+            </div>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <h2>Submit a Ticket</h2>
+        <p>Please provide as much detail as possible so we can assist you better.</p>
+        
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="issue-type">What can we help you with?</label>
+                <select id="issue-type" name="issue-type" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="technical">Technical Support</option>
+                    <option value="billing">Billing & Account</option>
+                    <option value="feature">Feature Request</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message / Description of Issue</label>
+                <textarea id="message" name="message" rows="5" placeholder="Describe your problem here..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Ticket</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Target email address - Change this to your actual email address
+        const targetEmail = 'support@TCBrown.com';
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const issueType = document.getElementById('issue-type').value;
+        const message = document.getElementById('message').value;
+        
+        const subject = `[${issueType.toUpperCase()}] Support Ticket from ${name}`;
+        const body = `Name: ${name}
+Email: ${email}
+Issue Type: ${issueType}
+
+Message:
+${message}`;
+        
+        const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        window.location.href = mailtoUrl;
+    });
+</script>
+
+</body>
+</html>
