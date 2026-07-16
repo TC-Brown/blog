@@ -34,27 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Premium Light/Dark Theme Switcher ---
-    const themeToggle = document.getElementById('themeToggle');
-    
-    // Check for saved theme choice, default to dark
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        document.body.classList.add('light-theme');
-    }
 
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
-            
-            // Persist theme choice in localStorage
-            if (document.body.classList.contains('light-theme')) {
-                localStorage.setItem('theme', 'light');
-            } else {
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-    }
 });
 
 // ---- Other Functions for the pages ----

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Brown Family | Collections</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Shared Main CSS -->
+    <link rel="stylesheet" href="../static/css/blog.css">
+    <!-- Local Page CSS -->
+    <link rel="stylesheet" href="../static/css/collections.css">
+</head>
+<body>
+
+    <!-- Sticky Top Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="back-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Home
+            </a>
+            
+            <div class="nav-title">Collections Hub</div>
+
+
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="collections-hero">
+        <div class="hero-badge">Trackers & Catalogs</div>
+        <h1>The Collections Room</h1>
+        <p>A digital showcase and checklist manager for our family collections, trading cards, models, and sets.</p>
+    </header>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-box">
+            <span class="search-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+            <input type="text" id="collectionSearch" class="search-input" placeholder="Filter collections by name, category, status..." autocomplete="off">
+        </div>
+    </section>
+
+    <!-- Collections Grid Container -->
+    <main class="collections-container">
+        <div class="collections-grid" id="collectionsGrid">
+            
+            <!-- Mini Brands & Mini Verse Card (Active) -->
+            <div class="collection-card active-tile" data-title="Mini Brands Tracker" data-category="Toys & Minis" data-status="active" onclick="window.location.href='minibrands.html'">
+                <div class="card-header-main">
+                    <div class="collection-icon">🧸</div>
+                    <span class="status-badge active-status">Active Tracker</span>
+                </div>
+                <div class="card-details">
+                    <div class="collection-category">Toys & Minis</div>
+                    <h2 class="collection-title">Mini Brands / Verse</h2>
+                    <p class="collection-desc">Interactive tracker for Mini Brands Series. Log duplicates, checklist items, and monitor overall completion progress.</p>
+                </div>
+                <button class="launch-action">Open Tracker →</button>
+            </div>
+
+            <!-- Pokemon TCG Binder (Coming Soon) -->
+            <div class="collection-card upcoming-tile" data-title="Pokemon TCG Binder" data-category="Card Game" data-status="upcoming" onclick="event.stopPropagation(); handleComingSoon('pokemon')">
+                <div class="card-header-main">
+                    <div class="collection-icon">⚡</div>
+                    <span class="status-badge upcoming-status">Coming Soon</span>
+                </div>
+                <div class="card-details">
+                    <div class="collection-category">Card Game</div>
+                    <h2 class="collection-title">Pokemon Cards</h2>
+                    <p class="collection-desc">Digital binder for Holos, Secret Rares, and competitive cards. Track sets, card numbers, and collection value updates.</p>
+                </div>
+                <button class="launch-action">Details & Preview</button>
+            </div>
+
+            <!-- Lego Showroom (Coming Soon) -->
+            <div class="collection-card upcoming-tile" data-title="Lego Showroom" data-category="Building Sets" data-status="upcoming" onclick="event.stopPropagation(); handleComingSoon('lego')">
+                <div class="card-header-main">
+                    <div class="collection-icon">🧱</div>
+                    <span class="status-badge upcoming-status">Coming Soon</span>
+                </div>
+                <div class="card-details">
+                    <div class="collection-category">Building Sets</div>
+                    <h2 class="collection-title">Lego Showroom</h2>
+                    <p class="collection-desc">Catalog box sets, display models, brick sizes, and assembly status. Build checklists for wishlist sets.</p>
+                </div>
+                <button class="launch-action">Details & Preview</button>
+            </div>
+
+            <!-- Hot Wheels Garage (Coming Soon) -->
+            <div class="collection-card upcoming-tile" data-title="Hot Wheels Garage" data-category="Die-cast Cars" data-status="upcoming" onclick="event.stopPropagation(); handleComingSoon('hotwheels')">
+                <div class="card-header-main">
+                    <div class="collection-icon">🚗</div>
+                    <span class="status-badge upcoming-status">Coming Soon</span>
+                </div>
+                <div class="card-details">
+                    <div class="collection-category">Die-cast Cars</div>
+                    <h2 class="collection-title">Hot Wheels Garage</h2>
+                    <p class="collection-desc">Track and filter die-cast models, treasure hunts, and vintage releases. Categorize by model year and condition.</p>
+                </div>
+                <button class="launch-action">Details & Preview</button>
+            </div>
+
+            <!-- Custom Tracker Request -->
+            <div class="collection-card active-tile" data-title="Request Tracker" data-category="Custom Tracker" data-status="active" onclick="window.location.href='contact.html'">
+                <div class="card-header-main">
+                    <div class="collection-icon">➕</div>
+                    <span class="status-badge active-status">Request Tool</span>
+                </div>
+                <div class="card-details">
+                    <div class="collection-category">Custom Tracker</div>
+                    <h2 class="collection-title">Request Tracker</h2>
+                    <p class="collection-desc">Have a specific collection you'd love to organize? Submit a feature request directly to our developer team!</p>
+                </div>
+                <button class="launch-action">Submit Idea →</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Glassmorphic Modal Component for Upcoming Collections -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-container">
+            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+            <div class="modal-icon" id="modalIcon">⚡</div>
+            <h2 class="modal-title" id="modalTitle">Collection Title</h2>
+            <p class="modal-desc" id="modalDesc">Detailed description of the upcoming collection.</p>
+            <button class="modal-action-btn" id="modalActionBtn">Notify Me when Ready</button>
+        </div>
+    </div>
+
+    <!-- Premium Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h4>More Info</h4>
+                <p>Information about sources and the site</p>
+                <p>&copy; Copyright 2026 The Brown Family | T.C. Brown</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/tc-brown" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" fill="currentColor" width="16" height="16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shared Main Scripts (handles theme toggling) -->
+    <script src="../static/js/main.js"></script>
+
+    <!-- Page Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('collectionSearch');
+            const collectionsGrid = document.getElementById('collectionsGrid');
+            const cards = Array.from(collectionsGrid.getElementsByClassName('collection-card'));
+
+            // Create No Results element
+            const noResultsEl = document.createElement('div');
+            noResultsEl.className = 'no-results';
+            noResultsEl.style.display = 'none';
+            noResultsEl.innerHTML = `
+                <span class="no-results-icon">🔍</span>
+                <h3>No collections match your filter</h3>
+                <p>Try searching for other tags like "toys", "cards", "active" or "coming soon".</p>
+            `;
+            collectionsGrid.appendChild(noResultsEl);
+
+            // Live Search Filter Logic
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const title = card.getAttribute('data-title').toLowerCase();
+                    const category = card.getAttribute('data-category').toLowerCase();
+                    const status = card.getAttribute('data-status').toLowerCase();
+                    const descText = card.querySelector('.collection-desc').textContent.toLowerCase();
+
+                    const matches = title.includes(query) || 
+                                    category.includes(query) || 
+                                    status.includes(query) || 
+                                    descText.includes(query);
+
+                    if (matches) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (visibleCount === 0) {
+                    noResultsEl.style.display = 'block';
+                } else {
+                    noResultsEl.style.display = 'none';
+                }
+            });
+
+            // Modal elements
+            const modalOverlay = document.getElementById('modalOverlay');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
+            const modalIcon = document.getElementById('modalIcon');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDesc = document.getElementById('modalDesc');
+            const modalActionBtn = document.getElementById('modalActionBtn');
+
+            const comingSoonData = {
+                pokemon: {
+                    icon: '⚡',
+                    title: 'Pokemon Cards binder',
+                    desc: 'We are currently crafting a digital Pokemon Card collector binder. It will include card cataloguing, rarity stats, energy filters, and live market pricing indicators. Enter your email or save below to be notified upon launch.'
+                },
+                lego: {
+                    icon: '🧱',
+                    title: 'Lego Showroom Catalog',
+                    desc: 'Keep track of all your built modular buildings, Technic vehicles, and creative structures. Build wishlist sets and count raw bricks in your inventory. Stay tuned for developer updates!'
+                },
+                hotwheels: {
+                    icon: '🚗',
+                    title: 'Hot Wheels Garage',
+                    desc: 'A dedicated virtual garage to track die-cast cars. Sort by series, identify rare Treasure Hunts, and check box/mint quality details. Notify details are active below.'
+                }
+            };
+
+            // Open Modal
+            window.handleComingSoon = function(key) {
+                const data = comingSoonData[key];
+                if (!data) return;
+
+                modalIcon.textContent = data.icon;
+                modalTitle.textContent = data.title;
+                modalDesc.textContent = data.desc;
+                modalActionBtn.textContent = 'Notify Me when Ready';
+                modalActionBtn.disabled = false;
+                modalActionBtn.style.background = 'var(--accent-gradient)';
+                modalActionBtn.style.cursor = 'pointer';
+
+                modalOverlay.classList.add('open');
+            };
+
+            // Close Modal
+            function closeModal() {
+                modalOverlay.classList.remove('open');
+            }
+
+            modalCloseBtn.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) closeModal();
+            });
+
+            // Modal Action Simulation
+            modalActionBtn.addEventListener('click', () => {
+                modalActionBtn.textContent = '✓ Notification Requested!';
+                modalActionBtn.disabled = true;
+                modalActionBtn.style.background = '#10b981';
+                modalActionBtn.style.cursor = 'default';
+
+                setTimeout(() => {
+                    closeModal();
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>

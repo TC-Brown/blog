@@ -5,105 +5,31 @@
 
 :root {
     /* Color Palette */
-    --bg-obsidian: #080b11;
-    --bg-surface: #101622;
+    --bg-obsidian: #f8fafc;
+    --bg-surface: #f1f5f9;
     --color-emerald: #10b981;
     --color-indigo: #6366f1;
-    --color-silver: #94a3b8;
-    --color-white: #f8fafc;
+    --color-silver: #475569;
+    --color-white: #0f172a;
     
     /* Gradients */
-    --primary-bg: radial-gradient(circle at top right, #161e33, var(--bg-obsidian)) fixed;
+    --primary-bg: radial-gradient(circle at top right, #e0e7ff, #f8fafc) fixed;
     --accent-gradient: linear-gradient(135deg, var(--color-indigo), var(--color-emerald));
-    --card-gradient: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+    --card-gradient: linear-gradient(145deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.45));
     
     /* Layout Constants */
     --navbar-height: 80px;
     --border-radius: 20px;
-    --border-glow: 1px solid rgba(99, 102, 241, 0.15);
-    
-    /* Interactive & Effects */
-    --border: 1px solid rgba(255, 255, 255, 0.07);
-    --border-hover: 1px solid rgba(255, 255, 255, 0.15);
-    --shadow-soft: 0 15px 35px -5px rgba(0, 0, 0, 0.6);
-    --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.15);
-    --backdrop-blur: blur(16px);
-    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* --- Premium Light Theme Variables & Overrides --- */
-body.light-theme {
-    --bg-obsidian: #f8fafc;
-    --bg-surface: #f1f5f9;
-    --color-silver: #475569;
-    --color-white: #0f172a;
-    
-    --primary-bg: radial-gradient(circle at top right, #e0e7ff, #f8fafc) fixed;
-    --card-gradient: linear-gradient(145deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.45));
-    --border: 1px solid rgba(15, 23, 42, 0.06);
-    --border-hover: 1px solid rgba(99, 102, 241, 0.2);
     --border-glow: 1px solid rgba(99, 102, 241, 0.1);
     
+    /* Interactive & Effects */
+    --border: 1px solid rgba(15, 23, 42, 0.06);
+    --border-hover: 1px solid rgba(99, 102, 241, 0.2);
     --shadow-soft: 0 15px 35px -5px rgba(99, 102, 241, 0.05);
     --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.06);
-    /* --- custom colors --- */
+    --backdrop-blur: blur(16px);
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     --akiva-bg: linear-gradient(30deg, #FFF, #ff0000, #ffac00, #fff100, #0bff00,#00f6ff, #fff);
-}
-
-body.light-theme .navbar::before {
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.05), rgba(15, 23, 42, 0));
-}
-
-body.light-theme .hero h1 {
-    background: linear-gradient(to right, #0f172a, #4f46e5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-body.light-theme .card::before {
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.05), rgba(15, 23, 42, 0.01));
-}
-
-body.light-theme .wave-icon {
-    background: rgba(16, 185, 129, 0.08);
-}
-
-body.light-theme .update-icon {
-    background: rgba(99, 102, 241, 0.08);
-}
-
-body.light-theme .profile-img {
-    border-color: rgba(255,255,255, 1);
-}
-
-body.light-theme .nav-link:hover {
-    
-    background: rgb(176,38,255);
-}
-
-body.light-theme .nav-link.active {
-    background: rgb(57,255,20);
-    border-color: rgba(99, 102, 241, 0.15);
-}
-
-body.light-theme .theme-toggle {
-    background: rgba(15, 23, 42, 0.04);
-    color: #475569;
-}
-
-body.light-theme .theme-toggle:hover {
-    background: rgba(15, 23, 42, 0.08);
-    color: #0f172a;
-    box-shadow: 0 0 15px rgba(99, 102, 241, 0.1);
-}
-
-body.light-theme .skill-tag {
-    background: rgba(15, 23, 42, 0.03);
-}
-
-body.light-theme .skill-tag:hover {
-    background: rgba(15, 23, 42, 0.06);
-    color: #0f172a;
 }
 
 /* Reset and Core Styles */
