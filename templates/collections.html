@@ -70,44 +70,30 @@
                 <button class="launch-action">Open Tracker →</button>
             </div>
 
-            <!-- Pokemon TCG Binder (Coming Soon) -->
-            <div class="collection-card upcoming-tile" data-title="Pokemon TCG Binder" data-category="Card Game" data-status="upcoming" onclick="event.stopPropagation(); handleComingSoon('pokemon')">
+            <!-- Our Cookbook (Coming Soon) -->
+            <div class="collection-card upcoming-tile" data-title="Our Cookbook" data-category="Card Game" data-status="upcoming" onclick="event.stopPropagation(); handleComingSoon('cookbook')">
                 <div class="card-header-main">
-                    <div class="collection-icon">⚡</div>
+                    <div class="collection-icon">🍳</div>
                     <span class="status-badge upcoming-status">Coming Soon</span>
                 </div>
                 <div class="card-details">
-                    <div class="collection-category">Card Game</div>
-                    <h2 class="collection-title">Pokemon Cards</h2>
-                    <p class="collection-desc">Digital binder for Holos, Secret Rares, and competitive cards. Track sets, card numbers, and collection value updates.</p>
+                    <div class="collection-category">Food</div>
+                    <h2 class="collection-title">Our Cookbook</h2>
+                    <p class="collection-desc">A Collection of some of our favorite things to make and eat. Here you'll find amazing food you just cant wait to share.</p>
                 </div>
                 <button class="launch-action">Details & Preview</button>
             </div>
 
-            <!-- Lego Showroom (Coming Soon) -->
-            <div class="collection-card upcoming-tile" data-title="Lego Showroom" data-category="Building Sets" data-status="upcoming" onclick="event.stopPropagation(); handleComingSoon('lego')">
+            <!-- Garden Showroom (Coming Soon) -->
+            <div class="collection-card upcoming-tile" data-title="Garden Showroom" data-category="Building Sets" data-status="upcoming" onclick="event.stopPropagation(); handleComingSoon('garden')">
                 <div class="card-header-main">
-                    <div class="collection-icon">🧱</div>
+                    <div class="collection-icon">🍃</div>
                     <span class="status-badge upcoming-status">Coming Soon</span>
                 </div>
                 <div class="card-details">
-                    <div class="collection-category">Building Sets</div>
-                    <h2 class="collection-title">Lego Showroom</h2>
-                    <p class="collection-desc">Catalog box sets, display models, brick sizes, and assembly status. Build checklists for wishlist sets.</p>
-                </div>
-                <button class="launch-action">Details & Preview</button>
-            </div>
-
-            <!-- Hot Wheels Garage (Coming Soon) -->
-            <div class="collection-card upcoming-tile" data-title="Hot Wheels Garage" data-category="Die-cast Cars" data-status="upcoming" onclick="event.stopPropagation(); handleComingSoon('hotwheels')">
-                <div class="card-header-main">
-                    <div class="collection-icon">🚗</div>
-                    <span class="status-badge upcoming-status">Coming Soon</span>
-                </div>
-                <div class="card-details">
-                    <div class="collection-category">Die-cast Cars</div>
-                    <h2 class="collection-title">Hot Wheels Garage</h2>
-                    <p class="collection-desc">Track and filter die-cast models, treasure hunts, and vintage releases. Categorize by model year and condition.</p>
+                    <div class="collection-category">Nature</div>
+                    <h2 class="collection-title">The Garden</h2>
+                    <p class="collection-desc">The garden Is a place of information on the plants that you will find in our garden. From plants that have been rescued to grown from seed plants.</p>
                 </div>
                 <button class="launch-action">Details & Preview</button>
             </div>
@@ -220,21 +206,17 @@
             const modalActionBtn = document.getElementById('modalActionBtn');
 
             const comingSoonData = {
-                pokemon: {
-                    icon: '⚡',
-                    title: 'Pokemon Cards binder',
-                    desc: 'We are currently crafting a digital Pokemon Card collector binder. It will include card cataloguing, rarity stats, energy filters, and live market pricing indicators. Enter your email or save below to be notified upon launch.'
+                cookbook: {
+                    icon: '🍳',
+                    title: 'Our Cookbook',
+                    desc: 'Here you will find a collection of recipes that we feel are worth sharing and haing on hand. From breakfast to Dinner and desert.'
                 },
-                lego: {
-                    icon: '🧱',
-                    title: 'Lego Showroom Catalog',
-                    desc: 'Keep track of all your built modular buildings, Technic vehicles, and creative structures. Build wishlist sets and count raw bricks in your inventory. Stay tuned for developer updates!'
+                garden: {
+                    icon: '🍃',
+                    title: 'The Garden',
+                    desc: 'A place of growing knowledge and shairing what we know and grown'
                 },
-                hotwheels: {
-                    icon: '🚗',
-                    title: 'Hot Wheels Garage',
-                    desc: 'A dedicated virtual garage to track die-cast cars. Sort by series, identify rare Treasure Hunts, and check box/mint quality details. Notify details are active below.'
-                }
+                
             };
 
             // Open Modal
