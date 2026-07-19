@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to my Space!</title>
+    <style>
+        /* --- Global Reset & Box Model --- */
+        * {
+            box-sizing: border-box; /* Crucial: ensures padding never breaks element widths */
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #e5e5e5;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            color: #000000;
+            padding: 10px;
+            min-height: 100vh;
+        }
+
+        a {
+            color: #003399;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #cc0000;
+        }
+
+        /* --- Main Wrapper --- */
+        .container {
+            max-width: 950px; /* Looks clean on massive screens */
+            width: 100%;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 2px solid #003399;
+            padding: 10px;
+        }
+
+        /* --- Top Header / Search Bar --- */
+        .search-bar {
+            background-color: #6699cc;
+            padding: 8px 12px;
+            color: #ffffff;
+            font-weight: bold;
+            display: flex;
+            flex-flow: row wrap; /* Allows natural wrapping if space is tight */
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .search-inputs {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .search-inputs input {
+            max-width: 120px; /* Keeps input from breaking headers on small rows */
+        }
+
+        /* --- Main Two-Column Layout --- */
+        .main-layout {
+            display: flex;
+            flex-direction: column; /* Mobile-first default */
+            gap: 15px;
+        }
+
+        /* --- Containers / Boxes --- */
+        .orange-box, .blue-box {
+            margin-bottom: 15px;
+            width: 100%;
+            border: 2px solid;
+        }
+        .orange-box { border-color: #ffcc99; }
+        .blue-box { border-color: #6699cc; }
+        
+        .orange-box h2 { background-color: #ff9933; color: #ffffff; font-size: 14px; padding: 6px 8px; }
+        .blue-box h2 { background-color: #6699cc; color: #ffffff; font-size: 14px; padding: 6px 8px; }
+        
+        .box-content { padding: 10px; }
+
+        /* --- Profile Details Component --- */
+        .profile-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            word-wrap: break-word; /* Prevents long usernames from clipping */
+        }
+        .profile-layout {
+            display: flex;
+            flex-direction: column; /* Stacked on small mobile devices */
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+            text-align: center;
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            max-width: 100%; /* Resizes gracefully if screen goes ultra-narrow */
+            flex-shrink: 0;
+            background-color: #ccc;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .profile-status {
+            font-size: 12px;
+            line-height: 1.5;
+            width: 100%;
+        }
+        .mood-section {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Contact Box Grid (Replaced old fragile table) */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+        }
+        .contact-grid a {
+            display: block;
+            padding: 6px;
+            border: 1px solid #6699cc;
+            background-color: #d5e4f2;
+            text-align: center;
+            font-size: 11px;
+        }
+
+        /* --- Interests Layout --- */
+        .interest-row {
+            display: flex;
+            flex-direction: column; /* Stacked vertically on tiny mobile */
+            border-bottom: 1px solid #eee;
+            padding: 8px 0;
+        }
+        .interest-row:last-child { border-bottom: none; }
+        .interest-label {
+            background-color: #b1d0f0;
+            font-weight: bold;
+            color: #003399;
+            padding: 4px;
+            margin-bottom: 4px;
+        }
+        .interest-text {
+            padding: 4px;
+        }
+
+        /* --- Blurbs Section --- */
+        .blurb-heading {
+            color: #ff6600;
+            font-weight: bold;
+            font-size: 13px;
+            margin-top: 12px;
+            margin-bottom: 4px;
+        }
+        .box-content p {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        /* --- Top 8 Grid --- */
+        .top8-title {
+            color: #cc0000;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns on minimal screens */
+            gap: 10px;
+            text-align: center;
+        }
+        .friend-box {
+            font-size: 11px;
+        }
+        .friend-pic {
+            width: 100%;
+            aspect-ratio: 1;
+            background-color: #ddd;
+            border: 1px solid #000;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- Fake Retro Media Player --- */
+        .media-player {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-family: monospace;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        /* ==========================================================================
+           ADVANCED MEDIA QUERIES (Fluid Adaptability)
+           ========================================================================== */
+        
+        /* Small Micro Screens to Phablets (e.g., iPhone SE & Up) */
+        @media (min-width: 480px) {
+            .profile-layout {
+                flex-direction: row; /* Side-by-side photo & bio */
+                text-align: left;
+                align-items: flex-start;
+            }
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr); /* Expand Top 8 to 3 columns */
+            }
+            .interest-row {
+                flex-direction: row; /* Side by side label and text */
+            }
+            .interest-label {
+                width: 100px;
+                flex-shrink: 0;
+                margin-bottom: 0;
+            }
+        }
+
+        /* Desktop Layout (Tablets, Laptops, Monitors) */
+        @media (min-width: 769px) {
+            body {
+                padding: 20px;
+            }
+            .main-layout {
+                flex-direction: row; /* True Myspace dual column setup triggers */
+            }
+            .left-col {
+                flex: 4; /* Proportional desktop sizing */
+            }
+            .right-col {
+                flex: 5;
+            }
+            .grid-container {
+                grid-template-columns: repeat(4, 1fr); /* Iconic 4x2 Top 8 layout */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header Bar -->
+    <div class="search-bar">
+        <div>An Old-School Space.com</div>
+        <div class="search-inputs">
+            <input type="text" placeholder="Search Users...">
+            <button style="font-size: 10px; padding: 2px 5px;">Search</button>
+        </div>
+    </div>
+
+    <!-- Layout Container -->
+    <div class="main-layout">
+        
+        <!-- LEFT COLUMN -->
+        <div class="left-col">
+            <div class="profile-name">⚡ Your Name Here ⚡</div>
+            
+            <div class="profile-layout">
+                <div class="profile-pic">[ Your Pic Here ]</div>
+                <div class="profile-status">
+                    "Writing code and living in 2006."<br><br>
+                    <b>Gender:</b> Open Source<br>
+                    <b>Age:</b> 99<br>
+                    <b>Location:</b> The Internet<br>
+                    
+                    <div class="mood-section">
+                        Mood: <span>😎 Creative</span><br>
+                        View My: <a href="#">Pics</a> | <a href="#">Videos</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Box (Grid-powered) -->
+            <div class="orange-box">
+                <h2>Contacting Your Name</h2>
+                <div class="box-content">
+                    <div class="contact-grid">
+                        <a href="#">Send Message</a>
+                        <a href="#">Forward to Friends</a>
+                        <a href="#">Add to Friends</a>
+                        <a href="#">Add to Favorites</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interests Box (Flex-row powered) -->
+            <div class="blue-box">
+                <h2>Interests</h2>
+                <div class="box-content">
+                    <div class="interest-row">
+                        <div class="interest-label">General</div>
+                        <div class="interest-text">Web development, CSS hacking, collecting vinyl, drinking too much coffee.</div>
+                    </div>
+                    <div class="interest-row">
+                        <div class="interest-label">Music</div>
+                        <div class="interest-text">My Chemical Romance, Fall Out Boy, Blink-182, Daft Punk.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="right-col">
+            
+            <!-- Media Player -->
+            <div class="media-player">
+                🎵 NOW PLAYING: Ocean Avenue - Yellowcard <br>
+                <span style="font-size: 10px;">[0:45 / 3:37] ⏪ ⏸ ⏩ 🔊</span>
+            </div>
+
+            <!-- Blurbs Box -->
+            <div class="orange-box">
+                <h2>Your Name's Blurbs</h2>
+                <div class="box-content">
+                    <div class="blurb-heading">About me:</div>
+                    <p>Welcome to my page! I'm a web developer who misses the days when the internet was clunky, colorful, and customized with terrible inline CSS. I spend my time fixing responsiveness issues by day and customizing my profile by night.</p>
+                    <div class="blurb-heading">Who I'd like to meet:</div>
+                    <p>Other developers, designers, and retro internet enthusiasts who remember what a <code>&lt;marquee&gt;</code> tag is.</p>
+                </div>
+            </div>
+
+            <!-- Top 8 Box -->
+            <div class="blue-box">
+                <h2>Your Name's Friend Space</h2>
+                <div class="box-content">
+                    <div class="top8-title">Your Name has <span style="color:#000;">8</span> friends.</div>
+                    
+                    <div class="grid-container">
+                        <div class="friend-box"><a href="#">Tom</a><div class="friend-pic">[ Tom ]</div></div>
+                        <div class="friend-box"><a href="#">Sarah</a><div class="friend-pic">[ Pic ]</div></div>
+                        <div class="friend-box"><a href="#">Alex</a><div class="friend-pic">[ Pic ]</div></div>
+                        <div class="friend-box"><a href="#">Jess</a><div class="friend-pic">[ Pic ]</div></div>
+                        <div class="friend-box"><a href="#">Chris</a><div class="friend-pic">[ Pic ]</div></div>
+                        <div class="friend-box"><a href="#">Emma</a><div class="friend-pic">[ Pic ]</div></div>
+                        <div class="friend-box"><a href="#">Ryan</a><div class="friend-pic">[ Pic ]</div></div>
+                        <div class="friend-box"><a href="#">Taylor</a><div class="friend-pic">[ Pic ]</div></div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- /right-col -->
+
+    </div> <!-- /main-layout -->
+
+</div> <!-- /container -->
+
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog & Vlog Hub</title>
+    <style>
+        /* Modern Reset and Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --text-color: #1f2937;
+            --light-bg: #f3f4f6;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--card-bg);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav ul a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav ul a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Featured Vlog Section */
+        .featured-vlog {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-container iframe, 
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .vlog-content {
+            padding: 1.5rem;
+        }
+
+        .vlog-meta {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+
+        .vlog-title {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Content Grid (Recent Blogs/Vlogs) */
+        .section-title {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #ddd; /* Fallback placeholder color */
+        }
+
+        .card-content {
+            padding: 1.25rem;
+        }
+
+        .card-meta {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            color: #4b5563;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111827;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Mobile Responsive adjustments */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .vlog-title {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#" class="logo">CreatorHub</a>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../error/error.html">Articles</a></li>
+            <li><a href="../error/error.html">Vlogs</a></li>
+            <li><a href="../error/error.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <div class="container">
+        
+        <!-- Featured Vlog Section -->
+        <h2 class="section-title">Latest Vlog</h2>
+        <div class="featured-vlog">
+            <div class="video-container">
+                <!-- Replace the src URL with your actual YouTube embed link or video source -->
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+            <div class="vlog-content">
+                <div class="vlog-meta">Published on July 19, 2026 • By Alex Creator</div>
+                <h1 class="vlog-title">Behind the Scenes: A Day in the Life of a Content Creator</h1>
+                <p>Today we are diving deep into my editing workflow, the gear I use daily, and how I manage my time to keep the content rolling out. Don't forget to check out the links below for the full breakdown!</p>
+            </div>
+        </div>
+
+        <!-- Recent Posts Grid -->
+        <h2 class="section-title">Recent Posts</h2>
+        <div class="grid">
+            
+            <!-- Card 1 (Blog Post) -->
+            <article class="card">
+                <!-- Replace with your image path -->
+                <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=500&q=80" alt="Desk with laptop" class="card-img">
+                <div class="card-content">
+                    <div class="card-meta">Blog • 5 min read</div>
+                    <h3 class="card-title">Top 5 Productivity Tips for Remote Workers</h3>
+                    <p class="card-text">Staying focused at home is tough. Here are five simple rules I use to keep my energy up and distractions down...</p>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </article>
+
+            <!-- Card 2 (Vlog Post alternative layout) -->
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=500&q=80" alt="Code on a screen" class="card-img">
+                <div class="card-content">
+                    <div class="card-meta">Vlog • 12 min watch</div>
+                    <h3 class="card-title">How I Learned to Code in 6 Months</h3>
+                    <p class="card-text">From zero coding knowledge to building my own web applications. I break down the exact resources and timeline I followed...</p>
+                    <a href="#" class="read-more">Watch Video →</a>
+                </div>
+            </article>
+
+            <!-- Card 3 (Blog Post) -->
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1502481851512-e9e2529bbcc9?auto=format&fit=crop&w=500&q=80" alt="Camera equipment" class="card-img">
+                <div class="card-content">
+                    <div class="card-meta">Blog • 8 min read</div>
+                    <h3 class="card-title">My Travel Gear Guide for 2026</h3>
+                    <p class="card-text">You don't need a massive backpack to shoot great video on the go. Here is my minimalist kit for the upcoming travel season...</p>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+    <!-- Simple Footer -->
+    <footer>
+        <p>&copy; 2026 CreatorHub. Built with passion.</p>
+    </footer>
+
+</body>
+</html>
