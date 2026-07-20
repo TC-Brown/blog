@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flora & Fauna Library</title>
+  <style>
+    /* Global Styles & Variables */
+    :root {
+      --bg-color: #f3f6f3;
+      --card-bg: #ffffff;
+      --primary-green: #2d5a27;
+      --accent-green: #eaf2ea;
+      --border-color: #d2e0d2;
+      --active-blue: #2a75d3;
+      --active-bg: #eaf2fd;
+      --text-dark: #2c3e50;
+      --text-muted: #555555;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-dark);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    header h1 {
+      color: var(--primary-green);
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    /* Layout Grid: Gallery + Detail View */
+    .layout-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Plant Card / Tile Style */
+    .plant-tile {
+      background: var(--card-bg);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+    }
+
+    .plant-tile:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+    }
+
+    /* Selected Tile State */
+    .plant-tile.active {
+      border-color: var(--active-blue);
+      background-color: var(--active-bg);
+      box-shadow: 0 0 12px rgba(42, 117, 211, 0.3);
+    }
+
+    .tile-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+    }
+
+    .tile-title {
+      font-weight: 700;
+      color: var(--text-dark);
+      font-size: 1.1rem;
+      text-transform: uppercase;
+    }
+
+    .tile-latin {
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .select-btn {
+      margin-top: auto;
+      background: #ffffff;
+      border: 1px solid var(--primary-green);
+      color: var(--primary-green);
+      padding: 0.4rem 1.2rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .plant-tile.active .select-btn {
+      background: var(--active-blue);
+      color: #fff;
+      border-color: var(--active-blue);
+    }
+
+    /* Detailed View Section */
+    .detail-view {
+      grid-column: 1 / -1; /* Spans full width at the bottom */
+      background: var(--card-bg);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .detail-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .detail-header h2 {
+      color: var(--primary-green);
+      font-size: 1.8rem;
+      text-transform: uppercase;
+    }
+
+    .detail-header .latin {
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .tip-box {
+      background: var(--accent-green);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .tip-box h3 {
+      color: var(--primary-green);
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tip-box p {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: #333;
+      margin-bottom: 0.4rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: auto;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-color);
+      width: 100%;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .detail-view {
+        grid-template-columns: 1fr;
+      }
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1 onclick="window.location.href='../index.html'">🌿 The Garden 🌿</h1>
+    </header>
+
+    <!-- Plant Cards Grid -->
+    <section class="layout-grid" id="plantGrid">
+
+      <!-- Tile 1 -->
+      <article class="plant-tile active" onclick="selectPlant('pothos', this)">
+        <img class="tile-img" src="https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?auto=format&fit=crop&w=400&q=80" alt="Pothos">
+        <h3 class="tile-title">Pothos</h3>
+        <p class="tile-latin">Epipremnum aureum</p>
+        <button class="select-btn">SELECT</button>
+      </article>
+
+      <!-- Tile 2 -->
+      <article class="plant-tile" onclick="selectPlant('snake', this)">
+        <img class="tile-img" src="https://images.unsplash.com/photo-1593482892290-f54927ae1bac?auto=format&fit=crop&w=400&q=80" alt="Snake Plant">
+        <h3 class="tile-title">Snake Plant</h3>
+        <p class="tile-latin">Dracaena trifasciata</p>
+        <button class="select-btn">SELECT</button>
+      </article>
+
+      <!-- Tile 3 -->
+      <article class="plant-tile" onclick="selectPlant('zz', this)">
+        <img class="tile-img" src="https://images.unsplash.com/photo-1632207691143-643e2a9a9361?auto=format&fit=crop&w=400&q=80" alt="ZZ Plant">
+        <h3 class="tile-title">ZZ Plant</h3>
+        <p class="tile-latin">Zamioculcas zamiifolia</p>
+        <button class="select-btn">SELECT</button>
+      </article>
+
+      <!-- Tile 4 -->
+      <article class="plant-tile" onclick="selectPlant('monstera', this)">
+        <img class="tile-img" src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=400&q=80" alt="Monstera">
+        <h3 class="tile-title">Monstera</h3>
+        <p class="tile-latin">Monstera deliciosa</p>
+        <button class="select-btn">SELECT</button>
+      </article>
+
+    </section>
+
+    <!-- Dynamic Plant Details Card -->
+    <section class="detail-view" id="detailCard">
+      <img id="detailImg" class="detail-img" src="https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?auto=format&fit=crop&w=400&q=80" alt="Plant Image">
+      
+      <div>
+        <div class="detail-header">
+          <h2 id="detailName">Pothos</h2>
+          <p id="detailLatin" class="latin">Epipremnum aureum</p>
+        </div>
+
+        <div class="tips-grid">
+          <!-- Growing Tips Box -->
+          <div class="tip-box">
+            <h3>☀️ Growing Tips</h3>
+            <p><strong>LIGHT:</strong> Bright, indirect light to low light tolerances.</p>
+            <p><strong>WATER:</strong> Allow the top half of soil to dry between waterings.</p>
+            <p><strong>SOIL:</strong> Standard well-draining potting soil mix.</p>
+          </div>
+
+          <!-- Sowing Tips Box -->
+          <div class="tip-box">
+            <h3>🌱 Sowing / Propagation</h3>
+            <p><strong>METHOD:</strong> Easiest from stem cuttings rooted in water or moist soil.</p>
+            <p><strong>NODE:</strong> Ensure cutting has at least one node below the water line.</p>
+            <p><strong>ROOTING:</strong> Roots typically appear within 2–3 weeks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2026 Plant Library. All Rights Reserved.
+  </footer>
+
+  <!-- JavaScript for Tile Switching -->
+  <script>
+    // Plant Data Object
+    const plantData = {
+      pothos: {
+        name: "Pothos",
+        latin: "Epipremnum aureum",
+        img: "https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?auto=format&fit=crop&w=400&q=80",
+        growing: [
+          "<strong>LIGHT:</strong> Bright, indirect light to low light tolerances.",
+          "<strong>WATER:</strong> Allow the top half of soil to dry between waterings.",
+          "<strong>SOIL:</strong> Standard well-draining potting soil mix."
+        ],
+        sowing: [
+          "<strong>METHOD:</strong> Easiest from stem cuttings rooted in water or soil.",
+          "<strong>NODE:</strong> Ensure cutting has at least one node below water.",
+          "<strong>ROOTING:</strong> Roots typically appear within 2–3 weeks."
+        ]
+      },
+      snake: {
+        name: "Snake Plant",
+        latin: "Dracaena trifasciata",
+        img: "https://images.unsplash.com/photo-1593482892290-f54927ae1bac?auto=format&fit=crop&w=400&q=80",
+        growing: [
+          "<strong>LIGHT:</strong> Tolerates low light; thrives in indirect bright sun.",
+          "<strong>WATER:</strong> Allow soil to dry completely between waterings.",
+          "<strong>SOIL:</strong> Well-draining cactus or succulent soil mix."
+        ],
+        sowing: [
+          "<strong>METHOD:</strong> Propagated by division or leaf cuttings.",
+          "<strong>DIVISION:</strong> Separate offsets (pups) during repotting.",
+          "<strong>CUTTINGS:</strong> Let leaf cuts calluses 1-2 days before planting."
+        ]
+      },
+      zz: {
+        name: "ZZ Plant",
+        latin: "Zamioculcas zamiifolia",
+        img: "https://images.unsplash.com/photo-1632207691143-643e2a9a9361?auto=format&fit=crop&w=400&q=80",
+        growing: [
+          "<strong>LIGHT:</strong> Low to bright indirect sunlight.",
+          "<strong>WATER:</strong> Drought tolerant; water every 2–3 weeks.",
+          "<strong>SOIL:</strong> Loose, well-draining potting mixture."
+        ],
+        sowing: [
+          "<strong>METHOD:</strong> Leaf cuttings or rhizome division.",
+          "<strong>PATIENCE:</strong> Leaf cuttings can take several months to form rhizomes.",
+          "<strong>MOISTURE:</strong> Keep soil lightly damp for cuttings, not wet."
+        ]
+      },
+      monstera: {
+        name: "Monstera",
+        latin: "Monstera deliciosa",
+        img: "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=400&q=80",
+        growing: [
+          "<strong>LIGHT:</strong> Medium to bright indirect sunlight.",
+          "<strong>WATER:</strong> Water every 1-2 weeks; allow soil to dry partially.",
+          "<strong>SOIL:</strong> Peat-based mix with perlite and orchid bark."
+        ],
+        sowing: [
+          "<strong>METHOD:</strong> Seeds or stem cuttings with aerial roots.",
+          "<strong>SEED PREP:</strong> Soak seeds in warm water 12 hours prior.",
+          "<strong>GERMINATION:</strong> Keeps soil warm (75°F); sprouts in 2–4 weeks."
+        ]
+      }
+    };
+
+    // Function to handle selection and UI update
+    function selectPlant(key, element) {
+      // Remove active class from all tiles
+      const tiles = document.querySelectorAll('.plant-tile');
+      tiles.forEach(tile => tile.classList.remove('active'));
+
+      // Add active class to clicked tile
+      element.classList.add('active');
+
+      // Update Detail Card Content
+      const data = plantData[key];
+      document.getElementById('detailImg').src = data.img;
+      document.getElementById('detailName').innerText = data.name;
+      document.getElementById('detailLatin').innerText = data.latin;
+
+      // Update Growing & Sowing Tips
+      const tipBoxes = document.querySelectorAll('.tip-box');
+      
+      tipBoxes[0].innerHTML = `<h3>☀️ Growing Tips</h3>` + data.growing.map(tip => `<p>${tip}</p>`).join('');
+      tipBoxes[1].innerHTML = `<h3>🌱 Sowing / Propagation</h3>` + data.sowing.map(tip => `<p>${tip}</p>`).join('');
+    }
+  </script>
+</body>
+</html>
