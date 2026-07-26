@@ -11,161 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Main CSS -->
     <link rel="stylesheet" href="../../static/css/blog.css">
-    
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .profile-hero {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            padding: 60px 24px 30px 24px;
-        }
-
-        .avatar-container {
-            position: relative;
-            width: 140px;
-            height: 140px;
-            margin-bottom: 8px;
-        }
-
-        .avatar-glow {
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border-radius: 50%;
-            background: var(--accent-gradient);
-            filter: blur(8px);
-            opacity: 0.8;
-            animation: rotateGlow 6s linear infinite;
-        }
-
-        @keyframes rotateGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .avatar-inner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.7);
-            border: 3px solid var(--color-indigo);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            backdrop-filter: var(--backdrop-blur);
-        }
-
-        .avatar-svg {
-            width: 70%;
-            height: 70%;
-            animation: pulseAvatar 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes pulseAvatar {
-            0% { transform: scale(1); filter: drop-shadow(0 0 2px var(--color-indigo)); }
-            100% { transform: scale(1.08); filter: drop-shadow(0 0 8px var(--color-emerald)); }
-        }
-
-        .profile-hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(to right, var(--color-indigo), var(--color-emerald));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .profile-hero p {
-            font-size: 1.1rem;
-            color: var(--color-silver);
-            max-width: 500px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 20px;
-            margin-bottom: 60px;
-        }
-
-        .stat-row {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .stat-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .stat-label {
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: var(--color-silver);
-        }
-
-        .stat-value {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--color-indigo);
-        }
-
-        .stat-bar-container {
-            width: 100%;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid var(--border-color);
-            border-radius: 30px;
-            overflow: hidden;
-        }
-
-        .stat-bar {
-            height: 100%;
-            border-radius: 30px;
-        }
-
-        .favorites-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .favorites-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            line-height: 1.5;
-            color: var(--color-silver);
-        }
-
-        .fav-icon {
-            font-size: 1.3rem;
-            flex-shrink: 0;
-        }
-
-        @media (max-width: 768px) {
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <!-- About CSS -->
+    <link rel="stylesheet" href="../../static/css/about.css">
 </head>
 <body>
 
@@ -193,75 +40,147 @@
     </nav>
 
     <!-- Main Container -->
-    <main class="content-container" style="flex-grow:1;">
-        <!-- Hero Section -->
-        <section class="profile-hero">
-            <div class="avatar-container">
-                <div class="avatar-glow"></div>
-                <div class="avatar-inner">
-                    <!-- Princess Crown SVG (recolored to indigo/emerald theme) -->
-                    <svg viewBox="0 0 100 100" class="avatar-svg" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 75 L25 45 L40 60 L50 30 L60 60 L75 45 L85 75 Z" fill="#217599" stroke="#217336" stroke-width="4" stroke-linejoin="round"/>
-                        <!-- Circles on the tips of the crown -->
-                        <circle cx="25" cy="45" r="5" fill="#ffffff" stroke="#217336" stroke-width="2"/>
-                        <circle cx="50" cy="30" r="6" fill="#217336" stroke="#ffffff" stroke-width="2"/>
-                        <circle cx="75" cy="45" r="5" fill="#ffffff" stroke="#217336" stroke-width="2"/>
-                        <!-- Crown details -->
-                        <circle cx="50" cy="60" r="4" fill="#ffffff"/>
-                        <rect x="25" y="70" width="50" height="5" fill="#ffffff" rx="2.5"/>
-                    </svg>
+    <main class="content-container" style="flex-grow:1; padding-top: 30px;">
+        
+        <!-- Social Cover Photo -->
+        <div class="profile-cover">
+            <div class="profile-cover-overlay"></div>
+            <!-- Integrated Profile Info in Banner -->
+            <div class="profile-cover-content">
+                <div class="avatar-container-mini">
+                    <div class="avatar-glow-mini"></div>
+                    <div class="avatar-inner-mini">
+                        <!-- Princess Crown SVG -->
+                        <svg viewBox="0 0 100 100" class="avatar-svg" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 75 L25 45 L40 60 L50 30 L60 60 L75 45 L85 75 Z" fill="#217599" stroke="#217336" stroke-width="4" stroke-linejoin="round"/>
+                            <circle cx="25" cy="45" r="5" fill="#ffffff" stroke="#217336" stroke-width="2"/>
+                            <circle cx="50" cy="30" r="6" fill="#217336" stroke="#ffffff" stroke-width="2"/>
+                            <circle cx="75" cy="45" r="5" fill="#ffffff" stroke="#217336" stroke-width="2"/>
+                            <circle cx="50" cy="60" r="4" fill="#ffffff"/>
+                            <rect x="25" y="70" width="50" height="5" fill="#ffffff" rx="2.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="profile-cover-text">
+                    <h1 class="profile-header-name">A.G. Brown</h1>
+                    <p class="profile-header-handle">@abrown</p>
                 </div>
             </div>
-            
-            <h1>A.G. Brown</h1>
-            <p>Welcome to my magic sparkly painting and game room!</p>
-            
+        </div>
+
+        <!-- Secondary Info Block -->
+        <section class="profile-sub-header">
             <div class="badge-container">
                 <span class="badge badge-emerald">🌸 5 Years Old</span>
                 <span class="badge badge-indigo">👑 Unicorn Princess</span>
                 <span class="badge badge-emerald">🎨 Sparkle Artist</span>
             </div>
+
+            <!-- Profile Stats Bar -->
+            <div class="profile-stats-bar">
+                <div class="profile-stats-item">
+                    <span class="profile-stats-val">5</span>
+                    <span class="profile-stats-lbl">Level</span>
+                </div>
+                <div class="profile-stats-divider"></div>
+                <div class="profile-stats-item">
+                    <span class="profile-stats-val">Unicorn Princess 🦄</span>
+                    <span class="profile-stats-lbl">Class</span>
+                </div>
+                <div class="profile-stats-divider"></div>
+                <div class="profile-stats-item">
+                    <span class="profile-stats-val">100%</span>
+                    <span class="profile-stats-lbl">Sparkle Power</span>
+                </div>
+            </div>
         </section>
 
-        <!-- Stats and Bio Grid -->
-        <div class="info-grid">
-            <!-- Stats Card -->
-            <section class="card">
-                <h3 style="font-size: 1.5rem; margin-bottom: 20px; font-family:'Outfit',sans-serif; color:var(--color-white);">My Magic Stats</h3>
-                <div class="stats-list">
-                    <div class="stat-row">
-                        <span class="stat-label">Level</span>
-                        <span class="stat-value">5</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Class</span>
-                        <span class="stat-value" style="color: var(--color-white);">Unicorn Princess 🦄</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Sparkle Power</span>
-                        <div class="stat-bar-container">
-                            <div class="stat-bar" style="width: 100%; background: var(--accent-gradient);"></div>
-                        </div>
-                    </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Giggle Level</span>
-                        <div class="stat-bar-container">
-                            <div class="stat-bar" style="width: 98%; background: linear-gradient(to right, var(--color-emerald), var(--color-indigo));"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <!-- Two-Column Feed Layout -->
+        <div class="feed-layout">
+            
+            <!-- Left Column: Intro Sidebar -->
+            <div class="feed-sidebar">
+                <!-- Intro Card -->
+                <section class="card" style="margin-bottom: 25px;">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 15px; font-family:'Outfit',sans-serif; color:var(--color-white);">Intro</h3>
+                    <p style="color: var(--color-silver); line-height: 1.6; font-size: 0.95rem;">
+                        Unicorn Princess who loves unicorns, drawing sparkles, and dancing around the house.
+                    </p>
+                </section>
 
-            <!-- Hobbies & Interests -->
-            <section class="card">
-                <h3 style="font-size: 1.5rem; margin-bottom: 20px; font-family:'Outfit',sans-serif; color:var(--color-white);">My Favorites</h3>
-                <ul class="favorites-list">
-                    <li><span class="fav-icon">🦄</span> <span><strong>Favorites:</strong> Unicorns, Pandas, Axolotls!</span></li>
-                    <li><span class="fav-icon">🍓</span> <span><strong>Yummy Food:</strong> Strawberries, Chicken, Cheese Burgers!</span></li>
-                    <li><span class="fav-icon">🎨</span> <span><strong>Fav Colors:</strong> Pink and Blue!</span></li>
-                    <li><span class="fav-icon">🤸‍♀️</span> <span><strong>Activities:</strong> Drawing, dancing, and jumping on the trampoline!</span></li>
-                </ul>
-            </section>
+                <!-- Favorites Card -->
+                <section class="card">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 20px; font-family:'Outfit',sans-serif; color:var(--color-white);">Favorites</h3>
+                    <ul class="favorites-list">
+                        <li><span class="fav-icon">🦄</span> <span><strong>Favorites:</strong> Unicorns, Pandas, Axolotls!</span></li>
+                        <li><span class="fav-icon">🍓</span> <span><strong>Yummy Food:</strong> Strawberries, Chicken, Cheese Burgers!</span></li>
+                        <li><span class="fav-icon">🎨</span> <span><strong>Fav Colors:</strong> Pink and Blue!</span></li>
+                        <li><span class="fav-icon">🤸‍♀️</span> <span><strong>Activities:</strong> Drawing, dancing, and jumping on the trampoline!</span></li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Right Column: Timeline Feed -->
+            <div class="feed-timeline">
+                
+                <!-- Status Input Box -->
+                <div class="status-input-card">
+                    <div class="status-input-avatar">👑</div>
+                    <div class="status-input-box">What's on your mind, Akiva?</div>
+                </div>
+
+                <!-- Feed Post 1 -->
+                <article class="feed-card">
+                    <div class="feed-card-header">
+                        <div class="feed-card-avatar">👑</div>
+                        <div class="feed-card-author-info">
+                            <span class="feed-card-author-name">Akiva</span>
+                            <span class="feed-card-meta">@abrown &bull; 1 hour ago</span>
+                        </div>
+                    </div>
+                    <div class="feed-card-content">
+                        Drawed a giant pink unicorn painting and it has sparkle stars all over it! I love it so much! 🦄🎨✨💖
+                    </div>
+                    <div class="feed-card-actions">
+                        <button class="feed-card-action-btn liked"><span class="action-icon">❤️</span> <span>25</span></button>
+                        <button class="feed-card-action-btn"><span class="action-icon">💬</span> <span>5</span></button>
+                    </div>
+                </article>
+
+                <!-- Feed Post 2 -->
+                <article class="feed-card">
+                    <div class="feed-card-header">
+                        <div class="feed-card-avatar">👑</div>
+                        <div class="feed-card-author-info">
+                            <span class="feed-card-author-name">Akiva</span>
+                            <span class="feed-card-meta">@abrown &bull; 1 day ago</span>
+                        </div>
+                    </div>
+                    <div class="feed-card-content">
+                        <strong>My Magic Stats:</strong>
+                        <div style="margin-top:15px; display:flex; flex-direction:column; gap:12px;">
+                            <div class="stat-row">
+                                <span class="stat-label">Sparkle Power</span>
+                                <div class="stat-bar-container">
+                                    <div class="stat-bar" style="width: 100%; background: var(--accent-gradient);"></div>
+                                </div>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Giggle Level</span>
+                                <div class="stat-bar-container">
+                                    <div class="stat-bar" style="width: 98%; background: linear-gradient(to right, var(--color-emerald), var(--color-indigo));"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed-card-actions">
+                        <button class="feed-card-action-btn"><span class="action-icon">❤️</span> <span>15</span></button>
+                        <button class="feed-card-action-btn"><span class="action-icon">💬</span> <span>2</span></button>
+                    </div>
+                </article>
+
+            </div>
+
         </div>
     </main>
 
