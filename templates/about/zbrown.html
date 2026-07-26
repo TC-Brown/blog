@@ -3,67 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../static/img/index-img/seal.jpg">
     <title>The Brown Family | Z.G. Brown</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Main CSS -->
-    <link rel="stylesheet" href="../../static/css/zbrown.css">
+    <link rel="stylesheet" href="../../static/css/blog.css">
+    
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .profile-hero {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 60px 24px 30px 24px;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin-bottom: 8px;
+        }
+
+        .avatar-glow {
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            filter: blur(8px);
+            opacity: 0.8;
+            animation: rotateGlow 6s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .avatar-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            border: 3px solid var(--color-indigo);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .avatar-svg {
+            width: 70%;
+            height: 70%;
+            animation: pulseAvatar 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseAvatar {
+            0% { transform: scale(1); filter: drop-shadow(0 0 2px var(--color-indigo)); }
+            100% { transform: scale(1.08); filter: drop-shadow(0 0 8px var(--color-emerald)); }
+        }
+
+        .profile-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--color-indigo), var(--color-emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .profile-hero p {
+            font-size: 1.1rem;
+            color: var(--color-silver);
+            max-width: 500px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+            margin-bottom: 60px;
+        }
+
+        .stat-row {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .stat-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-label {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--color-silver);
+        }
+
+        .stat-value {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--color-indigo);
+        }
+
+        .stat-bar-container {
+            width: 100%;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .stat-bar {
+            height: 100%;
+            border-radius: 30px;
+        }
+
+        .favorites-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .favorites-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            line-height: 1.5;
+            color: var(--color-silver);
+        }
+
+        .fav-icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .game-btn {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(33, 117, 153, 0.2);
+            transition: var(--transition-smooth);
+        }
+
+        .game-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(33, 117, 153, 0.35);
+        }
+
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Neon Background Grid & Effects -->
-    <div class="neon-grid"></div>
-    <div class="glow-orb orb-blue"></div>
-    <div class="glow-orb orb-pink"></div>
 
-    <!-- Navigation Header -->
+    <!-- Premium Navigation Header -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="../../index.html" class="back-btn">
-                <span class="btn-arrow">←</span> Home
-            </a>
+            <div class="nav-brand">
+                <img class="profile-img" src="../../static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
+            </div>
             
-            <div class="nav-title">Z-ARCADE</div>
+            <!-- Toggle Menu for Mobile -->
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
+                <span class="hamburger"></span>
+            </button>
 
-
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
+                <li><a href="../blog/index.html" class="nav-link">Blog</a></li>
+                <li><a href="../our-things/index.html" class="nav-link">Our Things</a></li>
+                <li><a href="../games/index.html" class="nav-link">Mini Games</a></li>
+            </ul>
         </div>
     </nav>
 
     <!-- Main Container -->
-    <main class="main-content">
+    <main class="content-container" style="flex-grow:1;">
         <!-- Hero Section -->
-        <section class="hero-section">
+        <section class="profile-hero">
             <div class="avatar-container">
                 <div class="avatar-glow"></div>
                 <div class="avatar-inner">
-                    <!-- Retro Pixel Gamepad SVG -->
+                    <!-- Retro Pixel Gamepad SVG (recolored to indigo/emerald theme) -->
                     <svg viewBox="0 0 100 100" class="avatar-svg" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="20" y="35" width="60" height="30" rx="10" fill="#000" stroke="#00f0ff" stroke-width="4"/>
-                        <circle cx="35" cy="50" r="6" fill="#ff007f"/>
-                        <circle cx="65" cy="50" r="6" fill="#ff007f"/>
-                        <path d="M45 50 H55 M50 45 V55" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+                        <rect x="20" y="35" width="60" height="30" rx="10" fill="#217599" stroke="#217336" stroke-width="4"/>
+                        <circle cx="35" cy="50" r="6" fill="#ffffff"/>
+                        <circle cx="65" cy="50" r="6" fill="#ffffff"/>
+                        <path d="M45 50 H55 M50 45 V55" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
                     </svg>
                 </div>
             </div>
             
-            <h1 class="neon-text-pink">Z.G. Brown</h1>
-            <p class="subtitle">Welcome to my personal neon arcade playground!</p>
+            <h1>Z.G. Brown</h1>
+            <p>Welcome to my personal neon arcade playground!</p>
             
             <div class="badge-container">
-                <span class="badge neon-blue-border">🎮 Playful</span>
-                <span class="badge neon-pink-border">⚡ Energetic</span>
-                <span class="badge neon-white-border">🚀 Explorer</span>
+                <span class="badge badge-emerald">🎮 Playful</span>
+                <span class="badge badge-indigo">⚡ Energetic</span>
+                <span class="badge badge-emerald">🚀 Explorer</span>
             </div>
         </section>
 
         <!-- Interactive Game Playground CTA -->
-        <section class="game-container card neon-card" style="text-align: center; padding: 40px 20px;">
-            <div class="card-header" style="margin-bottom: 25px;">
-                <h2 class="neon-text-blue">Neon Popper</h2>
-                <p>Pop the glowing neon bubbles to score points! Play the game in the arcade room.</p>
+        <section class="card" style="text-align: center; padding: 40px 20px; margin-bottom: 30px;">
+            <div style="margin-bottom: 25px;">
+                <h2 style="font-size: 1.8rem; margin-bottom: 8px; font-family:'Outfit',sans-serif; color:var(--color-white);">Neon Popper</h2>
+                <p style="color: var(--color-silver);">Pop the glowing neon bubbles to score points! Play the game in the arcade room.</p>
             </div>
-            <a href="games.html?game=popper" class="game-btn" style="display: inline-block; text-decoration: none;">
+            <a href="../games/index.html?game=popper" class="game-btn" style="display: inline-block; text-decoration: none;">
                 🎮 PLAY GAME
             </a>
         </section>
@@ -71,51 +251,65 @@
         <!-- Stats and Bio Grid -->
         <div class="info-grid">
             <!-- Stats Card -->
-            <section class="card neon-card stats-card">
-                <h3>My Hero Stats</h3>
+            <section class="card">
+                <h3 style="font-size: 1.5rem; margin-bottom: 20px; font-family:'Outfit',sans-serif; color:var(--color-white);">My Hero Stats</h3>
                 <div class="stats-list">
                     <div class="stat-row">
                         <span class="stat-label">Level</span>
-                        <span class="stat-value neon-text-blue">3</span>
+                        <span class="stat-value">3</span>
                     </div>
                     <div class="stat-row">
                         <span class="stat-label">Class</span>
-                        <span class="stat-value neon-text-pink">Dino-butterfly</span>
+                        <span class="stat-value" style="color: var(--color-white);">Dino-butterfly 🦋</span>
                     </div>
                     <div class="stat-row">
                         <span class="stat-label">Homing Instinct</span>
                         <div class="stat-bar-container">
-                            <div class="stat-bar neon-bg-blue" style="width: 80%"></div>
+                            <div class="stat-bar" style="width: 80%; background: var(--accent-gradient);"></div>
                         </div>
                     </div>
                     <div class="stat-row">
                         <span class="stat-label">Want a snack</span>
                         <div class="stat-bar-container">
-                            <div class="stat-bar neon-bg-pink" style="width: 95%"></div>
+                            <div class="stat-bar" style="width: 95%; background: linear-gradient(to right, var(--color-emerald), var(--color-indigo));"></div>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Hobbies & Interests -->
-            <section class="card neon-card hobbies-card">
-                <h3>My Favorites</h3>
+            <section class="card">
+                <h3 style="font-size: 1.5rem; margin-bottom: 20px; font-family:'Outfit',sans-serif; color:var(--color-white);">My Favorites</h3>
                 <ul class="favorites-list">
-                    <li><span class="fav-icon">🪐</span> <strong>Exploration:</strong> Going to the Store and Park!</li>
-                    <li><span class="fav-icon">👾</span> <strong>Playing:</strong> Coloring and collecting.</li>
-                    <li><span class="fav-icon">🍕</span> <strong>Food:</strong> Pizza (with lots of cheese), Hotdogs, and Popcorn.</li>
-                    <li><span class="fav-icon">🎨</span> <strong>Colors:</strong> Blue and Pink!</li>
+                    <li><span class="fav-icon">🪐</span> <span><strong>Exploration:</strong> Going to the Store and Park!</span></li>
+                    <li><span class="fav-icon">👾</span> <span><strong>Playing:</strong> Coloring and collecting.</span></li>
+                    <li><span class="fav-icon">🍕</span> <span><strong>Food:</strong> Pizza (with lots of cheese), Hotdogs, and Popcorn.</span></li>
+                    <li><span class="fav-icon">🎨</span> <span><strong>Colors:</strong> Blue and Pink!</span></li>
                 </ul>
             </section>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>Copyright &copy; 2026 The Brown Family | T.C. Brown ⚡</p>
+    <!-- Premium Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h4>More Info</h4>
+                <p>Information about sources and the site</p>
+                <p>&copy; Copyright 2026 The Brown Family | T.C. Brown</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/tc-brown" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" fill="currentColor" width="16" height="16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
     </footer>
 
-
-    <script src="../static/js/main.js"></script>
+    <!-- Scripts -->
+    <script src="../../static/js/main.js"></script>
 </body>
 </html>

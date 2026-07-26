@@ -3,78 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Support</title>
+    <link rel="icon" href="../static/img/index-img/seal.jpg">
+    <title>The Brown Family | Contact Support</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../static/css/blog.css">
+    
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
+        /* Contact-specific overrides to match the premium theme */
         body {
-            background-color: #f4f7f6;
-            color: #333;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
-            padding: 40px 20px;
-            gap: 20px;
         }
 
-        .back-btn-container {
+        .contact-container {
             max-width: 960px;
             width: 100%;
-            display: flex;
-            justify-content: flex-start;
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #2c3e50;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            padding: 8px 16px;
-            border-radius: 6px;
-            background: #fff;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .back-btn:hover {
-            color: #3498db;
-            transform: translateX(-4px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-        }
-
-        .back-btn svg {
-            transition: transform 0.3s ease;
-        }
-
-        .back-btn:hover svg {
-            transform: translateX(-2px);
-        }
-
-        .container {
-            max-width: 960px;
-            width: 100%;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 60px auto;
+            background: var(--card-gradient);
+            border: var(--border);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
             display: flex;
             overflow: hidden;
+            flex-grow: 1;
         }
 
         /* Sidebar Info */
         .info-sidebar {
             flex: 1;
-            background: #2c3e50;
-            color: #fff;
+            background: rgba(33, 117, 153, 0.04);
+            border-right: var(--border);
             padding: 40px;
             display: flex;
             flex-direction: column;
@@ -84,12 +49,15 @@
         .info-sidebar h2 {
             margin-bottom: 20px;
             font-size: 24px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            color: var(--color-indigo);
         }
 
         .info-sidebar p {
             font-size: 15px;
             line-height: 1.6;
-            color: #bdc3c7;
+            color: var(--color-silver);
         }
 
         .contact-details {
@@ -97,14 +65,17 @@
         }
 
         .contact-item {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-size: 15px;
+            color: var(--color-silver);
         }
 
         .contact-item strong {
             display: block;
-            color: #fff;
-            margin-bottom: 4px;
+            color: var(--color-white);
+            margin-bottom: 6px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
         }
 
         /* Form Styling */
@@ -115,11 +86,13 @@
 
         .form-container h2 {
             margin-bottom: 10px;
-            color: #2c3e50;
+            color: var(--color-white);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
         }
 
         .form-container p {
-            color: #7f8c8d;
+            color: var(--color-silver);
             margin-bottom: 30px;
             font-size: 14px;
         }
@@ -133,50 +106,63 @@
             margin-bottom: 8px;
             font-weight: 600;
             font-size: 14px;
-            color: #34495e;
+            color: var(--color-white);
         }
 
         .form-group input, 
         .form-group select, 
         .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.4);
+            border: var(--border);
+            border-radius: 10px;
             font-size: 15px;
-            transition: border-color 0.3s ease;
+            color: var(--color-white);
+            transition: var(--transition-smooth);
+            outline: none;
         }
 
         .form-group input:focus, 
         .form-group select:focus, 
         .form-group textarea:focus {
-            outline: none;
-            border-color: #3498db;
+            border-color: var(--color-indigo);
+            box-shadow: var(--shadow-glow);
+            background: rgba(255, 255, 255, 0.75);
         }
 
         .submit-btn {
-            background-color: #3498db;
+            background: var(--accent-gradient);
             color: white;
-            padding: 12px 24px;
+            padding: 14px 24px;
             border: none;
-            border-radius: 4px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
             width: 100%;
-            transition: background-color 0.3s ease;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 15px rgba(33, 117, 153, 0.2);
         }
 
         .submit-btn:hover {
-            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(33, 117, 153, 0.35);
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
+            .contact-container {
                 flex-direction: column;
+                margin: 30px auto;
             }
             .info-sidebar {
+                padding: 30px;
+                border-right: none;
+                border-bottom: var(--border);
+            }
+            .form-container {
                 padding: 30px;
             }
         }
@@ -184,97 +170,130 @@
 </head>
 <body>
 
-<div class="back-btn-container">
-    <a href="../index.html" class="back-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-        </svg>
-        Back to Home
-    </a>
-</div>
-
-<div class="container">
-    <div class="info-sidebar">
-        <div>
-            <h2>Get in Touch</h2>
-            <p>Have questions or facing technical issues? Fill out the form, and our support team will get back to you.</p>
-        </div>
-        
-        <div class="contact-details">
-            <div class="contact-item">
-                <strong>Email Us</strong>
-                support@TCBrown.com
+    <!-- Premium Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img class="profile-img" src="../static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
             </div>
             
-            <div class="contact-item">
-                <strong>Hours</strong>
-                Mon - Fri, 9:00 AM - 6:00 PM CST
+            <!-- Toggle Menu for Mobile -->
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
+                <span class="hamburger"></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="about/about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="blog/index.html" class="nav-link">Blog</a></li>
+                <li><a href="our-things/index.html" class="nav-link">Our Things</a></li>
+                <li><a href="games/index.html" class="nav-link">Mini Games</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content-container" style="flex-grow:1; display:flex; align-items:center; justify-content:center; padding: 0 24px;">
+        <div class="contact-container">
+            <div class="info-sidebar">
+                <div>
+                    <h2>Get in Touch</h2>
+                    <p>Have questions or facing technical issues? Fill out the form, and our support team will get back to you.</p>
+                </div>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <strong>Email Us</strong>
+                        support@TCBrown.com
+                    </div>
+                    
+                    <div class="contact-item">
+                        <strong>Hours</strong>
+                        Mon - Fri, 9:00 AM - 6:00 PM CST
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-container">
+                <h2>Submit a Ticket</h2>
+                <p>Please provide as much detail as possible so we can assist you better.</p>
+                
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="issue-type">What can we help you with?</label>
+                        <select id="issue-type" name="issue-type" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="technical">Technical Support</option>
+                            <option value="billing">Billing & Account</option>
+                            <option value="feature">Feature Request</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message / Description of Issue</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Describe your problem here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Ticket</button>
+                </form>
             </div>
         </div>
-    </div>
+    </main>
 
-    <div class="form-container">
-        <h2>Submit a Ticket</h2>
-        <p>Please provide as much detail as possible so we can assist you better.</p>
-        
-        <form id="contact-form">
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="John Doe" required>
+    <!-- Premium Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h4>More Info</h4>
+                <p>Information about sources and the site</p>
+                <p>&copy; Copyright 2026 The Brown Family | T.C. Brown</p>
             </div>
-
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+            <div class="footer-links">
+                <a href="https://github.com/tc-brown" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" fill="currentColor" width="16" height="16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    GitHub
+                </a>
             </div>
+        </div>
+    </footer>
 
-            <div class="form-group">
-                <label for="issue-type">What can we help you with?</label>
-                <select id="issue-type" name="issue-type" required>
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="technical">Technical Support</option>
-                    <option value="billing">Billing & Account</option>
-                    <option value="feature">Feature Request</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="message">Message / Description of Issue</label>
-                <textarea id="message" name="message" rows="5" placeholder="Describe your problem here..." required></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Submit Ticket</button>
-        </form>
-    </div>
-</div>
-
-<script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Target email address - Change this to your actual email address
-        const targetEmail = 'trrncbrown@gmail.com';
-        
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const issueType = document.getElementById('issue-type').value;
-        const message = document.getElementById('message').value;
-        
-        const subject = `[${issueType.toUpperCase()}] Support Ticket from ${name}`;
-        const body = `Name: ${name}
+    <!-- Scripts -->
+    <script src="../static/js/main.js"></script>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const targetEmail = 'trrncbrown@gmail.com';
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const issueType = document.getElementById('issue-type').value;
+            const message = document.getElementById('message').value;
+            
+            const subject = `[${issueType.toUpperCase()}] Support Ticket from ${name}`;
+            const body = `Name: ${name}
 Email: ${email}
 Issue Type: ${issueType}
 
 Message:
 ${message}`;
-        
-        const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        
-        window.location.href = mailtoUrl;
-    });
-</script>
-
+            
+            const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoUrl;
+        });
+    </script>
 </body>
 </html>

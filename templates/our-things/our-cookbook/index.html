@@ -3,45 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fork & Gather — Modern Recipe Community</title>
+  <link rel="icon" href="../../../static/img/index-img/seal.jpg">
+  <title>The Brown Family | Our Cookbook</title>
   
   <!-- Modern Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Shared Main CSS -->
+  <link rel="stylesheet" href="../../../static/css/blog.css">
 
   <style>
-    /* CSS Variables & Design Tokens */
-    :root {
-      --bg-main: #0f172a;
-      --bg-surface: #1e293b;
-      --bg-glass: rgba(30, 41, 59, 0.7);
-      --accent-primary: #f97316;
-      --accent-glow: rgba(249, 115, 22, 0.25);
-      --accent-secondary: #06b6d4;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --border-color: rgba(255, 255, 255, 0.08);
-      --radius-lg: 20px;
-      --radius-md: 12px;
-      --radius-full: 9999px;
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Reset & Base Styles */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.6;
-      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     img {
@@ -51,206 +27,115 @@
       display: block;
     }
 
-    /* Dynamic Fluid Layout Container */
-    .container {
-      width: min(100% - 2rem, 1280px);
-      margin-inline: auto;
+    /* Back Button Style override */
+    .back-btn-container {
+        max-width: 1200px;
+        width: 100%;
+        margin: 20px auto 0 auto;
+        padding: 0 24px;
     }
 
-    /* Glassmorphic Sticky Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: var(--bg-glass);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--color-indigo);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: var(--transition-smooth);
     }
 
-    .nav-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 0;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      color: var(--text-main);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .logo span {
-      color: var(--accent-primary);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: var(--transition);
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-primary);
-    }
-
-    /* Custom Responsive Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius-full);
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: var(--transition);
-      cursor: pointer;
-      border: none;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: var(--accent-primary);
-      color: #ffffff;
-      box-shadow: 0 4px 14px var(--accent-glow);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px var(--accent-glow);
-      filter: brightness(110%);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-main);
-      border: 1px solid var(--border-color);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-2px);
+    .back-btn:hover {
+        color: var(--color-emerald);
+        transform: translateX(-4px);
     }
 
     /* Hero Section */
     .hero {
-      padding: clamp(3rem, 8vw, 6rem) 0;
-      position: relative;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .hero-content {
-      grid-column: span 12;
+      padding: 60px 24px 30px 24px;
       text-align: center;
     }
 
-    @media (min-width: 900px) {
-      .hero-content {
-        grid-column: span 7;
-        text-align: left;
-      }
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .hero-title {
-      font-size: clamp(2.25rem, 5vw, 4rem);
+      font-size: 3rem;
       font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.25rem;
+      line-height: 1.15;
+      margin-bottom: 15px;
     }
 
     .hero-title .gradient-text {
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      background: var(--accent-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero-subtitle {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-      max-width: 600px;
+      font-size: 1.1rem;
+      color: var(--color-silver);
+      margin-bottom: 30px;
+      line-height: 1.6;
     }
 
     /* Modern Glass Search Bar */
     .search-box {
       display: flex;
-      background: var(--bg-surface);
-      padding: 0.5rem;
-      border-radius: var(--radius-full);
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-lg);
+      background: rgba(15, 23, 42, 0.03);
+      padding: 4px 8px 4px 20px;
+      border-radius: 50px;
+      border: var(--border);
+      box-shadow: var(--shadow-soft);
       max-width: 550px;
-      margin-inline: auto;
+      margin: 0 auto;
+      align-items: center;
+      transition: var(--transition-smooth);
+      backdrop-filter: var(--backdrop-blur);
+      -webkit-backdrop-filter: var(--backdrop-blur);
     }
 
-    @media (min-width: 900px) {
-      .search-box {
-        margin-inline: 0;
-      }
+    .search-box:focus-within {
+      border-color: var(--color-indigo);
+      background: rgba(15, 23, 42, 0.05);
+      box-shadow: var(--shadow-soft), var(--shadow-glow);
     }
 
     .search-box input {
       flex: 1;
       background: transparent;
       border: none;
-      padding: 0.75rem 1.25rem;
-      color: var(--text-main);
+      padding: 10px 0;
+      color: var(--color-charcoal);
       font-size: 1rem;
       outline: none;
       font-family: inherit;
     }
 
     .search-box input::placeholder {
-      color: var(--text-muted);
+      color: var(--color-silver);
+      opacity: 0.85;
     }
 
-    /* Hero Visual Graphic */
-    .hero-visual {
-      grid-column: span 12;
-      display: flex;
-      justify-content: center;
-      position: relative;
+    .search-btn {
+      background: var(--accent-gradient);
+      color: #ffffff;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(33, 117, 153, 0.25);
+      transition: var(--transition-smooth);
     }
 
-    @media (min-width: 900px) {
-      .hero-visual {
-        grid-column: span 5;
-      }
-    }
-
-    .hero-card-stack {
-      position: relative;
-      width: 100%;
-      max-width: 380px;
-      aspect-ratio: 4 / 5;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border-color);
+    .search-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(33, 117, 153, 0.35);
     }
 
     /* Horizontal Category Pills */
@@ -258,7 +143,9 @@
       display: flex;
       gap: 0.75rem;
       overflow-x: auto;
-      padding: 1rem 0 2rem 0;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      justify-content: center;
       scrollbar-width: none;
     }
 
@@ -267,77 +154,98 @@
     }
 
     .pill {
-      padding: 0.6rem 1.25rem;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-full);
-      color: var(--text-muted);
-      font-weight: 600;
+      padding: 8px 20px;
+      background: rgba(255, 255, 255, 0.45);
+      border: var(--border);
+      border-radius: 30px;
+      color: var(--color-silver);
+      font-weight: 700;
       font-size: 0.85rem;
       text-decoration: none;
       white-space: nowrap;
-      transition: var(--transition);
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: var(--backdrop-blur);
+      -webkit-backdrop-filter: var(--backdrop-blur);
     }
 
     .pill.active, .pill:hover {
-      background: var(--accent-primary);
+      background: var(--color-indigo);
       color: #ffffff;
-      border-color: var(--accent-primary);
+      border-color: var(--color-indigo);
     }
 
-    /* Recipe Feed - Auto-Fitting Responsive Grid */
+    /* Recipe Feed */
+    .explore-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 24px 80px 24px;
+    }
+
     .feed-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .feed-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--color-white);
     }
 
     .recipe-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-      gap: 2rem;
-      margin-bottom: 4rem;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+      gap: 30px;
     }
 
     /* Recipe Card */
     .recipe-card {
-      background: var(--bg-surface);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-color);
+      background: var(--card-gradient);
+      border: var(--border);
+      border-radius: var(--border-radius);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: var(--transition);
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: var(--backdrop-blur);
+      -webkit-backdrop-filter: var(--backdrop-blur);
     }
 
     .recipe-card:hover {
       transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(249, 115, 22, 0.3);
+      box-shadow: var(--shadow-soft), 0 4px 20px rgba(33, 117, 153, 0.15);
+      border-color: rgba(33, 117, 153, 0.25);
     }
 
     .card-img-container {
       position: relative;
       aspect-ratio: 16 / 10;
       overflow: hidden;
+      border-bottom: var(--border);
     }
 
     .card-badge {
       position: absolute;
       top: 1rem;
       left: 1rem;
-      background: var(--bg-glass);
+      background: rgba(33, 117, 153, 0.15);
+      color: var(--color-indigo);
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(33, 117, 153, 0.25);
       backdrop-filter: blur(8px);
-      padding: 0.3rem 0.8rem;
-      border-radius: var(--radius-full);
-      font-size: 0.75rem;
-      font-weight: 700;
-      border: 1px solid var(--border-color);
+      -webkit-backdrop-filter: blur(8px);
     }
 
     .card-body {
-      padding: 1.5rem;
+      padding: 24px;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -346,34 +254,37 @@
     .author-row {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
+      gap: 10px;
+      margin-bottom: 15px;
     }
 
     .avatar {
       width: 32px;
       height: 32px;
-      border-radius: var(--radius-full);
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .author-name {
       font-size: 0.85rem;
-      color: var(--text-muted);
-      font-weight: 500;
+      color: var(--color-silver);
+      font-weight: 600;
     }
 
     .recipe-title {
-      font-size: 1.2rem;
-      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
       line-height: 1.35;
-      margin-bottom: 0.5rem;
-      color: var(--text-main);
+      margin-bottom: 8px;
+      color: var(--color-white);
     }
 
     .recipe-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      font-size: 0.92rem;
+      color: var(--color-silver);
+      margin-bottom: 20px;
+      line-height: 1.5;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -382,155 +293,144 @@
 
     .card-footer {
       margin-top: auto;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border-color);
+      padding-top: 15px;
+      border-top: var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-muted);
+      font-weight: 700;
+      color: var(--color-silver);
     }
 
     /* Submit CTA Card (Injected natively into Grid) */
     .cta-card {
-      background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%);
-      border: 1px dashed var(--accent-primary);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
+      background: linear-gradient(135deg, rgba(33, 115, 54, 0.15) 0%, rgba(33, 117, 153, 0.05) 100%);
+      border: 2px dashed var(--color-emerald);
+      border-radius: var(--border-radius);
+      padding: 32px 24px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: var(--backdrop-blur);
+      -webkit-backdrop-filter: var(--backdrop-blur);
     }
 
     .cta-card h3 {
-      font-size: 1.5rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
       font-weight: 800;
-      margin-bottom: 0.75rem;
+      margin-bottom: 10px;
+      color: var(--color-white);
     }
 
     .cta-card p {
-      color: var(--text-muted);
+      color: var(--color-silver);
       font-size: 0.95rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
     }
 
-    /* Responsive Footer */
-    footer {
-      background: var(--bg-surface);
-      border-top: 1px solid var(--border-color);
-      padding: 3rem 0;
-      margin-top: 4rem;
-    }
-
-    .footer-flex {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .footer-text {
-      color: var(--text-muted);
+    .cta-card .btn-primary {
+      background: var(--accent-gradient);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-weight: 700;
       font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(33, 117, 153, 0.25);
+      transition: var(--transition-smooth);
     }
 
-    /* Mobile Navigation Drawer Toggle */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text-main);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none; /* Hide standard nav on small mobile screens */
-      }
-      .mobile-menu-btn {
-        display: block;
-      }
+    .cta-card .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(33, 117, 153, 0.35);
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <header>
-    <div class="container nav-container">
-      <a href="../index.html" class="logo">
-        <span>🔥</span> Fork&Gather
-      </a>
-      
-      <ul class="nav-links">
-        <li><a href="#explore">Explore</a></li>
-        <li><a href="#community">Community</a></li>
-        <li><a href="#trending">Trending</a></li>
-      </ul>
+  <!-- Premium Navigation Header -->
+  <nav class="navbar">
+      <div class="nav-container">
+          <div class="nav-brand">
+              <img class="profile-img" src="../../../static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
+          </div>
+          
+          <!-- Toggle Menu for Mobile -->
+          <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
+              <span class="hamburger"></span>
+          </button>
 
-      <div style="display: flex; gap: 0.75rem; align-items: center;">
-        <a href="#submit" class="btn btn-primary">+ Share Recipe</a>
-        <button class="mobile-menu-btn" aria-label="Open Menu">☰</button>
+          <ul class="nav-menu" id="navMenu">
+              <li><a href="../../../index.html" class="nav-link">Home</a></li>
+              <li><a href="../../about/about.html" class="nav-link">About</a></li>
+              <li><a href="../../contact.html" class="nav-link">Contact</a></li>
+              <li><a href="../../blog/index.html" class="nav-link">Blog</a></li>
+              <li><a href="../index.html" class="nav-link active">Our Things</a></li>
+              <li><a href="../../games/index.html" class="nav-link">Mini Games</a></li>
+          </ul>
       </div>
-    </div>
-  </header>
+  </nav>
+
+  <!-- Back to Hub navigation -->
+  <div class="back-btn-container">
+      <a href="../index.html" class="back-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Back to Collections
+      </a>
+  </div>
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          Where real home cooks <span class="gradient-text">share & swap</span> favorite recipes.
-        </h1>
-        <p class="hero-subtitle">
-          Over 50,000+ community-tested dishes. Save your favorites, exchange secret tips, and pass down culinary traditions.
-        </p>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Our Family <span class="gradient-text">Cookbook</span>
+      </h1>
+      <p class="hero-subtitle">
+        A collection of our favorite recipes to make and eat. Safe recipes, traditional secret sauces, and custom dessert experiments.
+      </p>
 
-        <!-- Search Input -->
-        <form class="search-box" action="#explore">
-          <input type="text" placeholder="Search ingredients, dishes, or creators..." required>
-          <button type="submit" class="btn btn-primary">Find Dish</button>
-        </form>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-card-stack">
-          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" alt="Fresh Healthy Salad Bowl">
-        </div>
-      </div>
+      <!-- Search Input -->
+      <form class="search-box" onsubmit="event.preventDefault();">
+        <input type="text" id="recipeSearch" placeholder="Search dishes, ingredients, or courses..." required>
+        <button type="button" class="search-btn">Find Recipe</button>
+      </form>
     </div>
   </section>
 
-  <main class="container" id="explore">
+  <!-- Main Feed Section -->
+  <main class="explore-container">
     
     <!-- Filter Pills -->
     <div class="category-pills">
       <a href="#" class="pill active">✨ All Dishes</a>
-      <a href="#" class="pill">⚡ 15-Minute Meals</a>
+      <a href="#" class="pill">⚡ 15-Min Meals</a>
       <a href="#" class="pill">🌱 Vegan & Veggie</a>
       <a href="#" class="pill">🥐 Sunday Baking</a>
       <a href="#" class="pill">🍝 Comfort Classics</a>
-      <a href="#" class="pill">🥩 High Protein</a>
     </div>
 
     <!-- Feed Header -->
     <div class="feed-header">
       <div>
-        <h2 style="font-size: 1.75rem; font-weight: 800;">Community Activity</h2>
-        <p style="color: var(--text-muted); font-size: 0.95rem;">Fresh creations submitted today</p>
+        <h2>Featured Recipes</h2>
+        <p style="color: var(--color-silver); font-size: 0.95rem; margin-top: 5px;">Delicious creations tested and approved by the family</p>
       </div>
     </div>
 
     <!-- Recipe Grid -->
-    <div class="recipe-grid">
+    <div class="recipe-grid" id="recipeGrid">
 
       <!-- Recipe Card 1 -->
-      <article class="recipe-card">
+      <article class="recipe-card" data-title="honey-glazed chipotle pork skewers" data-category="comfort classics">
         <div class="card-img-container">
           <span class="card-badge">Dinner</span>
           <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Grilled BBQ Feast">
@@ -550,7 +450,7 @@
       </article>
 
       <!-- Recipe Card 2 -->
-      <article class="recipe-card">
+      <article class="recipe-card" data-title="triple berry layered sponge cake" data-category="sunday baking">
         <div class="card-img-container">
           <span class="card-badge">Dessert</span>
           <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80" alt="Berry Cake Slice">
@@ -569,16 +469,16 @@
         </div>
       </article>
 
-      <!-- Submissions Callout Card (Embedded in Grid) -->
+      <!-- Submissions Callout Card -->
       <div class="cta-card" id="submit">
-        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🍳</div>
+        <div style="font-size: 2.5rem; margin-bottom: 10px;">🍳</div>
         <h3>Cooked something great?</h3>
-        <p>Upload your original creation and let our community try it tonight!</p>
-        <a href="#" class="btn btn-primary">+ Submit Recipe</a>
+        <p>Send over your original creation to add it to the family archives!</p>
+        <a href="../../contact.html" class="btn-primary">+ Submit Recipe</a>
       </div>
 
       <!-- Recipe Card 3 -->
-      <article class="recipe-card">
+      <article class="recipe-card" data-title="sourdough toast with poached eggs & chili crunch" data-category="15-min meals">
         <div class="card-img-container">
           <span class="card-badge">Breakfast</span>
           <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80" alt="Avocado Toast">
@@ -598,7 +498,7 @@
       </article>
 
       <!-- Recipe Card 4 -->
-      <article class="recipe-card">
+      <article class="recipe-card" data-title="authentic rigatoni alla carbonara" data-category="comfort classics">
         <div class="card-img-container">
           <span class="card-badge">Italian</span>
           <img src="https://images.unsplash.com/photo-1621996346565-e3d5d6281318?auto=format&fit=crop&w=600&q=80" alt="Pasta Dish">
@@ -618,7 +518,7 @@
       </article>
 
       <!-- Recipe Card 5 -->
-      <article class="recipe-card">
+      <article class="recipe-card" data-title="tahini chickpea & roasted veggie bowl" data-category="vegan & veggie">
         <div class="card-img-container">
           <span class="card-badge">Healthy</span>
           <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="Power Bowl">
@@ -640,19 +540,99 @@
     </div>
   </main>
 
-  <!-- Footer -->
+  <!-- Premium Footer -->
   <footer>
-    <div class="container footer-flex">
-      <a href="#" class="logo">
-        <span>🔥</span> Fork&Gather
-      </a>
-      <p class="footer-text">&copy; 2026 Fork&Gather Inc. Designed for culinary explorers everywhere.</p>
-      <div style="display: flex; gap: 1rem;">
-        <a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Privacy Policy</a>
-        <a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Terms of Service</a>
+      <div class="footer-container">
+          <div class="footer-info">
+              <h4>More Info</h4>
+              <p>Information about sources and the site</p>
+              <p>&copy; Copyright 2026 The Brown Family | T.C. Brown</p>
+          </div>
+          <div class="footer-links">
+              <a href="https://github.com/tc-brown" class="footer-link" target="_blank" rel="noopener noreferrer">
+                  <svg class="github-icon" viewBox="0 0 16 16" fill="currentColor" width="16" height="16" aria-hidden="true">
+                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                  </svg>
+                  GitHub
+              </a>
+          </div>
       </div>
-    </div>
   </footer>
 
+  <!-- Shared Main Scripts -->
+  <script src="../../../static/js/main.js"></script>
+
+  <!-- Recipe Filter & Search Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('recipeSearch');
+      const pills = document.querySelectorAll('.pill');
+      const recipeGrid = document.getElementById('recipeGrid');
+      const cards = Array.from(recipeGrid.getElementsByClassName('recipe-card'));
+
+      // Create No Results element
+      const noResultsEl = document.createElement('div');
+      noResultsEl.className = 'cta-card';
+      noResultsEl.style.display = 'none';
+      noResultsEl.style.gridColumn = '1 / -1';
+      noResultsEl.innerHTML = `
+          <div style="font-size: 2.5rem; margin-bottom: 10px;">🔍</div>
+          <h3>No Recipes Found</h3>
+          <p>We couldn't find any recipes matching your filters. Try search terms like "Carbonara", "Pork", or check out other categories.</p>
+      `;
+      recipeGrid.appendChild(noResultsEl);
+
+      let activeCategory = 'all';
+
+      // Category Pill filtering
+      pills.forEach(pill => {
+        pill.addEventListener('click', (e) => {
+          e.preventDefault();
+          pills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          
+          const text = pill.textContent.replace(/[✨⚡🌱🥐🍝]/g, '').trim().toLowerCase();
+          if (text === 'all dishes') {
+            activeCategory = 'all';
+          } else {
+            activeCategory = text;
+          }
+          filterRecipes();
+        });
+      });
+
+      // Live search input
+      searchInput.addEventListener('input', () => {
+        filterRecipes();
+      });
+
+      function filterRecipes() {
+        const query = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const title = card.getAttribute('data-title');
+          const category = card.getAttribute('data-category');
+          const desc = card.querySelector('.recipe-desc').textContent.toLowerCase();
+
+          const matchesCategory = activeCategory === 'all' || category === activeCategory;
+          const matchesQuery = query === '' || title.includes(query) || desc.includes(query);
+
+          if (matchesCategory && matchesQuery) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (visibleCount === 0) {
+          noResultsEl.style.display = 'flex';
+        } else {
+          noResultsEl.style.display = 'none';
+        }
+      }
+    });
+  </script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../static/img/index-img/seal.jpg">
     <title>The Brown Family | Collections</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,27 +16,33 @@
 </head>
 <body>
 
-    <!-- Sticky Top Navigation Header -->
+    <!-- Premium Navigation Header -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="../../index.html" class="back-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-                Home
-            </a>
+            <div class="nav-brand">
+                <img class="profile-img" src="../../static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
+            </div>
             
-            <div class="nav-title">Collections Hub</div>
+            <!-- Toggle Menu for Mobile -->
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
+                <span class="hamburger"></span>
+            </button>
 
-
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../about/about.html" class="nav-link">About</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
+                <li><a href="../blog/index.html" class="nav-link">Blog</a></li>
+                <li><a href="index.html" class="nav-link active">Our Things</a></li>
+                <li><a href="../games/index.html" class="nav-link">Mini Games</a></li>
+            </ul>
         </div>
     </nav>
 
     <!-- Hero Header -->
     <header class="collections-hero">
         <div class="hero-badge">The Collections Room</div>
-        
+        <h1 style="margin-top: 15px;">Our Collections</h1>
         <p>A digital showcase and checklist manager for our family collections, trading cards, models, and sets.</p>
     </header>
 
@@ -57,7 +64,7 @@
         <div class="collections-grid" id="collectionsGrid">
             
             <!-- Mini Brands & Mini Verse Card (Active) -->
-            <div class="collection-card active-tile" data-title="Mini Brands Tracker" data-category="Toys & Minis" data-status="active" onclick="window.location.href='../our-things/minis/minibrands.html'">
+            <div class="collection-card active-tile" data-title="Mini Brands Tracker" data-category="Toys & Minis" data-status="active" onclick="window.location.href='minis/index.html'">
                 <div class="card-header-main">
                     <div class="collection-icon">🧸</div>
                     <span class="status-badge active-status">Active Tracker</span>
@@ -70,36 +77,36 @@
                 <button class="launch-action">Open Tracker →</button>
             </div>
 
-            <!-- Our Cookbook (Coming Soon) -->
-            <div class="collection-card upcoming-tile" data-title="Our Cookbook" data-category="Food" data-status="upcoming" onclick="window.location.href='../our-things/our-cookbook/index.html'">
+            <!-- Our Cookbook -->
+            <div class="collection-card active-tile" data-title="Our Cookbook" data-category="Food" data-status="active" onclick="window.location.href='our-cookbook/index.html'">
                 <div class="card-header-main">
                     <div class="collection-icon">🍳</div>
-                    <span class="status-badge upcoming-status">Coming Soon</span>
+                    <span class="status-badge active-status">Active Tracker</span>
                 </div>
                 <div class="card-details">
                     <div class="collection-category">Food</div>
                     <h2 class="collection-title">Our Cookbook</h2>
-                    <p class="collection-desc">A Collection of some of our favorite things to make and eat. Here you'll find amazing food you just cant wait to share.</p>
+                    <p class="collection-desc">A Collection of some of our favorite things to make and eat. Here you'll find amazing food you just can't wait to share.</p>
                 </div>
-                <button class="launch-action">Details & Preview</button>
+                <button class="launch-action">Open Cookbook →</button>
             </div>
 
-            <!-- Garden Showroom (Coming Soon) -->
-            <div class="collection-card upcoming-tile" data-title="Garden Showroom" data-category="Nature" data-status="" onclick="window.location.href='../our-things/the-garden/index.html'">
+            <!-- Garden Showroom -->
+            <div class="collection-card active-tile" data-title="Garden Showroom" data-category="Nature" data-status="active" onclick="window.location.href='the-garden/index.html'">
                 <div class="card-header-main">
                     <div class="collection-icon">🍃</div>
-                    <span class="status-badge upcoming-status">Coming Soon</span>
+                    <span class="status-badge active-status">Active Tracker</span>
                 </div>
                 <div class="card-details">
                     <div class="collection-category">Nature</div>
                     <h2 class="collection-title">The Garden</h2>
-                    <p class="collection-desc">The garden Is a place of information on the plants that you will find in our garden. From plants that have been rescued to grown from seed plants.</p>
+                    <p class="collection-desc">The garden is a place of information on the plants that you will find in our garden. From plants that have been rescued to grown from seed plants.</p>
                 </div>
-                <button class="launch-action">Details & Preview</button>
+                <button class="launch-action">Open Garden →</button>
             </div>
 
             <!-- Custom Tracker Request -->
-            <div class="collection-card active-tile" data-title="Request Tracker" data-category="Custom Tracker" data-status="active" onclick="window.location.href='contact.html'">
+            <div class="collection-card active-tile" data-title="Request Tracker" data-category="Custom Tracker" data-status="active" onclick="window.location.href='../contact.html'">
                 <div class="card-header-main">
                     <div class="collection-icon">➕</div>
                     <span class="status-badge active-status">Request Tool</span>
@@ -115,7 +122,7 @@
         </div>
     </main>
 
-    <!-- Glassmorphic Modal Component for Upcoming Collections -->
+    <!-- Glassmorphic Modal Component for Upcoming Collections (kept for future expansion) -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-container">
             <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
@@ -145,8 +152,8 @@
         </div>
     </footer>
 
-    <!-- Shared Main Scripts (handles theme toggling) -->
-    <script src="../static/js/main.js"></script>
+    <!-- Shared Main Scripts -->
+    <script src="../../static/js/main.js"></script>
 
     <!-- Page Logic -->
     <script>
@@ -162,7 +169,7 @@
             noResultsEl.innerHTML = `
                 <span class="no-results-icon">🔍</span>
                 <h3>No collections match your filter</h3>
-                <p>Try searching for other tags like "toys", "cards", "active" or "coming soon".</p>
+                <p>Try searching for other tags like "toys", "food", "nature", or "active".</p>
             `;
             collectionsGrid.appendChild(noResultsEl);
 
@@ -197,7 +204,7 @@
                 }
             });
 
-            // Modal elements
+            // Modal elements (kept in case they are needed for future coming soon items)
             const modalOverlay = document.getElementById('modalOverlay');
             const modalCloseBtn = document.getElementById('modalCloseBtn');
             const modalIcon = document.getElementById('modalIcon');
@@ -205,57 +212,32 @@
             const modalDesc = document.getElementById('modalDesc');
             const modalActionBtn = document.getElementById('modalActionBtn');
 
-            const comingSoonData = {
-                cookbook: {
-                    icon: '🍳',
-                    title: 'Our Cookbook',
-                    desc: 'Here you will find a collection of recipes that we feel are worth sharing and haing on hand. From breakfast to Dinner and desert.'
-                },
-                garden: {
-                    icon: '🍃',
-                    title: 'The Garden',
-                    desc: 'A place of growing knowledge and shairing what we know and grown'
-                },
-                
-            };
-
-            // Open Modal
-            window.handleComingSoon = function(key) {
-                const data = comingSoonData[key];
-                if (!data) return;
-
-                modalIcon.textContent = data.icon;
-                modalTitle.textContent = data.title;
-                modalDesc.textContent = data.desc;
-                modalActionBtn.textContent = 'Notify Me when Ready';
-                modalActionBtn.disabled = false;
-                modalActionBtn.style.background = 'var(--accent-gradient)';
-                modalActionBtn.style.cursor = 'pointer';
-
-                modalOverlay.classList.add('open');
-            };
-
             // Close Modal
             function closeModal() {
                 modalOverlay.classList.remove('open');
             }
 
-            modalCloseBtn.addEventListener('click', closeModal);
-            modalOverlay.addEventListener('click', (e) => {
-                if (e.target === modalOverlay) closeModal();
-            });
+            if (modalCloseBtn) {
+                modalCloseBtn.addEventListener('click', closeModal);
+            }
+            if (modalOverlay) {
+                modalOverlay.addEventListener('click', (e) => {
+                    if (e.target === modalOverlay) closeModal();
+                });
+            }
 
-            // Modal Action Simulation
-            modalActionBtn.addEventListener('click', () => {
-                modalActionBtn.textContent = '✓ Notification Requested!';
-                modalActionBtn.disabled = true;
-                modalActionBtn.style.background = '#10b981';
-                modalActionBtn.style.cursor = 'default';
+            if (modalActionBtn) {
+                modalActionBtn.addEventListener('click', () => {
+                    modalActionBtn.textContent = '✓ Notification Requested!';
+                    modalActionBtn.disabled = true;
+                    modalActionBtn.style.background = '#10b981';
+                    modalActionBtn.style.cursor = 'default';
 
-                setTimeout(() => {
-                    closeModal();
-                }, 1500);
-            });
+                    setTimeout(() => {
+                        closeModal();
+                    }, 1500);
+                });
+            }
         });
     </script>
 </body>

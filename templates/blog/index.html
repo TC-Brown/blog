@@ -3,80 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog & Vlog Hub</title>
+    <link rel="icon" href="../../static/img/index-img/seal.jpg">
+    <title>The Brown Family | Blog & Vlog Hub</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../../static/css/blog.css">
+    
     <style>
-        /* Modern Reset and Variables */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary-color: #2563eb;
-            --text-color: #1f2937;
-            --light-bg: #f3f4f6;
-            --card-bg: #ffffff;
-        }
-
         body {
-            background-color: var(--light-bg);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        /* Navigation */
-        nav {
-            background-color: var(--card-bg);
-            padding: 1rem 2rem;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
+        .blog-hero {
+            padding: 60px 24px 30px 24px;
+            text-align: center;
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
+        .blog-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--color-indigo), var(--color-emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
         }
 
-        nav ul a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.2s;
+        .blog-hero p {
+            font-size: 1.1rem;
+            color: var(--color-silver);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        nav ul a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        /* Featured Vlog Section */
         .featured-vlog {
-            background-color: var(--card-bg);
-            border-radius: 12px;
+            background: var(--card-gradient);
+            border: var(--border);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 3rem;
+            margin-bottom: 50px;
+            transition: var(--transition-smooth);
+        }
+
+        .featured-vlog:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-soft), var(--shadow-glow);
         }
 
         .video-container {
@@ -85,6 +63,7 @@
             height: 0;
             overflow: hidden;
             background: #000;
+            border-bottom: var(--border);
         }
 
         .video-container iframe, 
@@ -98,189 +77,244 @@
         }
 
         .vlog-content {
-            padding: 1.5rem;
+            padding: 30px;
         }
 
         .vlog-meta {
-            font-size: 0.875rem;
-            color: #6b7280;
-            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--color-silver);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
         }
 
         .vlog-title {
-            font-size: 1.75rem;
-            margin-bottom: 0.75rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--color-white);
+            margin-bottom: 12px;
         }
 
-        /* Content Grid (Recent Blogs/Vlogs) */
+        .vlog-desc {
+            color: var(--color-silver);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
         .section-title {
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-white);
+            margin-bottom: 30px;
             position: relative;
-            padding-bottom: 0.5rem;
+            display: inline-block;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -6px;
             left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--primary-color);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-gradient);
             border-radius: 2px;
         }
 
-        .grid {
+        .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
+        .blog-card {
+            background: var(--card-gradient);
+            border: var(--border);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+            cursor: pointer;
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-soft), var(--shadow-glow);
         }
 
         .card-img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            background-color: #ddd; /* Fallback placeholder color */
+            border-bottom: var(--border);
         }
 
-        .card-content {
-            padding: 1.25rem;
+        .card-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .card-meta {
             font-size: 0.8rem;
-            color: #6b7280;
-            margin-bottom: 0.5rem;
+            color: var(--color-indigo);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
         }
 
         .card-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--color-white);
+            margin-bottom: 10px;
+            line-height: 1.3;
         }
 
         .card-text {
-            color: #4b5563;
+            color: var(--color-silver);
             font-size: 0.95rem;
-            margin-bottom: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
         }
 
         .read-more {
-            display: inline-block;
-            color: var(--primary-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--color-indigo);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            margin-top: auto;
         }
 
-        /* Footer */
-        footer {
-            background-color: #111827;
-            color: #ffffff;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        /* Mobile Responsive adjustments */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .vlog-title {
-                font-size: 1.4rem;
-            }
+        .blog-card:hover .read-more {
+            color: var(--color-emerald);
+            transform: translateX(4px);
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <a href="#" class="logo">CreatorHub</a>
-        <ul>
-            <li><a href="../../index.html">Home</a></li>
-            <li><a href="#">Articles</a></li>
-            <li><a href="#">Vlogs</a></li>
-            <li><a href="../about/about.html">About</a></li>
-        </ul>
+    <!-- Premium Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img class="profile-img" src="../../static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
+            </div>
+            
+            <!-- Toggle Menu for Mobile -->
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
+                <span class="hamburger"></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../about/about.html" class="nav-link">About</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
+                <li><a href="index.html" class="nav-link active">Blog</a></li>
+                <li><a href="../our-things/index.html" class="nav-link">Our Things</a></li>
+                <li><a href="../games/index.html" class="nav-link">Mini Games</a></li>
+            </ul>
+        </div>
     </nav>
 
+    <!-- Hero Header -->
+    <header class="blog-hero">
+        <h1>Our Family Blog</h1>
+        <p>Follow along with our updates, projects, and behind-the-scenes vlogs.</p>
+    </header>
+
     <!-- Main Content Wrapper -->
-    <div class="container">
+    <main class="content-container" style="flex-grow:1; padding-bottom: 80px;">
         
         <!-- Featured Vlog Section -->
         <h2 class="section-title">Latest Vlog</h2>
         <div class="featured-vlog">
             <div class="video-container">
-                <!-- Replace the src URL with your actual YouTube embed link or video source -->
                 <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
             </div>
             <div class="vlog-content">
-                <div class="vlog-meta">Published on July 19, 2026 • By Alex Creator</div>
-                <h1 class="vlog-title">Behind the Scenes: A Day in the Life of a Content Creator</h1>
-                <p>Today we are diving deep into my editing workflow, the gear I use daily, and how I manage my time to keep the content rolling out. Don't forget to check out the links below for the full breakdown!</p>
+                <div class="vlog-meta">Published on July 19, 2026 • By Terrance</div>
+                <h1 class="vlog-title">Behind the Scenes: A Day in the Life of a Developer</h1>
+                <p class="vlog-desc">Today we are diving deep into my editing workflow, the coding environment we set up for the family, and how we collaborate on new designs and tools for the house.</p>
             </div>
         </div>
 
         <!-- Recent Posts Grid -->
         <h2 class="section-title">Recent Posts</h2>
-        <div class="grid">
+        <div class="blog-grid">
             
             <!-- Card 1 (Blog Post) -->
-            <article class="card">
-                <!-- Replace with your image path -->
+            <article class="blog-card" onclick="window.location.href='#'">
                 <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=500&q=80" alt="Desk with laptop" class="card-img">
-                <div class="card-content">
+                <div class="card-body">
                     <div class="card-meta">Blog • 5 min read</div>
                     <h3 class="card-title">Top 5 Productivity Tips for Remote Workers</h3>
                     <p class="card-text">Staying focused at home is tough. Here are five simple rules I use to keep my energy up and distractions down...</p>
-                    <a href="#" class="read-more">Read Article →</a>
+                    <span class="read-more">Read Article →</span>
                 </div>
             </article>
 
             <!-- Card 2 (Vlog Post alternative layout) -->
-            <article class="card">
+            <article class="blog-card" onclick="window.location.href='#'">
                 <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=500&q=80" alt="Code on a screen" class="card-img">
-                <div class="card-content">
+                <div class="card-body">
                     <div class="card-meta">Vlog • 12 min watch</div>
                     <h3 class="card-title">How I Learned to Code in 6 Months</h3>
                     <p class="card-text">From zero coding knowledge to building my own web applications. I break down the exact resources and timeline I followed...</p>
-                    <a href="#" class="read-more">Watch Video →</a>
+                    <span class="read-more">Watch Video →</span>
                 </div>
             </article>
 
             <!-- Card 3 (Blog Post) -->
-            <article class="card">
+            <article class="blog-card" onclick="window.location.href='#'">
                 <img src="https://images.unsplash.com/photo-1502481851512-e9e2529bbcc9?auto=format&fit=crop&w=500&q=80" alt="Camera equipment" class="card-img">
-                <div class="card-content">
+                <div class="card-body">
                     <div class="card-meta">Blog • 8 min read</div>
                     <h3 class="card-title">My Travel Gear Guide for 2026</h3>
                     <p class="card-text">You don't need a massive backpack to shoot great video on the go. Here is my minimalist kit for the upcoming travel season...</p>
-                    <a href="#" class="read-more">Read Article →</a>
+                    <span class="read-more">Read Article →</span>
                 </div>
             </article>
 
         </div>
-    </div>
+    </main>
 
-    <!-- Simple Footer -->
+    <!-- Premium Footer -->
     <footer>
-        <p>&copy; 2026 CreatorHub. Built with passion.</p>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h4>More Info</h4>
+                <p>Information about sources and the site</p>
+                <p>&copy; Copyright 2026 The Brown Family | T.C. Brown</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/tc-brown" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" fill="currentColor" width="16" height="16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="../../static/js/main.js"></script>
 </body>
 </html>

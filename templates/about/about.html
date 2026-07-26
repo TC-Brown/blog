@@ -3,361 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to my Space!</title>
+    <link rel="icon" href="../../static/img/index-img/seal.jpg">
+    <title>The Brown Family | About Us</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../../static/css/blog.css">
     <style>
-        /* --- Global Reset & Box Model --- */
-        * {
-            box-sizing: border-box; /* Crucial: ensures padding never breaks element widths */
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            background-color: #e5e5e5;
-            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 12px;
-            color: #000000;
-            padding: 10px;
+            display: flex;
+            flex-direction: column;
             min-height: 100vh;
         }
-
-        a {
-            color: #003399;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-            color: #cc0000;
+        
+        .about-hero {
+            padding: 60px 24px 30px 24px;
+            text-align: center;
         }
 
-        /* --- Main Wrapper --- */
-        .container {
-            max-width: 950px; /* Looks clean on massive screens */
-            width: 100%;
+        .about-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--color-indigo), var(--color-emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .about-hero p {
+            font-size: 1.1rem;
+            color: var(--color-silver);
+            max-width: 600px;
             margin: 0 auto;
-            background-color: #ffffff;
-            border: 2px solid #003399;
-            padding: 10px;
         }
 
-        /* --- Top Header / Search Bar --- */
-        .search-bar {
-            background-color: #6699cc;
-            padding: 8px 12px;
-            color: #ffffff;
-            font-weight: bold;
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .member-card {
+            background: var(--card-gradient);
+            border: var(--border);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
+            box-shadow: var(--shadow-soft);
             display: flex;
-            flex-flow: row wrap; /* Allows natural wrapping if space is tight */
+            flex-direction: column;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .search-inputs {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .search-inputs input {
-            max-width: 120px; /* Keeps input from breaking headers on small rows */
+            transition: var(--transition-smooth);
         }
 
-        /* --- Main Two-Column Layout --- */
-        .main-layout {
-            display: flex;
-            flex-direction: column; /* Mobile-first default */
-            gap: 15px;
+        .member-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-soft), var(--shadow-glow);
         }
 
-        /* --- Containers / Boxes --- */
-        .orange-box, .blue-box {
-            margin-bottom: 15px;
-            width: 100%;
-            border: 2px solid;
-        }
-        .orange-box { border-color: #ffcc99; }
-        .blue-box { border-color: #6699cc; }
-        
-        .orange-box h2 { background-color: #ff9933; color: #ffffff; font-size: 14px; padding: 6px 8px; }
-        .blue-box h2 { background-color: #6699cc; color: #ffffff; font-size: 14px; padding: 6px 8px; }
-        
-        .box-content { padding: 10px; }
-
-        /* --- Profile Details Component --- */
-        .profile-name {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            word-wrap: break-word; /* Prevents long usernames from clipping */
-        }
-        .profile-layout {
-            display: flex;
-            flex-direction: column; /* Stacked on small mobile devices */
-            gap: 15px;
-            margin-bottom: 15px;
-            align-items: center;
-            text-align: center;
-        }
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            max-width: 100%; /* Resizes gracefully if screen goes ultra-narrow */
-            flex-shrink: 0;
-            background-color: #ccc;
-            border: 1px solid #000;
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(33, 117, 153, 0.05);
+            border: 2px solid var(--color-indigo);
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .profile-status {
-            font-size: 12px;
-            line-height: 1.5;
-            width: 100%;
-        }
-        .mood-section {
-            margin-top: 10px;
-            font-weight: bold;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-glow);
+            transition: var(--transition-smooth);
         }
 
-        /* Contact Box Grid (Replaced old fragile table) */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 5px;
-        }
-        .contact-grid a {
-            display: block;
-            padding: 6px;
-            border: 1px solid #6699cc;
-            background-color: #d5e4f2;
-            text-align: center;
-            font-size: 11px;
+        .member-card:hover .member-avatar {
+            transform: scale(1.1);
+            border-color: var(--color-emerald);
         }
 
-        /* --- Interests Layout --- */
-        .interest-row {
-            display: flex;
-            flex-direction: column; /* Stacked vertically on tiny mobile */
-            border-bottom: 1px solid #eee;
-            padding: 8px 0;
-        }
-        .interest-row:last-child { border-bottom: none; }
-        .interest-label {
-            background-color: #b1d0f0;
-            font-weight: bold;
-            color: #003399;
-            padding: 4px;
-            margin-bottom: 4px;
-        }
-        .interest-text {
-            padding: 4px;
+        .member-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-white);
+            margin-bottom: 6px;
+            font-family: 'Outfit', sans-serif;
         }
 
-        /* --- Blurbs Section --- */
-        .blurb-heading {
-            color: #ff6600;
-            font-weight: bold;
-            font-size: 13px;
-            margin-top: 12px;
-            margin-bottom: 4px;
-        }
-        .box-content p {
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        /* --- Top 8 Grid --- */
-        .top8-title {
-            color: #cc0000;
-            font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 columns on minimal screens */
-            gap: 10px;
-            text-align: center;
-        }
-        .friend-box {
-            font-size: 11px;
-        }
-        .friend-pic {
-            width: 100%;
-            aspect-ratio: 1;
-            background-color: #ddd;
-            border: 1px solid #000;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* --- Fake Retro Media Player --- */
-        .media-player {
-            background: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-            font-family: monospace;
+        .member-role {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-indigo);
+            font-weight: 600;
             margin-bottom: 15px;
-            width: 100%;
         }
 
-        /* ==========================================================================
-           ADVANCED MEDIA QUERIES (Fluid Adaptability)
-           ========================================================================== */
-        
-        /* Small Micro Screens to Phablets (e.g., iPhone SE & Up) */
-        @media (min-width: 480px) {
-            .profile-layout {
-                flex-direction: row; /* Side-by-side photo & bio */
-                text-align: left;
-                align-items: flex-start;
-            }
-            .grid-container {
-                grid-template-columns: repeat(3, 1fr); /* Expand Top 8 to 3 columns */
-            }
-            .interest-row {
-                flex-direction: row; /* Side by side label and text */
-            }
-            .interest-label {
-                width: 100px;
-                flex-shrink: 0;
-                margin-bottom: 0;
-            }
+        .member-desc {
+            font-size: 0.95rem;
+            color: var(--color-silver);
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
 
-        /* Desktop Layout (Tablets, Laptops, Monitors) */
-        @media (min-width: 769px) {
-            body {
-                padding: 20px;
-            }
-            .main-layout {
-                flex-direction: row; /* True Myspace dual column setup triggers */
-            }
-            .left-col {
-                flex: 4; /* Proportional desktop sizing */
-            }
-            .right-col {
-                flex: 5;
-            }
-            .grid-container {
-                grid-template-columns: repeat(4, 1fr); /* Iconic 4x2 Top 8 layout */
-            }
+        .member-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--accent-gradient);
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(33, 117, 153, 0.2);
+        }
+
+        .member-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(33, 117, 153, 0.35);
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-
-    <!-- Header Bar -->
-    <div class="search-bar">
-        <div>A Throwback</div>
-        <div class="search-inputs">
-            <input type="text" placeholder="Search Users...">
-            <button style="font-size: 10px; padding: 2px 5px;">Search</button>
-        </div>
-    </div>
-
-    <!-- Layout Container -->
-    <div class="main-layout">
-        
-        <!-- LEFT COLUMN -->
-        <div class="left-col">
-            <div class="profile-name">⚡ Your Name Here ⚡</div>
+    <!-- Premium Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img class="profile-img" src="../../static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
+            </div>
             
-            <div class="profile-layout">
-                <div class="profile-pic">[ Your Pic Here ]</div>
-                <div class="profile-status">
-                    "Writing code and living in 2006."<br><br>
-                    <b>Gender:</b> Open Source<br>
-                    <b>Age:</b> 99<br>
-                    <b>Location:</b> The Internet<br>
-                    
-                    <div class="mood-section">
-                        Mood: <span>😎 Creative</span><br>
-                        View My: <a href="#">Pics</a> | <a href="#">Videos</a>
-                    </div>
+            <!-- Toggle Menu for Mobile -->
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
+                <span class="hamburger"></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
+                <li><a href="../blog/index.html" class="nav-link">Blog</a></li>
+                <li><a href="../our-things/index.html" class="nav-link">Our Things</a></li>
+                <li><a href="../games/index.html" class="nav-link">Mini Games</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="about-hero">
+        <h1>About The Brown Family</h1>
+        <p>A look at the creators, builders, and dreamers who make up our family workspace.</p>
+    </header>
+
+    <!-- Main Grid Content -->
+    <main class="content-container" style="flex-grow:1; padding-bottom: 80px;">
+        <div class="members-grid">
+            
+            <!-- Terrance -->
+            <div class="member-card">
+                <div style="display:flex; flex-direction:column; align-items:center;">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h2 class="member-name">Terrance</h2>
+                    <div class="member-role">Father & Developer</div>
+                    <p class="member-desc">Primary software engineer behind the blog. Loves writing code, web development, and exploring new tech stacks.</p>
                 </div>
             </div>
 
-            <!-- Contact Box (Grid-powered) -->
-            <div class="orange-box">
-                <h2>Contacting Your Name</h2>
-                <div class="box-content">
-                    <div class="contact-grid">
-                        <a href="#">Send Message</a>
-                        <a href="#">Forward to Friends</a>
-                        <a href="#">Add to Friends</a>
-                        <a href="#">Add to Favorites</a>
-                    </div>
+            <!-- Brandie -->
+            <div class="member-card">
+                <div style="display:flex; flex-direction:column; align-items:center;">
+                    <div class="member-avatar">👩‍🎨</div>
+                    <h2 class="member-name">Brandie</h2>
+                    <div class="member-role">Mother & Designer</div>
+                    <p class="member-desc">Creative director and coordinator. Loves crafting, interior design, and managing family events.</p>
                 </div>
             </div>
 
-            <!-- Interests Box (Flex-row powered) -->
-            <div class="blue-box">
-                <h2>Interests</h2>
-                <div class="box-content">
-                    <div class="interest-row">
-                        <div class="interest-label">General</div>
-                        <div class="interest-text">Web development, CSS hacking, collecting vinyl, drinking too much coffee.</div>
-                    </div>
-                    <div class="interest-row">
-                        <div class="interest-label">Music</div>
-                        <div class="interest-text">My Chemical Romance, Fall Out Boy, Blink-182, Daft Punk.</div>
-                    </div>
+            <!-- Jai'lin -->
+            <div class="member-card">
+                <div style="display:flex; flex-direction:column; align-items:center;">
+                    <div class="member-avatar">👦</div>
+                    <h2 class="member-name">Jai'lin</h2>
+                    <div class="member-role">Eldest Son</div>
+                    <p class="member-desc">Tech enthusiast, video game fan, and collector. Helps with sorting out gaming collections.</p>
                 </div>
+            </div>
+
+            <!-- Cameron -->
+            <div class="member-card">
+                <div style="display:flex; flex-direction:column; align-items:center;">
+                    <div class="member-avatar">🎧</div>
+                    <h2 class="member-name">Cameron</h2>
+                    <div class="member-role">Second Son</div>
+                    <p class="member-desc">Music lover, sportsman, and tech builder. Always working on creative media projects.</p>
+                </div>
+            </div>
+
+            <!-- Dominic -->
+            <div class="member-card">
+                <div style="display:flex; flex-direction:column; align-items:center;">
+                    <div class="member-avatar">⚽</div>
+                    <h2 class="member-name">Dominic</h2>
+                    <div class="member-role">Third Son</div>
+                    <p class="member-desc">The family athlete. Passionate about soccer, outdoor activities, and gaming with siblings.</p>
+                </div>
+            </div>
+
+            <!-- Akiva -->
+            <div class="member-card">
+                <div style="display:flex; flex-direction:column; align-items:center;">
+                    <div class="member-avatar">👸</div>
+                    <h2 class="member-name">Akiva</h2>
+                    <div class="member-role">Daughter</div>
+                    <p class="member-desc">Princess Akiva! Loves art, magic drawings, pink designs, and has a dedicated personal bio page.</p>
+                </div>
+                <a href="abrown.html" class="member-action">View Bio Page →</a>
+            </div>
+
+            <!-- Zhiva -->
+            <div class="member-card">
+                <div style="display:flex; flex-direction:column; align-items:center;">
+                    <div class="member-avatar">🕹️</div>
+                    <h2 class="member-name">Zhiva</h2>
+                    <div class="member-role">Youngest Son</div>
+                    <p class="member-desc">Arcade champion. Creator of the bubble Popper game. Has an interactive gaming bio page.</p>
+                </div>
+                <a href="zbrown.html" class="member-action">View Bio Page →</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Premium Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h4>More Info</h4>
+                <p>Information about sources and the site</p>
+                <p>&copy; Copyright 2026 The Brown Family | T.C. Brown</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/tc-brown" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" fill="currentColor" width="16" height="16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    GitHub
+                </a>
             </div>
         </div>
+    </footer>
 
-        <!-- RIGHT COLUMN -->
-        <div class="right-col">
-            
-            <!-- Media Player -->
-            <div class="media-player">
-                🎵 NOW PLAYING: Ocean Avenue - Yellowcard <br>
-                <span style="font-size: 10px;">[0:45 / 3:37] ⏪ ⏸ ⏩ 🔊</span>
-            </div>
-
-            <!-- Blurbs Box -->
-            <div class="orange-box">
-                <h2>Your Name's Blurbs</h2>
-                <div class="box-content">
-                    <div class="blurb-heading">About me:</div>
-                    <p>Welcome to my page! I'm a web developer who misses the days when the internet was clunky, colorful, and customized with terrible inline CSS. I spend my time fixing responsiveness issues by day and customizing my profile by night.</p>
-                    <div class="blurb-heading">Who I'd like to meet:</div>
-                    <p>Other developers, designers, and retro internet enthusiasts who remember what a <code>&lt;marquee&gt;</code> tag is.</p>
-                </div>
-            </div>
-
-            <!-- Top 8 Box -->
-            <div class="blue-box">
-                <h2>Your Name's Friend Space</h2>
-                <div class="box-content">
-                    <div class="top8-title">Your Name has <span style="color:#000;">8</span> friends.</div>
-                    
-                    <div class="grid-container">
-                        <div class="friend-box"><a href="../../index.html">Home</a><div class="friend-pic"><img src="../../static/img/index-img/seal.jpg" class="friend-pic"></div></div>
-                        <div class="friend-box"><a href="#">Terrance</a><div class="friend-pic">[ Pic ]</div></div>
-                        <div class="friend-box"><a href="#">Brandie</a><div class="friend-pic">[ Pic ]</div></div>
-                        <div class="friend-box"><a href="#">Jai'lin</a><div class="friend-pic">[ Pic ]</div></div>
-                        <div class="friend-box"><a href="#">Cameron</a><div class="friend-pic">[ Pic ]</div></div>
-                        <div class="friend-box"><a href="#">Dominic</a><div class="friend-pic">[ Pic ]</div></div>
-                        <div class="friend-box"><a href="#">Akiva</a><div class="friend-pic">[ Pic ]</div></div>
-                        <div class="friend-box"><a href="#">Zhiva</a><div class="friend-pic">[ Pic ]</div></div>
-                    </div>
-                </div>
-            </div>
-
-        </div> <!-- /right-col -->
-
-    </div> <!-- /main-layout -->
-
-</div> <!-- /container -->
-
+    <!-- Scripts -->
+    <script src="../../static/js/main.js"></script>
 </body>
 </html>
