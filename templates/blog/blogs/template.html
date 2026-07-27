@@ -327,6 +327,37 @@
             font-size: 0.95rem;
             line-height: 1.6;
         }
+
+        .post-card {
+            padding: 40px;
+        }
+
+        /* Responsive Overrides */
+        @media (max-width: 991.98px) {
+            .main-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .main-content {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .post-container {
+                padding: 20px 16px 60px 16px;
+            }
+            .post-title {
+                font-size: 2rem;
+            }
+            .post-card {
+                padding: 24px !important;
+            }
+            .comments-section {
+                margin-top: 40px;
+                padding-top: 30px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -365,7 +396,7 @@
             
             <!-- Left/Main Column: Post Body -->
             <main class="main-content">
-                <article class="card" style="padding: 40px;">
+                <article class="card post-card">
                     <!-- Post Header -->
                     <header class="post-header">
                         <span class="post-category">Web Development</span>

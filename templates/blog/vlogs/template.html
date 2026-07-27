@@ -351,6 +351,33 @@
             font-size: 0.95rem;
             line-height: 1.6;
         }
+
+        /* Responsive Overrides */
+        @media (max-width: 991.98px) {
+            .main-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .main-content {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vlog-container {
+                padding: 20px 16px 60px 16px;
+            }
+            .vlog-title {
+                font-size: 1.8rem;
+            }
+            .vlog-info {
+                padding: 20px;
+            }
+            .comments-section {
+                margin-top: 40px;
+                padding-top: 30px;
+            }
+        }
     </style>
 </head>
 <body>
