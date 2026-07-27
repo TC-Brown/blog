@@ -2,10 +2,6 @@
  * Premium About & Profiles Modernized Stylesheet - Social Media Layout
  * Integrates glassmorphism, cover photo banners, two-column timeline grids, and micro-interactions
  */
-:root {
-    --color-white: #fff;
-}
-
 body {
     display: flex;
     flex-direction: column;
@@ -307,7 +303,7 @@ body {
 .profile-cover-text .profile-header-name {
     font-size: 1.85rem;
     font-weight: 800;
-    color: var(--color-white);
+    color: #ffffff;
     margin-bottom: 2px;
     font-family: 'Outfit', sans-serif;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
@@ -385,7 +381,7 @@ body {
 .profile-header-name {
     font-size: 2.5rem;
     font-weight: 800;
-    color: var(--color-white);
+    color: #ffffff;
     margin-bottom: 2px;
     font-family: 'Outfit', sans-serif;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
