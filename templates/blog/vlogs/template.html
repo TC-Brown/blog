@@ -355,11 +355,14 @@
         /* Responsive Overrides */
         @media (max-width: 991.98px) {
             .main-grid {
-                grid-template-columns: 1fr !important;
+                grid-template-columns: minmax(0, 1fr) !important;
             }
             .main-content {
                 display: flex !important;
                 flex-direction: column !important;
+            }
+            .widget-card {
+                display: block !important;
             }
         }
 
@@ -376,6 +379,30 @@
             .comments-section {
                 margin-top: 40px;
                 padding-top: 30px;
+            }
+            .comment-card {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .vlog-container {
+                padding: 16px 12px 60px 12px;
+            }
+            .vlog-title {
+                font-size: 1.5rem;
+            }
+            .vlog-info {
+                padding: 16px;
+            }
+            .comment-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .comment-author-info {
+                width: 100%;
+                justify-content: space-between;
             }
         }
     </style>
