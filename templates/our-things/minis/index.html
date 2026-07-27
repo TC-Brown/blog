@@ -254,7 +254,7 @@
 
         .collection-container.active {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
             gap: 24px;
             max-width: 1200px;
             margin: 0 auto;
@@ -370,6 +370,45 @@
             background: var(--color-indigo);
             color: var(--color-white);
             border-color: transparent;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .tracker-hero h1 {
+                font-size: 2.2rem;
+            }
+            .tracker-hero p {
+                font-size: 1rem;
+            }
+            .stats-container {
+                gap: 12px;
+            }
+            .stat-card {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+                border-radius: 20px;
+            }
+            .stat-card span {
+                font-size: 1.05rem;
+            }
+            .tabs {
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            .key-container {
+                padding: 12px 16px;
+                gap: 12px;
+                margin-bottom: 25px;
+            }
+            .key-title {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 4px;
+            }
         }
     </style>
 </head>

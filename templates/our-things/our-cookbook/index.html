@@ -145,13 +145,13 @@
       overflow-x: auto;
       padding: 20px 24px;
       margin-bottom: 20px;
-      justify-content: center;
+      justify-content: flex-start;
       scrollbar-width: none;
     }
-
     .category-pills::-webkit-scrollbar {
       display: none;
     }
+
 
     .pill {
       padding: 8px 20px;
@@ -349,6 +349,38 @@
     .cta-card .btn-primary:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(33, 117, 153, 0.35);
+    }
+
+    /* Responsive adjustments */
+    @media (min-width: 768px) {
+      .category-pills {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      .recipe-grid {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .search-box {
+        padding: 4px 6px 4px 14px;
+      }
+      .search-box input {
+        font-size: 0.9rem;
+      }
+      .search-btn {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>

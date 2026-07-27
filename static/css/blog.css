@@ -186,7 +186,7 @@ body.light-theme .theme-toggle .sun-icon { display: none; }
 body.light-theme .theme-toggle .moon-icon { display: block; }
 
 /* --- Desktop Right Fixed Sidebar Layout (>992px) --- */
-@media (min-width: 993px) {
+@media (min-width: 992px) {
     body {
         padding-right: 280px; /* Sidebar clearance offset */
     }
@@ -198,7 +198,7 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
         top: 0;
         right: 0;
         bottom: 0;
-        background: rgba(10, 15, 26, 0.45);
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.90));
         border-left: var(--border);
         backdrop-filter: var(--backdrop-blur);
         -webkit-backdrop-filter: var(--backdrop-blur);
@@ -207,7 +207,7 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
         justify-content: flex-start;
         padding: 60px 0;
         z-index: 1000;
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+        box-shadow: -10px 0 30px rgba(15, 23, 42, 0.04);
     }
     
     .navbar::before {
@@ -216,7 +216,7 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
         top: 0; left: 0; right: 0; bottom: 0;
         border-top-left-radius: 0;
         padding: 1px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01));
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
         -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
         -webkit-mask-composite: xor;
         mask-composite: exclude;
@@ -244,8 +244,8 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
     .profile-img {
         width: 250px;
         height: 250px;
-        border: 3px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        border: 3px solid rgba(33, 117, 153, 0.15);
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
     }
 
     .name {
@@ -521,7 +521,7 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
     background: rgb(57,255,20);
 }
 .cabrown {
-    border: rgb(255,7,58);
+    border: 2px solid rgb(255,7,58);
     color: rgb(255,255,255);
     background: rgb(255,7,58);
 }
@@ -613,7 +613,7 @@ footer {
 }
 
 /* --- Responsive Layout & Mobile Styles --- */
-@media (max-width: 992px) {
+@media (max-width: 991.98px) {
     body {
         padding-right: 0; /* Remove sidebar offset */
     }
@@ -664,7 +664,7 @@ footer {
         top: 0;
         left: 0;
         right: 0;
-        background: rgba(8, 11, 17, 0.75);
+        background: rgba(255, 255, 255, 0.94);
         border-bottom: var(--border);
         border-left: none;
         backdrop-filter: var(--backdrop-blur);
@@ -674,7 +674,7 @@ footer {
         justify-content: space-between;
         padding: 0;
         z-index: 1000;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 30px rgba(15, 23, 42, 0.04);
     }
     
     .navbar::before {
@@ -702,7 +702,7 @@ footer {
     .profile-img {
         width: 70px;
         height: 70px;
-        border: 2px solid rgba(255, 255, 255, 0.08);
+        border: 2px solid rgba(33, 117, 153, 0.15);
     }
 
     .name {
@@ -722,7 +722,7 @@ footer {
         right: 0;
         width: 280px;
         height: calc(100vh - var(--navbar-height));
-        background: rgb(0, 0, 0);
+        background: rgba(255, 255, 255, 0.98);
         border-left: var(--border);
         backdrop-filter: var(--backdrop-blur);
         -webkit-backdrop-filter: var(--backdrop-blur);
@@ -732,7 +732,7 @@ footer {
         transform: translateX(100%);
         transition: var(--transition-smooth);
         pointer-events: none;
-        box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.3);
+        box-shadow: -10px 10px 30px rgba(15, 23, 42, 0.06);
         visibility: hidden;
     }
 
@@ -754,7 +754,7 @@ footer {
     
     .nav-link:hover {
         transform: none;
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(33, 117, 153, 0.08);
     }
 
     .nav-link.active {
@@ -764,16 +764,16 @@ footer {
     }
 
     /* Active hamburger icon state */
-    .nav-menu.open ~ .mobile-nav-toggle .hamburger {
+    .mobile-nav-toggle.open .hamburger {
         background: transparent;
     }
     
-    .nav-menu.open ~ .mobile-nav-toggle .hamburger::before {
+    .mobile-nav-toggle.open .hamburger::before {
         transform: rotate(45deg);
         top: 0;
     }
     
-    .nav-menu.open ~ .mobile-nav-toggle .hamburger::after {
+    .mobile-nav-toggle.open .hamburger::after {
         transform: rotate(-45deg);
         bottom: 0;
     }
@@ -802,5 +802,15 @@ footer {
         align-items: center;
         text-align: center;
         gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-container {
+        padding: 0 16px 80px 16px;
+    }
+    .card {
+        padding: 16px;
+        border-radius: 12px;
     }
 }
