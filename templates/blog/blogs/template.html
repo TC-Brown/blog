@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="../../../static/img/index-img/seal.jpg">
+    <title>The Brown Family | Blog Post Template</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../../../static/css/blog.css">
+    
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .post-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px 80px 24px;
+            width: 100%;
+        }
+
+        .post-header {
+            margin-bottom: 30px;
+        }
+
+        .post-category {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(33, 117, 153, 0.1);
+            color: var(--color-indigo);
+            border-radius: 30px;
+            margin-bottom: 16px;
+        }
+
+        .post-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--color-white);
+            margin-bottom: 16px;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.9rem;
+            color: var(--color-silver);
+            flex-wrap: wrap;
+        }
+
+        .author-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid var(--color-indigo);
+        }
+
+        .featured-img-wrapper {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: var(--border);
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .featured-img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .post-body {
+            color: var(--color-white);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .post-body p {
+            margin-bottom: 24px;
+        }
+
+        .post-body h2, .post-body h3 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--color-white);
+            margin-top: 40px;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .post-body h2 {
+            font-size: 1.8rem;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+            padding-bottom: 8px;
+        }
+
+        .post-body h3 {
+            font-size: 1.4rem;
+        }
+
+        .post-body blockquote {
+            border-left: 4px solid var(--color-indigo);
+            padding: 16px 24px;
+            background: rgba(33, 117, 153, 0.03);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            font-style: italic;
+            color: var(--color-silver);
+            margin: 30px 0;
+        }
+
+        .post-body pre {
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 0.95rem;
+            margin: 30px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .post-body code {
+            font-family: monospace;
+            background: rgba(33, 117, 153, 0.08);
+            color: var(--color-indigo);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .post-body ul, .post-body ol {
+            margin-bottom: 24px;
+            padding-left: 24px;
+        }
+
+        .post-body li {
+            margin-bottom: 8px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-indigo);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            margin-bottom: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .back-btn:hover {
+            color: var(--color-emerald);
+            transform: translateX(-4px);
+        }
+
+        .author-widget {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .author-widget img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(33, 117, 153, 0.15);
+            margin-bottom: 16px;
+        }
+
+        .author-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-white);
+            margin-bottom: 4px;
+        }
+
+        .author-role {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-indigo);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .author-bio {
+            font-size: 0.95rem;
+            color: var(--color-silver);
+            line-height: 1.6;
+        }
+
+        /* Comments styling */
+        .comments-section {
+            margin-top: 60px;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
+            padding-top: 40px;
+        }
+
+        .comments-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--color-white);
+            margin-bottom: 30px;
+        }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .comment-input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 576px) {
+            .comment-input-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comment-form input, .comment-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.4);
+            border: var(--border);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            color: var(--color-white);
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .comment-form input:focus, .comment-form textarea:focus {
+            border-color: var(--color-indigo);
+            box-shadow: var(--shadow-glow);
+            background: rgba(255, 255, 255, 0.75);
+        }
+
+        .comment-submit-btn {
+            align-self: flex-start;
+            background: var(--accent-gradient);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 15px rgba(33, 117, 153, 0.15);
+        }
+
+        .comment-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(33, 117, 153, 0.25);
+        }
+
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .comment-card {
+            background: var(--card-gradient);
+            border: var(--border);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .comment-author-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .comment-author-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--color-white);
+        }
+
+        .comment-date {
+            font-size: 0.8rem;
+            color: var(--color-silver);
+        }
+
+        .comment-text {
+            color: var(--color-silver);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Premium Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img class="profile-img" src="../../../static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
+            </div>
+            
+            <!-- Toggle Menu for Mobile -->
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
+                <span class="hamburger"></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../../about/about.html" class="nav-link">About</a></li>
+                <li><a href="../../contact.html" class="nav-link">Contact</a></li>
+                <li><a href="../index.html" class="nav-link active">Blog</a></li>
+                <li><a href="../../our-things/index.html" class="nav-link">Our Things</a></li>
+                <li><a href="../../games/index.html" class="nav-link">Mini Games</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="post-container">
+        <!-- Back Button -->
+        <a href="../index.html" class="back-btn">
+            &larr; Back to Blog Hub
+        </a>
+
+        <div class="main-grid">
+            
+            <!-- Left/Main Column: Post Body -->
+            <main class="main-content">
+                <article class="card" style="padding: 40px;">
+                    <!-- Post Header -->
+                    <header class="post-header">
+                        <span class="post-category">Web Development</span>
+                        <h1 class="post-title">Blog Layout</h1>
+                        <div class="post-meta">
+                            <img src="../../../static/img/index-img/seal.jpg" alt="Terrance" class="author-avatar">
+                            <span>Published: July 27, 2026</span>
+                            <span>&bull;</span>
+                            <span>Written by: Terrance</span>
+                            <span>&bull;</span>
+                            <span>5 min read</span>
+                        </div>
+                    </header>
+
+                    <!-- Featured Image -->
+                    <div class="featured-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80" alt="Featured post image" class="featured-img">
+                    </div>
+
+                    <!-- Post content -->
+                    <div class="post-body">
+                        <p>Welcome to our new blog post template! This layout is designed to present our ideas, updates, and projects in a beautifully readable, premium glassmorphic interface that scales perfectly on any device.</p>
+                        
+                        <h2>Structuring Content for Readability</h2>
+                        <p>When sharing coding tips or personal stories, the layout matters. By combining a clean main article space with a dedicated sidebar for authors and links, our visitors can follow along seamlessly. We've utilized the <code>Inter</code> and <code>Outfit</code> typography along with carefully coordinated HSL variables in <code>stylesheets</code> to ensure high contrast and readable text alignment.</p>
+
+                        <blockquote>
+                            "The best design is the one that makes content feel completely natural and effortless to read."
+                        </blockquote>
+
+                        <h2>Incorporating Code and Technical Insights</h2>
+                        <p>Since we often work on developer projects, support for code blocks is fully integrated into the stylesheet. For example, here's a simple JavaScript snippet showing how we hook up our responsive mobile navigation menu toggling:</p>
+
+<pre><code style= "color: #fff;">// Toggle responsive navigation menu
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+
+if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        navToggle.classList.toggle('open');
+    });
+}</code></pre>
+
+                        <h2>Next Steps for Our Site</h2>
+                        <p>As we expand our pages, each family member will be able to duplicate this template page inside the directory to start writing their posts. Stay tuned for more templates and game updates!</p>
+                    </div>
+                </article>
+
+                <!-- Comments Section -->
+                <section class="comments-section">
+                    <h2 class="comments-title">Comments</h2>
+                    
+                    <!-- Comment Form -->
+                    <form class="comment-form" onsubmit="event.preventDefault();">
+                        <div class="comment-input-group">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <textarea rows="4" placeholder="Join the discussion... Type your comment here." required></textarea>
+                        <button type="submit" class="comment-submit-btn">Post Comment</button>
+                    </form>
+
+                    <!-- Comments List -->
+                    <div class="comments-list">
+                        <!-- Comment 1 -->
+                        <div class="comment-card">
+                            <div class="comment-header">
+                                <div class="comment-author-info">
+                                    <span class="comment-author-name">Brandie</span>
+                                    <span class="badge badge-indigo">Author</span>
+                                </div>
+                                <span class="comment-date">July 27, 2026 at 9:15 AM</span>
+                            </div>
+                            <p class="comment-text">I love the new text layout! The glassmorphism card structure really highlights the typography and makes reading long paragraphs much easier on the eyes.</p>
+                        </div>
+
+                        <!-- Comment 2 -->
+                        <div class="comment-card">
+                            <div class="comment-header">
+                                <div class="comment-author-info">
+                                    <span class="comment-author-name">Cameron</span>
+                                </div>
+                                <span class="comment-date">July 27, 2026 at 11:30 AM</span>
+                            </div>
+                            <p class="comment-text">This is really clean! The code blocks highlighting works nicely. Can't wait to post my first production workflow article here.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Right Column: Sidebar Widgets -->
+            <aside class="sidebar-content">
+                <!-- Author Widget -->
+                <section class="card widget-card">
+                    <h3>About the Author</h3>
+                    <div class="author-widget">
+                        <a href="../../about/tbrown.html">
+                        <img src="../../../static/img/index-img/seal.jpg" alt="Terrance">
+                        <h4 class="author-name">Terrance</h4>
+                        <div class="author-role">Developer</div>
+                        <p class="author-bio">Full-stack software engineer designing web experiences. Passionate about clean code, architecture, and family collaborations.</p>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Suggested Reads -->
+                <section class="card widget-card">
+                    <h3>Recent Blog Posts</h3>
+                    <ul class="footer-info" style="display: flex; flex-direction: column; gap: 16px; list-style: none; padding: 0;">
+                        <li>
+                            <a href="#" style="color: var(--color-indigo); font-weight: 600; display: block; margin-bottom: 4px;">Top 5 Productivity Tips</a>
+                            <span style="font-size: 0.8rem; color: var(--color-silver);">July 15, 2026</span>
+                        </li>
+                        <li>
+                            <a href="#" style="color: var(--color-indigo); font-weight: 600; display: block; margin-bottom: 4px;">Minimalist Travel Kit Guide</a>
+                            <span style="font-size: 0.8rem; color: var(--color-silver);">July 10, 2026</span>
+                        </li>
+                    </ul>
+                </section>
+            </aside>
+
+        </div>
+    </div>
+
+    <!-- Premium Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h4>More Info</h4>
+                <p>Information about sources and the site</p>
+                <p>&copy; Copyright 2026 The Brown Family | T.C. Brown</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/tc-brown" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" fill="currentColor" width="16" height="16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../../static/js/main.js"></script>
+</body>
+</html>

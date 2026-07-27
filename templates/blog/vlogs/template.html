@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="../../../static/img/index-img/seal.jpg">
+    <title>The Brown Family | Vlog Post Template</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../../../static/css/blog.css">
+    
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .vlog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px 80px 24px;
+            width: 100%;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-indigo);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            margin-bottom: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .back-btn:hover {
+            color: var(--color-emerald);
+            transform: translateX(-4px);
+        }
+
+        .video-player-card {
+            background: var(--card-gradient);
+            border: var(--border);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
+            overflow: hidden;
+            margin-bottom: 30px;
+            transition: var(--transition-smooth);
+        }
+
+        .video-player-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-soft), var(--shadow-glow);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-bottom: var(--border);
+        }
+
+        .video-wrapper iframe, 
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .vlog-info {
+            padding: 30px;
+        }
+
+        .vlog-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(33, 117, 153, 0.1);
+            color: var(--color-indigo);
+            border-radius: 30px;
+            margin-bottom: 16px;
+        }
+
+        .vlog-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--color-white);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .vlog-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.9rem;
+            color: var(--color-silver);
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+            padding-bottom: 16px;
+        }
+
+        .vlog-meta img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid var(--color-indigo);
+        }
+
+        .vlog-description {
+            color: var(--color-white);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .vlog-description p {
+            margin-bottom: 16px;
+        }
+
+        .vlog-description h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            color: var(--color-white);
+        }
+
+        .vlog-description ul {
+            margin-bottom: 16px;
+            padding-left: 20px;
+        }
+
+        .vlog-description li {
+            margin-bottom: 8px;
+        }
+
+        /* Sidebar components */
+        .author-widget {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .author-widget img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(33, 117, 153, 0.15);
+            margin-bottom: 16px;
+        }
+
+        .author-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-white);
+            margin-bottom: 4px;
+        }
+
+        .author-role {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-indigo);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .author-bio {
+            font-size: 0.95rem;
+            color: var(--color-silver);
+            line-height: 1.6;
+        }
+
+        /* Suggestion List */
+        .suggested-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .suggested-item {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .suggested-thumb {
+            width: 100px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: var(--border);
+        }
+
+        .suggested-info {
+            flex-grow: 1;
+        }
+
+        .suggested-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-white);
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+
+        .suggested-meta {
+            font-size: 0.75rem;
+            color: var(--color-silver);
+        }
+
+        /* Comments section */
+        .comments-section {
+            margin-top: 50px;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
+            padding-top: 40px;
+        }
+
+        .comments-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--color-white);
+            margin-bottom: 30px;
+        }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .comment-input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 576px) {
+            .comment-input-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comment-form input, .comment-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.4);
+            border: var(--border);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            color: var(--color-white);
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .comment-form input:focus, .comment-form textarea:focus {
+            border-color: var(--color-indigo);
+            box-shadow: var(--shadow-glow);
+            background: rgba(255, 255, 255, 0.75);
+        }
+
+        .comment-submit-btn {
+            align-self: flex-start;
+            background: var(--accent-gradient);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 15px rgba(33, 117, 153, 0.15);
+        }
+
+        .comment-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(33, 117, 153, 0.25);
+        }
+
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .comment-card {
+            background: var(--card-gradient);
+            border: var(--border);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .comment-author-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .comment-author-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--color-white);
+        }
+
+        .comment-date {
+            font-size: 0.8rem;
+            color: var(--color-silver);
+        }
+
+        .comment-text {
+            color: var(--color-silver);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Premium Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img class="profile-img" src="../../../static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
+            </div>
+            
+            <!-- Toggle Menu for Mobile -->
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
+                <span class="hamburger"></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../../about/about.html" class="nav-link">About</a></li>
+                <li><a href="../../contact.html" class="nav-link">Contact</a></li>
+                <li><a href="../index.html" class="nav-link active">Blog</a></li>
+                <li><a href="../../our-things/index.html" class="nav-link">Our Things</a></li>
+                <li><a href="../../games/index.html" class="nav-link">Mini Games</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="vlog-container">
+        <!-- Back Button -->
+        <a href="../index.html" class="back-btn">
+            &larr; Back to Blog Hub
+        </a>
+
+        <div class="main-grid">
+            
+            <!-- Left/Main Column: Video & Info -->
+            <main class="main-content">
+                <article class="video-player-card">
+                    <!-- Responsive Video Player -->
+                    <div class="video-wrapper">
+                        <!-- Replace src with the vlog video embed url -->
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXc" allowfullscreen></iframe>
+                    </div>
+
+                    <!-- Vlog Info Detail -->
+                    <div class="vlog-info">
+                        <span class="vlog-badge">Website Update</span>
+                        <h1 class="vlog-title">Planning & Building the Blog</h1>
+                        
+                        <div class="vlog-meta">
+                            <img src="../../../static/img/index-img/seal.jpg" alt="Terrance">
+                            <span>Published: July 27, 2026</span>
+                            <span>•</span>
+                            <span>Recorded by Terrance</span>
+                            <span>•</span>
+                            <span>12 min watch</span>
+                        </div>
+
+                        <div class="vlog-description">
+                            <p>A description of the vlog entry will go in this section. Go in to some details about what the vidoes is about and what will be discussed. </p>
+                            
+                            <h3>Topics Discussed:</h3>
+                            <ul>
+                                <li>This section will be used to list the topic discussed in the vlog.</li>
+                                <li>Links and refreences can be added to this section to keep the page organized.</li>
+                                <li>You can use as many links to the resources as needed.</li>
+                            </ul>
+
+                            <p>A brief exit messsage can go in this section. The message can be a summary of the vlog content or just a brief message for the viewer/reader</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Comments Section -->
+                <section class="comments-section">
+                    <h2 class="comments-title">Discussion</h2>
+                    
+                    <!-- Comment Form -->
+                    <form class="comment-form" onsubmit="event.preventDefault();">
+                        <div class="comment-input-group">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <textarea rows="4" placeholder="Join the discussion... Type your comment here." required></textarea>
+                        <button type="submit" class="comment-submit-btn">Post Comment</button>
+                    </form>
+
+                    <!-- Comments List -->
+                    <div class="comments-list">
+                        <!-- Comment 1 -->
+                        <div class="comment-card">
+                            <div class="comment-header">
+                                <div class="comment-author-info">
+                                    <span class="comment-author-name">Jai'lin</span>
+                                </div>
+                                <span class="comment-date">July 27, 2026 at 10:20 AM</span>
+                            </div>
+                            <p class="comment-text">The monitor mounts really cleaned up the desk space. Can't wait to record our gaming tournament recap vlog in this new setup!</p>
+                        </div>
+
+                        <!-- Comment 2 -->
+                        <div class="comment-card">
+                            <div class="comment-header">
+                                <div class="comment-author-info">
+                                    <span class="comment-author-name">Brandie</span>
+                                    <span class="badge badge-indigo">Author</span>
+                                </div>
+                                <span class="comment-date">July 27, 2026 at 11:05 AM</span>
+                            </div>
+                            <p class="comment-text">Great explanation of the web development updates. The glassmorphism card styles look so premium. Looking forward to coding the cookbook items next!</p>
+                        </div>
+                    </div>
+                    
+                </section>
+            </main>
+
+            <!-- Right Column: Sidebar Widgets -->
+            <aside class="sidebar-content">
+                <!-- Author Widget -->
+                <section class="card widget-card">
+                    <h3>Presented By</h3>
+                    <div class="author-widget">
+                        <img src="../../../static/img/index-img/seal.jpg" alt="Terrance">
+                        <h4 class="author-name">Terrance</h4>
+                        <div class="author-role">Developer & Father</div>
+                        <p class="author-bio">Full-stack software engineer designing web experiences. Passionate about clean code, architecture, and family collaborations.</p>
+                    </div>
+                </section>
+
+                <!-- Suggested Videos -->
+                <section class="card widget-card">
+                    <h3>Recent Vlogs</h3>
+                    <ul class="suggested-list">
+                        <!-- Suggested 1 -->
+                        <li>
+                            <a href="#" class="suggested-item">
+                                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=120&q=80" alt="Code thumbnail" class="suggested-thumb">
+                                <div class="suggested-info">
+                                    <h4 class="suggested-title">How I Learned to Code in 6 Months</h4>
+                                    <span class="suggested-meta">12 min watch • July 19</span>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- Suggested 2 -->
+                        <li>
+                            <a href="#" class="suggested-item">
+                                <img src="https://images.unsplash.com/photo-1502481851512-e9e2529bbcc9?auto=format&fit=crop&w=120&q=80" alt="Camera thumbnail" class="suggested-thumb">
+                                <div class="suggested-info">
+                                    <h4 class="suggested-title">My Travel Video Gear Guide</h4>
+                                    <span class="suggested-meta">8 min watch • July 10</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </aside>
+
+        </div>
+    </div>
+
+    <!-- Premium Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h4>More Info</h4>
+                <p>Information about sources and the site</p>
+                <p>&copy; Copyright 2026 The Brown Family | T.C. Brown</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/tc-brown" class="footer-link" target="_blank" rel="noopener noreferrer">
+                    <svg class="github-icon" viewBox="0 0 16 16" fill="currentColor" width="16" height="16" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../../static/js/main.js"></script>
+</body>
+</html>
