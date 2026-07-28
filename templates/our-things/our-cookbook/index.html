@@ -200,7 +200,6 @@
       gap: 30px;
     }
 
-    /* Recipe Card */
     .recipe-card {
       background: var(--card-gradient);
       border: var(--border);
@@ -212,6 +211,7 @@
       box-shadow: var(--shadow-soft);
       backdrop-filter: var(--backdrop-blur);
       -webkit-backdrop-filter: var(--backdrop-blur);
+      cursor: pointer;
     }
 
     .recipe-card:hover {
@@ -441,13 +441,14 @@
   <!-- Main Feed Section -->
   <main class="explore-container">
     
-    <!-- Filter Pills -->
+    <!-- Filter Pills / data-category -->
     <div class="category-pills">
       <a href="#" class="pill active">✨ All Dishes</a>
       <a href="#" class="pill">⚡ 15-Min Meals</a>
       <a href="#" class="pill">🌱 Vegan & Veggie</a>
       <a href="#" class="pill">🥐 Sunday Baking</a>
       <a href="#" class="pill">🍝 Comfort Classics</a>
+      <a href="#" class="pill">Sample</a>
     </div>
 
     <!-- Feed Header -->
@@ -462,27 +463,31 @@
     <div class="recipe-grid" id="recipeGrid">
 
       <!-- Recipe Card 1 -->
-      <article class="recipe-card" data-title="honey-glazed chipotle pork skewers" data-category="comfort classics">
+       <!-- Search Filters -->
+      <article class="recipe-card" data-title="sample" data-category="sample" onclick="window.location.href='recipes/sample.html'">
         <div class="card-img-container">
-          <span class="card-badge">Dinner</span>
-          <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Grilled BBQ Feast">
+          <!-- Card Badge  and Image -->
+          <span class="card-badge">Sample</span>
+          <img src="../../../static/img/index-img/placeholder.jpg" alt="Placeholder Image">
         </div>
         <div class="card-body">
+          <!-- Author Badge and Tag -->
           <div class="author-row">
-            <img src="https://i.pravatar.cc/100?img=33" alt="User Avatar" class="avatar">
-            <span class="author-name">by @SmokeySam</span>
+            <img src="../../../static/img/index-img/seal.jpg" alt="User Avatar" class="avatar">
+            <span class="author-name">by @tcbrown</span>
           </div>
-          <h3 class="recipe-title">Honey-Glazed Chipotle Pork Skewers</h3>
-          <p class="recipe-desc">Sweet, smoky, and slightly spicy skewers caramelized over open flame.</p>
+          <!-- Recipe Information-->
+          <h3 class="recipe-title">Recipe Card Template</h3>
+          <p class="recipe-desc">Description of the dish that is going to be prepared. The description should be a few sentenses long.</p>
           <div class="card-footer">
-            <span>⭐ 4.9 (54 reviews)</span>
-            <span>⏱️ 25 mins</span>
+            <span>⭐ (0 reviews)</span>
+            <span>⏱️ 0 mins</span>
           </div>
         </div>
       </article>
 
       <!-- Recipe Card 2 -->
-      <article class="recipe-card" data-title="triple berry layered sponge cake" data-category="sunday baking">
+      <article class="recipe-card" data-title="triple berry layered sponge cake" data-category="sunday baking" onclick="window.location.href='recipes/triple-berry-layered-sponge-cake.html'">
         <div class="card-img-container">
           <span class="card-badge">Dessert</span>
           <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80" alt="Berry Cake Slice">
@@ -510,7 +515,7 @@
       </div>
 
       <!-- Recipe Card 3 -->
-      <article class="recipe-card" data-title="sourdough toast with poached eggs & chili crunch" data-category="15-min meals">
+      <article class="recipe-card" data-title="sourdough toast with poached eggs & chili crunch" data-category="15-min meals" onclick="window.location.href='recipes/sourdough-toast.html'">
         <div class="card-img-container">
           <span class="card-badge">Breakfast</span>
           <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80" alt="Avocado Toast">
@@ -530,10 +535,10 @@
       </article>
 
       <!-- Recipe Card 4 -->
-      <article class="recipe-card" data-title="authentic rigatoni alla carbonara" data-category="comfort classics">
+      <article class="recipe-card" data-title="authentic rigatoni alla carbonara" data-category="comfort classics" onclick="window.location.href='recipes/rigatoni-carbonara.html'">
         <div class="card-img-container">
           <span class="card-badge">Italian</span>
-          <img src="https://images.unsplash.com/photo-1621996346565-e3d5d6281318?auto=format&fit=crop&w=600&q=80" alt="Pasta Dish">
+          <img src="https://seasonedandsalted.com/wp-content/uploads/2024/07/rigatoni-carbonara-12-683x1024.jpg" alt="Pasta Dish">
         </div>
         <div class="card-body">
           <div class="author-row">
@@ -550,7 +555,7 @@
       </article>
 
       <!-- Recipe Card 5 -->
-      <article class="recipe-card" data-title="tahini chickpea & roasted veggie bowl" data-category="vegan & veggie">
+      <article class="recipe-card" data-title="tahini chickpea & roasted veggie bowl" data-category="vegan & veggie" onclick="window.location.href='recipes/tahini-chickpea-bowl.html'">
         <div class="card-img-container">
           <span class="card-badge">Healthy</span>
           <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="Power Bowl">

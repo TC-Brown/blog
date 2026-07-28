@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/jpeg" href="../../../../static/img/index-img/seal.jpg">
+  <title>The Brown Family | Recipe Template</title>
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Shared Main CSS -->
+  <link rel="stylesheet" href="../../../../static/css/blog.css">
+
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .recipe-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 80px 24px;
+      width: 100%;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-indigo);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+      margin-bottom: 30px;
+      text-decoration: none;
+    }
+
+    .back-btn:hover {
+      color: var(--color-emerald);
+      transform: translateX(-4px);
+    }
+
+    .recipe-card-detail {
+      background: var(--card-gradient);
+      border: var(--border);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: var(--backdrop-blur);
+      -webkit-backdrop-filter: var(--backdrop-blur);
+      overflow: hidden;
+      margin-bottom: 30px;
+      transition: var(--transition-smooth);
+    }
+
+    .recipe-card-detail:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-soft), var(--shadow-glow);
+    }
+
+    .recipe-hero-img-container {
+      position: relative;
+      aspect-ratio: 21 / 9;
+      width: 100%;
+      overflow: hidden;
+      border-bottom: var(--border);
+    }
+
+    @media (max-width: 768px) {
+      .recipe-hero-img-container {
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    .recipe-hero-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .recipe-badge {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      background: rgba(33, 117, 153, 0.15);
+      color: var(--color-indigo);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(33, 117, 153, 0.25);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .recipe-info {
+      padding: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .recipe-info {
+        padding: 24px;
+      }
+    }
+
+    .recipe-title-detail {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--color-white);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+
+    .recipe-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.9rem;
+      color: var(--color-silver);
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      padding-bottom: 20px;
+    }
+
+    .recipe-meta-row img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--color-indigo);
+    }
+
+    .recipe-desc-detail {
+      color: var(--color-silver);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    /* Stats Grid */
+    .recipe-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.35);
+      border: var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(4px);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-silver);
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-indigo);
+    }
+
+    /* Section Headings */
+    .recipe-section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--color-white);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Ingredients Checklist */
+    .ingredients-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .ingredient-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.3);
+      border: var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .ingredient-item:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .ingredient-item input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--color-indigo);
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .ingredient-item input[type="checkbox"]:checked {
+      background: var(--color-indigo);
+      border-color: var(--color-indigo);
+    }
+
+    .ingredient-item input[type="checkbox"]:checked::after {
+      content: '✓';
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+
+    .ingredient-item.checked {
+      background: rgba(33, 115, 54, 0.05);
+      border-color: rgba(33, 115, 54, 0.2);
+    }
+
+    .ingredient-item.checked span {
+      text-decoration: line-through;
+      color: var(--color-silver);
+      opacity: 0.7;
+    }
+
+    .ingredient-text {
+      font-size: 1rem;
+      color: var(--color-white);
+      line-height: 1.4;
+    }
+
+    /* Instructions Steps */
+    .instructions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .step-card {
+      display: flex;
+      gap: 20px;
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.3);
+      border: var(--border);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (max-width: 576px) {
+      .step-card {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+
+    .step-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #ffffff;
+      background: var(--accent-gradient);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(33, 117, 153, 0.2);
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--color-white);
+      margin-bottom: 6px;
+    }
+
+    .step-text {
+      color: var(--color-silver);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Sidebar Widgets */
+    .author-widget {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .author-widget img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(33, 117, 153, 0.15);
+      margin-bottom: 16px;
+    }
+
+    .author-name-widget {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-white);
+      margin-bottom: 4px;
+    }
+
+    .author-role-widget {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-indigo);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .author-bio-widget {
+      font-size: 0.95rem;
+      color: var(--color-silver);
+      line-height: 1.6;
+    }
+
+    .recent-recipes-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .recent-recipe-item {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .recent-recipe-thumb {
+      width: 90px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: var(--border);
+    }
+
+    .recent-recipe-info {
+      flex-grow: 1;
+    }
+
+    .recent-recipe-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-white);
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .recent-recipe-meta {
+      font-size: 0.75rem;
+      color: var(--color-silver);
+    }
+
+    /* Responsive Overrides */
+    @media (max-width: 991.98px) {
+      .main-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+      }
+      .recipe-container {
+        padding: 20px 16px 60px 16px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .recipe-title-detail {
+        font-size: 1.8rem;
+      }
+      .recipe-info {
+        padding: 20px;
+      }
+      .step-card {
+        padding: 16px;
+      }
+      .recipe-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .recipe-container {
+        padding: 16px 12px 60px 12px;
+      }
+      .recipe-title-detail {
+        font-size: 1.5rem;
+      }
+      .recipe-info {
+        padding: 16px;
+      }
+      .step-card {
+        padding: 12px;
+        gap: 12px;
+      }
+      .ingredient-item {
+        padding: 10px 12px;
+      }
+      .recipe-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .stat-box {
+        padding: 12px 8px;
+      }
+      .stat-value {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Premium Navigation Header -->
+  <nav class="navbar">
+      <div class="nav-container">
+          <div class="nav-brand">
+              <img class="profile-img" src="../../../../static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
+          </div>
+          
+          <!-- Toggle Menu for Mobile -->
+          <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
+              <span class="hamburger"></span>
+          </button>
+
+          <ul class="nav-menu" id="navMenu">
+              <li><a href="../../../../index.html" class="nav-link">Home</a></li>
+              <li><a href="../../../about/about.html" class="nav-link">About</a></li>
+              <li><a href="../../../contact.html" class="nav-link">Contact</a></li>
+              <li><a href="../../blog/index.html" class="nav-link">Blog</a></li>
+              <li><a href="../../index.html" class="nav-link active">Our Things</a></li>
+              <li><a href="../../../games/index.html" class="nav-link">Mini Games</a></li>
+          </ul>
+      </div>
+  </nav>
+
+  <!-- Recipe Main Content Area -->
+  <div class="recipe-container">
+      <!-- Back Button -->
+      <a href="../index.html" class="back-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Back to Cookbook
+      </a>
+
+      <div class="main-grid">
+          
+          <!-- Left Column: Recipe Detail -->
+          <main class="main-content">
+              <article class="recipe-card-detail">
+                  <div class="recipe-hero-img-container">
+                      <span class="recipe-badge">Category</span>
+                      <img src="../../../../static/img/index-img/placeholder.jpg" alt="Recipe Image">
+                  </div>
+
+                  <div class="recipe-info">
+                      <h1 class="recipe-title-detail">Recipe Title</h1>
+                      
+                      <div class="recipe-meta-row">
+                          <img src="../../../../static/img/index-img/seal.jpg" alt="Author">
+                          <span>by @username</span>
+                          <span>•</span>
+                          <span>⭐ 5.0 (0 reviews)</span>
+                          <span>•</span>
+                          <span>⏱️ 30 mins</span>
+                      </div>
+
+                      <p class="recipe-desc-detail">A detailed description of this amazing family recipe, outlining its texture, taste profile, and origin story.</p>
+
+                      <!-- Quick Stats -->
+                      <div class="recipe-stats-grid">
+                          <div class="stat-box">
+                              <div class="stat-label">Prep Time</div>
+                              <div class="stat-value">10m</div>
+                          </div>
+                          <div class="stat-box">
+                              <div class="stat-label">Cook Time</div>
+                              <div class="stat-value">20m</div>
+                          </div>
+                          <div class="stat-box">
+                              <div class="stat-label">Servings</div>
+                              <div class="stat-value">4</div>
+                          </div>
+                          <div class="stat-box">
+                              <div class="stat-label">Difficulty</div>
+                              <div class="stat-value">Easy</div>
+                          </div>
+                      </div>
+
+                      <!-- Ingredients Checklist -->
+                      <h2 class="recipe-section-title">🍳 Ingredients</h2>
+                      <div class="ingredients-list">
+                          <label class="ingredient-item">
+                              <input type="checkbox">
+                              <span class="ingredient-text">Ingredient item 1 with quantity</span>
+                          </label>
+                          <label class="ingredient-item">
+                              <input type="checkbox">
+                              <span class="ingredient-text">Ingredient item 2 with quantity</span>
+                          </label>
+                      </div>
+
+                      <!-- Instructions/Steps -->
+                      <h2 class="recipe-section-title">📝 Instructions</h2>
+                      <div class="instructions-list">
+                          <div class="step-card">
+                              <div class="step-number">1</div>
+                              <div class="step-content">
+                                  <h3 class="step-title">Prep Work</h3>
+                                  <p class="step-text">Explain the initial step of the recipe here in detail.</p>
+                              </div>
+                          </div>
+                          <div class="step-card">
+                              <div class="step-number">2</div>
+                              <div class="step-content">
+                                  <h3 class="step-title">Cooking</h3>
+                                  <p class="step-text">Explain the second step of the cooking process here.</p>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+              </article>
+          </main>
+
+          <!-- Right Column: Sidebar Widgets -->
+          <aside class="sidebar-content">
+              <!-- Author Widget -->
+              <section class="card widget-card">
+                  <h3>Shared By</h3>
+                  <div class="author-widget">
+                      <img src="../../../../static/img/index-img/seal.jpg" alt="Author Avatar">
+                      <h4 class="author-name-widget">Author Name</h4>
+                      <div class="author-role-widget">Family Cook</div>
+                      <p class="author-bio-widget">A brief description of the person who shared this recipe and their love for cooking.</p>
+                  </div>
+              </section>
+
+              <!-- Other Recipes Widget -->
+              <section class="card widget-card">
+                  <h3>More Recipes</h3>
+                  <ul class="recent-recipes-list">
+                      <li>
+                          <a href="triple-berry-layered-sponge-cake.html" class="recent-recipe-item">
+                              <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=120&q=80" alt="Cake" class="recent-recipe-thumb">
+                              <div class="recent-recipe-info">
+                                  <h4 class="recent-recipe-title">Triple Berry Layered Sponge Cake</h4>
+                                  <span class="recent-recipe-meta">Dessert • 50 mins</span>
+                              </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="rigatoni-carbonara.html" class="recent-recipe-item">
+                              <img src="https://seasonedandsalted.com/wp-content/uploads/2024/07/rigatoni-carbonara-12-683x1024.jpg" alt="Carbonara" class="recent-recipe-thumb">
+                              <div class="recent-recipe-info">
+                                  <h4 class="recent-recipe-title">Authentic Rigatoni Carbonara</h4>
+                                  <span class="recent-recipe-meta">Pasta • 20 mins</span>
+                              </div>
+                          </a>
+                      </li>
+                  </ul>
+              </section>
+          </aside>
+
+      </div>
+  </div>
+
+  <!-- Premium Footer -->
+  <footer>
+      <div class="footer-container">
+          <div class="footer-info">
+              <h4>More Info</h4>
+              <p>Information about sources and the site</p>
+              <p>&copy; Copyright 2026 The Brown Family | T.C. Brown</p>
+          </div>
+      </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../static/js/main.js"></script>
+  <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          // Interactive Checkboxes logic
+          const checkboxes = document.querySelectorAll('.ingredient-item input[type="checkbox"]');
+          checkboxes.forEach(checkbox => {
+              checkbox.addEventListener('change', function() {
+                  const parentItem = this.closest('.ingredient-item');
+                  if (this.checked) {
+                      parentItem.classList.add('checked');
+                  } else {
+                      parentItem.classList.remove('checked');
+                  }
+              });
+          });
+      });
+  </script>
+</body>
+</html>
