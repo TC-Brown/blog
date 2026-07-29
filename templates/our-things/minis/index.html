@@ -254,11 +254,12 @@
 
         .collection-container.active {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 24px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px 80px 24px;
+            width: 100%;
         }
 
         /* Item Cards */
@@ -309,6 +310,8 @@
             color: var(--color-white);
             margin-bottom: 6px;
             line-height: 1.3;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .mini-rarity {
@@ -322,6 +325,7 @@
             justify-content: center;
             gap: 6px;
             font-weight: 600;
+            flex-wrap: wrap;
         }
 
         /* Action Buttons */
@@ -373,6 +377,13 @@
         }
 
         /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .collection-container.active {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 16px;
+            }
+        }
+
         @media (max-width: 768px) {
             .tracker-hero h1 {
                 font-size: 2.2rem;
@@ -408,6 +419,63 @@
                 width: 100%;
                 text-align: center;
                 margin-bottom: 4px;
+            }
+            .collection-container.active {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .collection-container.active {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                gap: 12px;
+                padding: 0 12px 60px 12px;
+            }
+            .mini-card {
+                padding: 12px;
+                border-radius: 12px;
+            }
+            .mini-img-placeholder {
+                height: 95px;
+                font-size: 0.75rem;
+                margin-bottom: 10px;
+            }
+            .mini-name {
+                font-size: 0.95rem;
+            }
+            .mini-rarity {
+                font-size: 0.75rem;
+                margin-bottom: 12px;
+            }
+            .card-actions {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .action-btn {
+                padding: 6px;
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tracker-hero h1 {
+                font-size: 1.8rem;
+            }
+            .tracker-hero p {
+                font-size: 0.9rem;
+            }
+            .collection-container.active {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 0 16px 60px 16px;
+            }
+            .card-actions {
+                flex-direction: row;
+                gap: 10px;
+            }
+            .mini-img-placeholder {
+                height: 120px;
             }
         }
     </style>

@@ -206,6 +206,11 @@
     color: var(--color-indigo);
     border: 1px solid rgba(33, 117, 153, 0.25);
 }
+.status-badge.updating-status {
+    background: rgba(153, 93, 33, 0.12);
+    color: var(--color-indigo);
+    border: 1px solid rgba(153, 93, 33, 0.25);
+}
 
 /* Card Content Details */
 .card-details {
