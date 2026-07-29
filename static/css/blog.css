@@ -486,12 +486,6 @@ body.light-theme .theme-toggle .moon-icon { display: block; }
     margin-bottom: 20px;
 }
 
-.social-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
 .name-tag {
     font-size: 0.8rem;
     font-weight: 500;
