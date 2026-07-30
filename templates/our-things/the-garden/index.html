@@ -402,34 +402,42 @@
     <section class="layout-grid" id="plantGrid">
 
       <!-- Tile 1 -->
-      <article class="plant-tile" onclick="selectPlant('pothos', this)">
-        <img class="tile-img" src="https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?auto=format&fit=crop&w=400&q=80" alt="Pothos">
-        <h3 class="tile-title">Pothos</h3>
-        <p class="tile-latin">Epipremnum aureum</p>
+      <article class="plant-tile" onclick="selectPlant('daisy', this)">
+        <img class="tile-img" src="https://www.thespruce.com/thmb/R2YGvPlN9IbDQelam4QUSYuJKgI=/4200x0/filters:no_upscale():max_bytes(150000):strip_icc()/shasta-daisy-growing-guide-5209135-hero-8519a22e0bce4f678bc3f8473d7e03c1.jpg" alt="Shasta Daisy">
+        <h3 class="tile-title">Shasta Daisy</h3>
+        <p class="tile-latin"></p>
         <button class="select-btn">SELECT</button>
       </article>
 
       <!-- Tile 2 -->
-      <article class="plant-tile" onclick="selectPlant('snake', this)">
-        <img class="tile-img" src="https://images.unsplash.com/photo-1593482892290-f54927ae1bac?auto=format&fit=crop&w=400&q=80" alt="Snake Plant">
-        <h3 class="tile-title">Snake Plant</h3>
-        <p class="tile-latin">Dracaena trifasciata</p>
+      <article class="plant-tile" onclick="selectPlant('forgetmenot', this)">
+        <img class="tile-img" src="https://images.immediate.co.uk/production/volatile/sites/10/2018/10/2048x1365-Myosotis-Grow-Guide-LI3098493-0ec3f0a.jpg?resize=768,512" alt="Forget-Me-Not">
+        <h3 class="tile-title">Forger-Me-Not</h3>
+        <p class="tile-latin"></p>
         <button class="select-btn">SELECT</button>
       </article>
 
       <!-- Tile 3 -->
-      <article class="plant-tile" onclick="selectPlant('zz', this)">
-        <img class="tile-img" src="https://images.unsplash.com/photo-1632207691143-643e2a9a9361?auto=format&fit=crop&w=400&q=80" alt="ZZ Plant">
-        <h3 class="tile-title">ZZ Plant</h3>
-        <p class="tile-latin">Zamioculcas zamiifolia</p>
+      <article class="plant-tile" onclick="selectPlant('marigold', this)">
+        <img class="tile-img" src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Tagetes_erecta_chendumalli_chedi.jpg" alt="Marigold">
+        <h3 class="tile-title">Marigold</h3>
+        <p class="tile-latin"></p>
         <button class="select-btn">SELECT</button>
       </article>
 
       <!-- Tile 4 -->
-      <article class="plant-tile" onclick="selectPlant('monstera', this)">
-        <img class="tile-img" src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=400&q=80" alt="Monstera">
-        <h3 class="tile-title">Monstera</h3>
-        <p class="tile-latin">Monstera deliciosa</p>
+      <article class="plant-tile" onclick="selectPlant('geranium', this)">
+        <img class="tile-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7ugP9Wp2vNL_egpkQQUbvqDgz28GkAGX8nLgeWKgXKg&s=10" alt="Geranium">
+        <h3 class="tile-title">Geranium</h3>
+        <p class="tile-latin"></p>
+        <button class="select-btn">SELECT</button>
+      </article>
+
+      <!-- Tile 5 -->
+      <article class="plant-tile" onclick="selectPlant('petunia', this)">
+        <img class="tile-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwkT5VDIEM34ru8Xn3pFyCYejcHfKt_BhEyADhoNxMO-n9ItBNq-SO8d1-jSFCKGbuzQPkNmDPQkGKf2UnMUl2m0eTvAxjwRxJYSAzHyI&s=10" alt="Petunia">
+        <h3 class="tile-title">Petunia</h3>
+        <p class="tile-latin"></p>
         <button class="select-btn">SELECT</button>
       </article>
 
@@ -464,7 +472,7 @@
         </div>
 
         <!-- Back button inside modal -->
-        <button class="modal-back-btn" id="modalBackBtn">← Back to Garden</button>
+        <button class="modal-back-btn" id="modalBackBtn">&larr; Back to Garden</button>
       </div>
     </div>
   </main>
@@ -487,64 +495,79 @@
   <script>
     // Plant Data Object
     const plantData = {
-      pothos: {
-        name: "Pothos",
-        latin: "Epipremnum aureum",
-        img: "https://images.unsplash.com/photo-1596547609652-9cf5d8d76921?auto=format&fit=crop&w=400&q=80",
+      daisy: {
+        name: "Shasta Daisy",
+        latin: "Leucanthemum × superbum",
+        img: "https://www.thespruce.com/thmb/R2YGvPlN9IbDQelam4QUSYuJKgI=/4200x0/filters:no_upscale():max_bytes(150000):strip_icc()/shasta-daisy-growing-guide-5209135-hero-8519a22e0bce4f678bc3f8473d7e03c1.jpg",
         growing: [
-          "<strong>LIGHT:</strong> Bright, indirect light to low light tolerances.",
-          "<strong>WATER:</strong> Allow the top half of soil to dry between waterings.",
-          "<strong>SOIL:</strong> Standard well-draining potting soil mix."
+          "<strong>LIGHT:</strong> ",
+          "<strong>WATER:</strong> ",
+          "<strong>SOIL:</strong> "
         ],
         sowing: [
-          "<strong>METHOD:</strong> Easiest from stem cuttings rooted in water or soil.",
-          "<strong>NODE:</strong> Ensure cutting has at least one node below water.",
-          "<strong>ROOTING:</strong> Roots typically appear within 2–3 weeks."
+          "<strong>METHOD:</strong> ",
+          "<strong>NODE:</strong> ",
+          "<strong>ROOTING:</strong> "
         ]
       },
-      snake: {
-        name: "Snake Plant",
-        latin: "Dracaena trifasciata",
-        img: "https://images.unsplash.com/photo-1593482892290-f54927ae1bac?auto=format&fit=crop&w=400&q=80",
+      forgetmenot: {
+        name: "Forget-Me-Not",
+        latin: "",
+        img: "https://images.immediate.co.uk/production/volatile/sites/10/2018/10/2048x1365-Myosotis-Grow-Guide-LI3098493-0ec3f0a.jpg?resize=768,512",
         growing: [
-          "<strong>LIGHT:</strong> Tolerates low light; thrives in indirect bright sun.",
-          "<strong>WATER:</strong> Allow soil to dry completely between waterings.",
-          "<strong>SOIL:</strong> Well-draining cactus or succulent soil mix."
+          "<strong>LIGHT:</strong> ",
+          "<strong>WATER:</strong> ",
+          "<strong>SOIL:</strong> "
         ],
         sowing: [
-          "<strong>METHOD:</strong> Propagated by division or leaf cuttings.",
-          "<strong>DIVISION:</strong> Separate offsets (pups) during repotting.",
-          "<strong>CUTTINGS:</strong> Let leaf cuts calluses 1-2 days before planting."
+          "<strong>METHOD:</strong> ",
+          "<strong>DIVISION:</strong> ",
+          "<strong>CUTTINGS:</strong> "
         ]
       },
-      zz: {
-        name: "ZZ Plant",
-        latin: "Zamioculcas zamiifolia",
-        img: "https://images.unsplash.com/photo-1632207691143-643e2a9a9361?auto=format&fit=crop&w=400&q=80",
+      marigold: {
+        name: "marigold",
+        latin: "",
+        img: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Tagetes_erecta_chendumalli_chedi.jpg",
         growing: [
-          "<strong>LIGHT:</strong> Low to bright indirect sunlight.",
-          "<strong>WATER:</strong> Drought tolerant; water every 2–3 weeks.",
-          "<strong>SOIL:</strong> Loose, well-draining potting mixture."
+          "<strong>LIGHT:</strong> ",
+          "<strong>WATER:</strong> ",
+          "<strong>SOIL:</strong> "
         ],
         sowing: [
-          "<strong>METHOD:</strong> Leaf cuttings or rhizome division.",
-          "<strong>PATIENCE:</strong> Leaf cuttings can take several months to form rhizomes.",
-          "<strong>MOISTURE:</strong> Keep soil lightly damp for cuttings, not wet."
+          "<strong>METHOD:</strong> ",
+          "<strong>PATIENCE:</strong> ",
+          "<strong>MOISTURE:</strong> "
         ]
       },
-      monstera: {
-        name: "Monstera",
-        latin: "Monstera deliciosa",
-        img: "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=400&q=80",
+      petunia: {
+        name: "Petunia",
+        latin: "",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwkT5VDIEM34ru8Xn3pFyCYejcHfKt_BhEyADhoNxMO-n9ItBNq-SO8d1-jSFCKGbuzQPkNmDPQkGKf2UnMUl2m0eTvAxjwRxJYSAzHyI&s=10",
         growing: [
-          "<strong>LIGHT:</strong> Medium to bright indirect sunlight.",
-          "<strong>WATER:</strong> Water every 1-2 weeks; allow soil to dry partially.",
-          "<strong>SOIL:</strong> Peat-based mix with perlite and orchid bark."
+          "<strong>LIGHT:</strong> ",
+          "<strong>WATER:</strong> ",
+          "<strong>SOIL:</strong> "
         ],
         sowing: [
-          "<strong>METHOD:</strong> Seeds or stem cuttings with aerial roots.",
-          "<strong>SEED PREP:</strong> Soak seeds in warm water 12 hours prior.",
-          "<strong>GERMINATION:</strong> Keeps soil warm (75°F); sprouts in 2–4 weeks."
+          "<strong>METHOD:</strong> ",
+          "<strong>SEED PREP:</strong> ",
+          "<strong>GERMINATION:</strong> "
+        ]
+      },
+      geranium: {
+        name: "Geranium",
+        latin: "",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7ugP9Wp2vNL_egpkQQUbvqDgz28GkAGX8nLgeWKgXKg&s=10",
+        growing: [
+          "<strong>LIGHT:</strong> ",
+          "<strong>WATER:</strong> ",
+          "<strong>SOIL:</strong> "
+        ],
+        sowing: [
+          "<strong>METHOD:</strong> ",
+          "<strong>SEED PREP:</strong> ",
+          "<strong>GERMINATION:</strong> "
         ]
       }
     };
