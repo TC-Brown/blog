@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,12 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <!-- Shared Main CSS -->
   <link rel="stylesheet" href="../../../static/css/blog.css">
-  
+
   <style>
     body {
       display: flex;
@@ -21,26 +24,26 @@
 
     /* Back Button Style override */
     .back-btn-container {
-        max-width: 1200px;
-        width: 100%;
-        margin: 20px auto 0 auto;
-        padding: 0 24px;
+      max-width: 1200px;
+      width: 100%;
+      margin: 20px auto 0 auto;
+      padding: 0 24px;
     }
 
     .back-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--color-indigo);
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 0.95rem;
-        transition: var(--transition-smooth);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-indigo);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
     }
 
     .back-btn:hover {
-        color: var(--color-emerald);
-        transform: translateX(-4px);
+      color: var(--color-emerald);
+      transform: translateX(-4px);
     }
 
     /* Hero Header */
@@ -156,7 +159,10 @@
     /* Detailed View Modal Section */
     .modal-overlay {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: rgba(8, 11, 17, 0.7);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
@@ -167,7 +173,8 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      overflow-y: auto; /* Enable scroll on overlay for long modal content */
+      overflow-y: auto;
+      /* Enable scroll on overlay for long modal content */
     }
 
     .modal-overlay.open {
@@ -189,7 +196,8 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      margin: auto; /* Auto margin centers modal inside flexbox while keeping scroll top-to-bottom */
+      margin: auto;
+      /* Auto margin centers modal inside flexbox while keeping scroll top-to-bottom */
     }
 
     .modal-overlay.open .modal-container {
@@ -313,6 +321,7 @@
         align-items: flex-start;
         padding: 40px 16px;
       }
+
       .modal-container {
         width: 100%;
         max-width: 100%;
@@ -320,6 +329,7 @@
         border-radius: 16px;
         gap: 16px;
       }
+
       .modal-close-btn {
         top: 12px;
         right: 12px;
@@ -327,13 +337,16 @@
         border-color: rgba(255, 255, 255, 0.15);
         color: var(--color-white);
       }
+
       .modal-content-layout {
         grid-template-columns: 1fr;
         gap: 20px;
       }
+
       .tips-grid {
         grid-template-columns: 1fr;
       }
+
       .detail-img {
         height: 180px;
       }
@@ -343,52 +356,57 @@
       .modal-overlay {
         padding: 20px 8px;
       }
+
       .modal-container {
         padding: 20px 12px;
       }
+
       .tips-grid {
         gap: 12px;
       }
+
       .tip-box {
         padding: 16px;
       }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Premium Navigation Header -->
   <nav class="navbar">
-      <div class="nav-container">
-          <div class="nav-brand">
-              <img class="profile-img" src="../../../static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
-          </div>
-          
-          <!-- Toggle Menu for Mobile -->
-          <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
-              <span class="hamburger"></span>
-          </button>
-
-          <ul class="nav-menu" id="navMenu">
-              <li><a href="../../../index.html" class="nav-link">Home</a></li>
-              <li><a href="../../about/about.html" class="nav-link">About</a></li>
-              <li><a href="../../contact.html" class="nav-link">Contact</a></li>
-              <li><a href="../../blog/index.html" class="nav-link">Blog</a></li>
-              <li><a href="../index.html" class="nav-link active">Our Things</a></li>
-              <li><a href="../../../error/error.html" class="nav-link">Mini Games</a></li>
-          </ul>
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img class="profile-img" src="../../../static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
       </div>
+
+      <!-- Toggle Menu for Mobile -->
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
+        <span class="hamburger"></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="../../../index.html" class="nav-link">Home</a></li>
+        <li><a href="../../about/about.html" class="nav-link">About</a></li>
+        <li><a href="../../contact.html" class="nav-link">Contact</a></li>
+        <li><a href="../../blog/index.html" class="nav-link">Blog</a></li>
+        <li><a href="../index.html" class="nav-link active">Our Things</a></li>
+        <li><a href="../../../error/error.html" class="nav-link">Mini Games</a></li>
+      </ul>
+    </div>
   </nav>
 
   <!-- Back to Hub navigation -->
   <div class="back-btn-container">
-      <a href="../index.html" class="back-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="19" y1="12" x2="5" y2="12"></line>
-              <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-          Back to Collections
-      </a>
+    <a href="../index.html" class="back-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Back to Collections
+    </a>
   </div>
 
   <main class="container" style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 24px 80px 24px;">
@@ -403,7 +421,9 @@
 
       <!-- Tile 1 -->
       <article class="plant-tile" onclick="selectPlant('daisy', this)">
-        <img class="tile-img" src="https://www.thespruce.com/thmb/R2YGvPlN9IbDQelam4QUSYuJKgI=/4200x0/filters:no_upscale():max_bytes(150000):strip_icc()/shasta-daisy-growing-guide-5209135-hero-8519a22e0bce4f678bc3f8473d7e03c1.jpg" alt="Shasta Daisy">
+        <img class="tile-img"
+          src="https://www.thespruce.com/thmb/R2YGvPlN9IbDQelam4QUSYuJKgI=/4200x0/filters:no_upscale():max_bytes(150000):strip_icc()/shasta-daisy-growing-guide-5209135-hero-8519a22e0bce4f678bc3f8473d7e03c1.jpg"
+          alt="Shasta Daisy">
         <h3 class="tile-title">Shasta Daisy</h3>
         <p class="tile-latin">Leucanthemum x spuerbum</p>
         <button class="select-btn">SELECT</button>
@@ -411,7 +431,9 @@
 
       <!-- Tile 2 -->
       <article class="plant-tile" onclick="selectPlant('forgetmenot', this)">
-        <img class="tile-img" src="https://images.immediate.co.uk/production/volatile/sites/10/2018/10/2048x1365-Myosotis-Grow-Guide-LI3098493-0ec3f0a.jpg?resize=768,512" alt="Forget-Me-Not">
+        <img class="tile-img"
+          src="https://images.immediate.co.uk/production/volatile/sites/10/2018/10/2048x1365-Myosotis-Grow-Guide-LI3098493-0ec3f0a.jpg?resize=768,512"
+          alt="Forget-Me-Not">
         <h3 class="tile-title">Forget-Me-Not</h3>
         <p class="tile-latin">Myosotis</p>
         <button class="select-btn">SELECT</button>
@@ -419,7 +441,8 @@
 
       <!-- Tile 3 -->
       <article class="plant-tile" onclick="selectPlant('marigold', this)">
-        <img class="tile-img" src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Tagetes_erecta_chendumalli_chedi.jpg" alt="Marigold">
+        <img class="tile-img"
+          src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Tagetes_erecta_chendumalli_chedi.jpg" alt="Marigold">
         <h3 class="tile-title">Marigold</h3>
         <p class="tile-latin">Tagetes erecta</p>
         <button class="select-btn">SELECT</button>
@@ -427,7 +450,9 @@
 
       <!-- Tile 4 -->
       <article class="plant-tile" onclick="selectPlant('geranium', this)">
-        <img class="tile-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7ugP9Wp2vNL_egpkQQUbvqDgz28GkAGX8nLgeWKgXKg&s=10" alt="Geranium">
+        <img class="tile-img"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7ugP9Wp2vNL_egpkQQUbvqDgz28GkAGX8nLgeWKgXKg&s=10"
+          alt="Geranium">
         <h3 class="tile-title">Geranium</h3>
         <p class="tile-latin">Pelargonium x hortorum</p>
         <button class="select-btn">SELECT</button>
@@ -435,9 +460,81 @@
 
       <!-- Tile 5 -->
       <article class="plant-tile" onclick="selectPlant('petunia', this)">
-        <img class="tile-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwkT5VDIEM34ru8Xn3pFyCYejcHfKt_BhEyADhoNxMO-n9ItBNq-SO8d1-jSFCKGbuzQPkNmDPQkGKf2UnMUl2m0eTvAxjwRxJYSAzHyI&s=10" alt="Petunia">
+        <img class="tile-img"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwkT5VDIEM34ru8Xn3pFyCYejcHfKt_BhEyADhoNxMO-n9ItBNq-SO8d1-jSFCKGbuzQPkNmDPQkGKf2UnMUl2m0eTvAxjwRxJYSAzHyI&s=10"
+          alt="Petunia">
         <h3 class="tile-title">Petunia</h3>
         <p class="tile-latin">Petunia x atkinsiana</p>
+        <button class="select-btn">SELECT</button>
+      </article>
+
+      <!-- Tile 6 -->
+      <article class="plant-tile" onclick="selectPlant('cosmos', this)">
+        <img class="tile-img"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnF2av_LgehgGeZrdiLaoPtlMEdIE5xebOTBEPhz8uCcC3WnZPrgsPwJUgCuPcEXHnKzgZm-rkRhvzXYO8ouAcYaUsKK5aicXw9sIQxf6smw&s=10"
+          alt="Cosmos">
+        <h3 class="tile-title">Cosmos</h3>
+        <p class="tile-latin">Cosmos bipinnatus</p>
+        <button class="select-btn">SELECT</button>
+      </article>
+
+      <!-- Tile 7 -->
+      <article class="plant-tile" onclick="selectPlant('sunflower', this)">
+        <img class="tile-img"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT31GdSL15-59kh-o1ek6rsGFB1IrBRZniMEtNcltWehQ&s=10"
+          alt="Sunflower">
+        <h3 class="tile-title">Sunflower</h3>
+        <p class="tile-latin">Helianthus annuus</p>
+        <button class="select-btn">SELECT</button>
+      </article>
+
+      <!-- Tile 7b -->
+      <article class="plant-tile" onclick="selectPlant('morningGlory', this)">
+        <img class="tile-img"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Ipomoea_tricolor-1.jpg/250px-Ipomoea_tricolor-1.jpg"
+          alt="Morning Glory">
+        <h3 class="tile-title">Morning Glory</h3>
+        <p class="tile-latin">Ipomoea purpurea & Ipomoea tricolor</p>
+        <button class="select-btn">SELECT</button>
+      </article>
+
+      <!-- Tile 8 -->
+      <article class="plant-tile" onclick="selectPlant('myrtle', this)">
+        <img class="tile-img"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC2tnI5FJm1sNRaKiahrxe1UUqjiyGmtOJTd-xXQi90Q&s=10"
+          alt="Myrtle Tree">
+        <h3 class="tile-title">Myrtle Tree</h3>
+        <p class="tile-latin">Lagerstroemia indica</p>
+        <button class="select-btn">SELECT</button>
+      </article>
+
+      <!-- Tile 9 -->
+      <article class="plant-tile" onclick="selectPlant('tomato', this)">
+        <img class="tile-img"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoxK33YRwG8dfCzFh99l3-FsRCnM6q0a8fRhWYn7FU3w&s=10"
+          alt="Tomato">
+        <h3 class="tile-title">Tomato</h3>
+        <p class="tile-latin">Solanum lycopersicum</p>
+        <button class="select-btn">SELECT</button>
+      </article>
+
+      <!-- Tile 10 -->
+      <article class="plant-tile" onclick="selectPlant('cantaloupe', this)">
+        <img class="tile-img"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOd10hsje03Qt0H2zmOLk_RJ5tCMs9fz76nopBYuPgcQ&s=10"
+          alt="Cantaloupe">
+        <h3 class="tile-title">Cantaloupe</h3>
+        <p class="tile-latin">Cucumis melo</p>
+        <button class="select-btn">SELECT</button>
+      </article>
+
+      <!-- Tile 11 -->
+      <article class="plant-tile" onclick="selectPlant('greenOnion', this)">
+        <img class="tile-img"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGlegUC_ntUQrp6R7excoZ9eN2wTOezSnFfH5MlBcO5Q&s=10"
+          alt="Green Onion">
+        <h3 class="tile-title">Green Onion</h3>
+        <p class="tile-latin">Allium fistulosum</p>
         <button class="select-btn">SELECT</button>
       </article>
 
@@ -447,10 +544,10 @@
     <div class="modal-overlay" id="plantModalOverlay">
       <div class="modal-container">
         <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
-        
+
         <div class="modal-content-layout">
           <img id="detailImg" class="detail-img" src="" alt="Plant Image">
-          
+
           <div>
             <div class="detail-header">
               <h2 id="detailName">Plant Name</h2>
@@ -479,13 +576,13 @@
 
   <!-- Premium Footer -->
   <footer>
-      <div class="footer-container">
-          <div class="footer-info">
-              <h4>More Info</h4>
-              <p>Information about sources and the site</p>
-              <p>&copy; Copyright 2026 The Brown Family | T.C. Brown</p>
-          </div>
+    <div class="footer-container">
+      <div class="footer-info">
+        <h4>More Info</h4>
+        <p>Information about sources and the site</p>
+        <p>&copy; Copyright 2026 The Brown Family | T.C. Brown</p>
       </div>
+    </div>
   </footer>
 
   <!-- Shared Main Scripts -->
@@ -569,7 +666,112 @@
           "<strong>SEED PREP:</strong> ",
           "<strong>GERMINATION:</strong> "
         ]
-      }
+      },
+      cosmos: {
+        name: "Cosmos",
+        latin: "Cosmos bipinnatus",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnF2av_LgehgGeZrdiLaoPtlMEdIE5xebOTBEPhz8uCcC3WnZPrgsPwJUgCuPcEXHnKzgZm-rkRhvzXYO8ouAcYaUsKK5aicXw9sIQxf6smw&s=10",
+        growing: [
+          "<strong>LIGHT:</strong> ",
+          "<strong>WATER:</strong> ",
+          "<strong>SOIL:</strong> "
+        ],
+        sowing: [
+          "<strong>METHOD:</strong> ",
+          "<strong>SEED PREP:</strong> ",
+          "<strong>GERMINATION:</strong> "
+        ]
+      },
+      sunflower: {
+        name: "Sunflower",
+        latin: "Helianthus annuus",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT31GdSL15-59kh-o1ek6rsGFB1IrBRZniMEtNcltWehQ&s=10",
+        growing: [
+          "<strong>LIGHT:</strong> ",
+          "<strong>WATER:</strong> ",
+          "<strong>SOIL:</strong> "
+        ],
+        sowing: [
+          "<strong>METHOD:</strong> ",
+          "<strong>SEED PREP:</strong> ",
+          "<strong>GERMINATION:</strong> "
+        ]
+      },
+      morningGlory: {
+        name: "Morning Glory",
+        latin: "Ipomoea purpurea & Ipomoea tricolor",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Ipomoea_tricolor-1.jpg/250px-Ipomoea_tricolor-1.jpg",
+        growing: [
+          "<strong>LIGHT:</strong> ",
+          "<strong>WATER:</strong> ",
+          "<strong>SOIL:</strong> "
+        ],
+        sowing: [
+          "<strong>METHOD:</strong> ",
+          "<strong>SEED PREP:</strong> ",
+          "<strong>GERMINATION:</strong> "
+        ]
+      },
+      myrtle: {
+        name: "Myrtle Tree",
+        latin: "Lagerstroemia indica",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC2tnI5FJm1sNRaKiahrxe1UUqjiyGmtOJTd-xXQi90Q&s=10",
+        growing: [
+          "<strong>LIGHT:</strong> ",
+          "<strong>WATER:</strong> ",
+          "<strong>SOIL:</strong> "
+        ],
+        sowing: [
+          "<strong>METHOD:</strong> ",
+          "<strong>SEED PREP:</strong> ",
+          "<strong>GERMINATION:</strong> "
+        ]
+      },
+      tomato: {
+        name: "Tomato",
+        latin: "Solanum lycopersicum",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoxK33YRwG8dfCzFh99l3-FsRCnM6q0a8fRhWYn7FU3w&s=10",
+        growing: [
+          "<strong>LIGHT:</strong> ",
+          "<strong>WATER:</strong> ",
+          "<strong>SOIL:</strong> "
+        ],
+        sowing: [
+          "<strong>METHOD:</strong> ",
+          "<strong>SEED PREP:</strong> ",
+          "<strong>GERMINATION:</strong> "
+        ]
+      },
+      cantaloupe: {
+        name: "Cantaloupe",
+        latin: "Cucumis Melo",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOd10hsje03Qt0H2zmOLk_RJ5tCMs9fz76nopBYuPgcQ&s=10",
+        growing: [
+          "<strong>LIGHT:</strong> ",
+          "<strong>WATER:</strong> ",
+          "<strong>SOIL:</strong> "
+        ],
+        sowing: [
+          "<strong>METHOD:</strong> ",
+          "<strong>SEED PREP:</strong> ",
+          "<strong>GERMINATION:</strong> "
+        ]
+      },
+      greenOnion: {
+        name: "Green Onion",
+        latin: "Allium fistulosum",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGlegUC_ntUQrp6R7excoZ9eN2wTOezSnFfH5MlBcO5Q&s=10",
+        growing: [
+          "<strong>LIGHT:</strong> ",
+          "<strong>WATER:</strong> ",
+          "<strong>SOIL:</strong> "
+        ],
+        sowing: [
+          "<strong>METHOD:</strong> ",
+          "<strong>SEED PREP:</strong> ",
+          "<strong>GERMINATION:</strong> "
+        ]
+      },
     };
 
     // Function to handle selection and UI update
@@ -614,4 +816,5 @@
     });
   </script>
 </body>
+
 </html>
