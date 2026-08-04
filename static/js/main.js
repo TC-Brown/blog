@@ -44,8 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // page navigation functions
 
 function nav(str) { 
-    window.location.href = `templates/${str}.html`
-    return window.location.href
+    // Sanitize string to prevent directory traversal, open redirects, or javascript scheme execution
+    const cleanStr = String(str).replace(/[^a-zA-Z0-9\-_/]/g, '');
+    window.location.href = `templates/${cleanStr}.html`;
+    return window.location.href;
 }
 
 function error() { 
