@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex - GBA Generation III</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="An interactive 3rd Generation Pokédex featuring Charizard, built with HTML, CSS, and JS. Replicates the classic Game Boy Advance aesthetic with sound effects and animated sprites.">
+  <meta name="keywords" content="Pokedex, Pokemon, GBA, Gen 3, Charizard, Ruby, Sapphire, FireRed, LeafGreen, Web Audio API">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app-container">
+    <!-- Retro Ambient Background Decor -->
+    <div class="bg-decor-top"></div>
+    <div class="bg-decor-bottom"></div>
+
+    <div class="pokedex-wrapper">
+      <!-- PHYSICAL POKEDEX DEVICE -->
+      <div id="pokedex" class="pokedex-closed">
+        
+        <!-- LEFT PANEL (Main Screen Panel) -->
+        <div class="pokedex-panel left-panel">
+          <!-- Top Decorative Bar & GBA Lens -->
+          <div class="panel-header">
+            <div class="blue-lens-container">
+              <div id="main-lens" class="blue-lens">
+                <div class="lens-shine"></div>
+              </div>
+            </div>
+            <div class="led-lights">
+              <div id="led-red" class="led led-red active"></div>
+              <div id="led-yellow" class="led led-yellow"></div>
+              <div id="led-green" class="led led-green"></div>
+            </div>
+            <div class="brand-text">POKÉDEX</div>
+          </div>
+
+          <!-- Main Screen Housing -->
+          <div class="screen-housing">
+            <!-- Screen Bezels and Corner Screws -->
+            <div class="screw top-left"></div>
+            <div class="screw top-right"></div>
+            <div class="screw bottom-left"></div>
+            <div class="screw bottom-right"></div>
+
+            <div class="screen-bezel">
+              <div class="screen-top-indicator">
+                <span class="indicator-dot red"></span>
+                <span class="indicator-dot blue"></span>
+              </div>
+
+              <!-- ACTUAL LCD DIGITAL SCREEN -->
+              <div id="main-screen" class="lcd-screen screen-off">
+                <!-- Screen Glass Overlay Filters (CRT, scanlines, glare) -->
+                <div class="screen-scanlines"></div>
+                <div class="screen-crt-bloom"></div>
+                <div class="screen-glare"></div>
+
+                <!-- Bootup Splash Screen -->
+                <div id="screen-boot" class="screen-overlay hidden">
+                  <div class="boot-logo">
+                    <span class="boot-pokeball"></span>
+                    <h2 class="boot-title">Pokédex</h2>
+                    <p class="boot-subtitle">Jai'lin's Pokedex</p>
+                  </div>
+                </div>
+
+                <!-- Loading Screen -->
+                <div id="screen-loading" class="screen-overlay hidden">
+                  <div class="loading-box">
+                    <span class="boot-pokeball" style="animation: spin 1s linear infinite;"></span>
+                    <p class="pixel-text" style="font-size: 12px; margin-top: 10px;">LOADING DATA...</p>
+                  </div>
+                </div>
+
+                <!-- Main Pokédex Operating System -->
+                <div id="screen-os" class="screen-layout">
+                  <!-- Header: Name and ID -->
+                  <div class="os-header">
+                    <span id="pokemon-id" class="pixel-text">No. 006</span>
+                    <span id="pokemon-name" class="pixel-text heading">CHARIZARD</span>
+                  </div>
+
+                  <!-- Sprite & Visual Panel -->
+                  <div class="os-visual-area">
+                    <div class="sprite-container">
+                      <div class="sprite-background-grid"></div>
+                      <img id="pokemon-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif" alt="Charizard Sprite" class="sprite-img">
+                      <div class="type-container" id="pokemon-types">
+                        <span class="type-badge fire">FIRE</span>
+                        <span class="type-badge flying">FLYING</span>
+                      </div>
+                    </div>
+
+                    <div class="quick-stats-panel">
+                      <div class="quick-stat-row">
+                        <span class="stat-label">HT</span>
+                        <span id="quick-height" class="stat-val">5' 07"</span>
+                      </div>
+                      <div class="quick-stat-row">
+                        <span class="stat-label">WT</span>
+                        <span id="quick-weight" class="stat-val">199.5 lbs</span>
+                      </div>
+                      <div class="quick-stat-row shiny-indicator-row">
+                        <span class="stat-label">SHNY</span>
+                        <span id="shiny-status" class="status-dot red">OFF</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Dynamic Info Screens (Controlled by tabs) -->
+                  <div class="os-display-box">
+                    <!-- Tab: Info (Description) -->
+                    <div id="tab-content-info" class="tab-content active">
+                      <div class="info-scroll-box">
+                        <h4 class="category-title" id="pokemon-category">Flame Pokémon</h4>
+                        <p class="description-text" id="pokemon-desc">
+                          Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Tab: Stats -->
+                    <div id="tab-content-stats" class="tab-content hidden">
+                      <div class="stats-list">
+                        <!-- Stat Item HP -->
+                        <div class="stat-bar-wrapper">
+                          <span class="stat-name">HP</span>
+                          <div class="stat-bar-bg"><div class="stat-bar-fill hp" style="width: 78%"></div></div>
+                          <span class="stat-num" id="stat-hp">78</span>
+                        </div>
+                        <!-- Stat Item ATK -->
+                        <div class="stat-bar-wrapper">
+                          <span class="stat-name">ATK</span>
+                          <div class="stat-bar-bg"><div class="stat-bar-fill atk" style="width: 84%"></div></div>
+                          <span class="stat-num" id="stat-atk">84</span>
+                        </div>
+                        <!-- Stat Item DEF -->
+                        <div class="stat-bar-wrapper">
+                          <span class="stat-name">DEF</span>
+                          <div class="stat-bar-bg"><div class="stat-bar-fill def" style="width: 78%"></div></div>
+                          <span class="stat-num" id="stat-def">78</span>
+                        </div>
+                        <!-- Stat Item SP. ATK -->
+                        <div class="stat-bar-wrapper">
+                          <span class="stat-name">SATK</span>
+                          <div class="stat-bar-bg"><div class="stat-bar-fill satk" style="width: 109%"></div></div>
+                          <span class="stat-num" id="stat-satk">109</span>
+                        </div>
+                        <!-- Stat Item SP. DEF -->
+                        <div class="stat-bar-wrapper">
+                          <span class="stat-name">SDEF</span>
+                          <div class="stat-bar-bg"><div class="stat-bar-fill sdef" style="width: 85%"></div></div>
+                          <span class="stat-num" id="stat-sdef">85</span>
+                        </div>
+                        <!-- Stat Item SPD -->
+                        <div class="stat-bar-wrapper">
+                          <span class="stat-name">SPD</span>
+                          <div class="stat-bar-bg"><div class="stat-bar-fill spd" style="width: 100%"></div></div>
+                          <span class="stat-num" id="stat-spd">100</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Tab: Area -->
+                    <div id="tab-content-area" class="tab-content hidden">
+                      <div class="area-map-container">
+                        <div class="map-grid">
+                          <div class="map-bg"></div>
+                          <div class="map-marker flashing" style="top: 38%; left: 45%;"></div>
+                          <div class="map-marker flashing" style="top: 72%; left: 32%;"></div>
+                        </div>
+                        <div class="map-location-info">
+                          <span class="pixel-text location-label">HABITAT:</span>
+                          <span id="habitat-name" class="pixel-text location-name">CRATER (MT. CHIMNEY)</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Tab: Size -->
+                    <div id="tab-content-size" class="tab-content hidden">
+                      <div class="size-comparison-canvas">
+                        <div class="size-silhouette trainer-silhouette"></div>
+                        <div class="size-silhouette pokemon-silhouette" id="size-comparison-sprite"></div>
+                        <div class="size-scale-lines">
+                          <div class="scale-line max-height-pokemon"><span id="size-pokemon-label">1.7m (5'07")</span></div>
+                          <div class="scale-line height-trainer"><span>1.5m (4'11")</span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Tab: Evolution -->
+                    <div id="tab-content-evolution" class="tab-content hidden">
+                      <div class="evolution-chain">
+                        <div class="evo-stage">
+                          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" alt="Charmander" class="evo-sprite" id="evo-stage-1">
+                          <span class="evo-level">Lv 16</span>
+                        </div>
+                        <div class="evo-arrow">➔</div>
+                        <div class="evo-stage">
+                          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png" alt="Charmeleon" class="evo-sprite" id="evo-stage-2">
+                          <span class="evo-level">Lv 36</span>
+                        </div>
+                        <div class="evo-arrow">➔</div>
+                        <div class="evo-stage active">
+                          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Charizard" class="evo-sprite" id="evo-stage-3">
+                          <span class="evo-level">FINAL</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Navigation Bar indicators inside screen -->
+                  <div class="screen-footer">
+                    <span class="btn-help">SELECT: SCAN</span>
+                    <span class="btn-page-indicator">PAGE 1/1</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            
+            <!-- Lower Left Controls (Physical Green/Yellow Screen Buttons) -->
+            <div class="lower-left-bar">
+              <button id="btn-power" class="btn-circular btn-power" title="Power On/Off"></button>
+              <div class="screen-status-led" id="status-power-led"></div>
+              <div class="stripe-lines">
+                <span class="stripe-line"></span>
+                <span class="stripe-line"></span>
+                <span class="stripe-line"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- METALLIC CENTER HINGE -->
+        <div class="pokedex-hinge">
+          <div class="hinge-segment top"></div>
+          <div class="hinge-segment middle"></div>
+          <div class="hinge-segment bottom"></div>
+        </div>
+
+        <!-- RIGHT PANEL (Keypad & Interaction Panel) -->
+        <div class="pokedex-panel right-panel">
+          <!-- Top cover detailing -->
+          <div class="right-panel-header">
+            <div class="speaker-grill">
+              <span class="speaker-slit"></span>
+              <span class="speaker-slit"></span>
+              <span class="speaker-slit"></span>
+              <span class="speaker-slit"></span>
+              <span class="speaker-slit"></span>
+              <span class="speaker-slit"></span>
+            </div>
+            <!-- Charizard Mode Toggle Switch -->
+            <div class="charizard-mode-wrapper">
+              <span class="mode-label">CHARIZARD MODE</span>
+              <label class="switch">
+                <input type="checkbox" id="charizard-mode-toggle" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Secondary Grid Content (Pokemon List Selection) -->
+          <div class="pokedex-list-container">
+            <div class="list-border-bezel">
+              <h3 class="list-title">CHARIZARD INDEX</h3>
+              <div class="search-bar-wrapper">
+                <input type="text" id="pokemon-search" placeholder="Search forms..." class="pixel-input">
+                <span class="search-icon">🔍</span>
+              </div>
+              <ul class="pokemon-list" id="pokedex-list">
+                <!-- Dynamically filled with Charizard forms -->
+              </ul>
+            </div>
+          </div>
+
+          <!-- Physical GBA Control Pad Panel -->
+          <div class="hardware-keypad">
+            <!-- Left Side: Interactive 4-Way D-pad -->
+            <div class="dpad-wrapper">
+              <div class="dpad">
+                <button id="dpad-up" class="dpad-btn dpad-up" title="Move Up"></button>
+                <button id="dpad-right" class="dpad-btn dpad-right" title="Move Right"></button>
+                <button id="dpad-down" class="dpad-btn dpad-down" title="Move Down"></button>
+                <button id="dpad-left" class="dpad-btn dpad-left" title="Move Left"></button>
+                <div class="dpad-center"></div>
+              </div>
+            </div>
+
+            <!-- Right Side: Circular A / B Action Buttons -->
+            <div class="action-buttons-group">
+              <div class="btn-label-pair">
+                <button id="btn-cry" class="btn-action btn-a" title="Play Cry">
+                  <span class="btn-inner"></span>
+                </button>
+                <span class="btn-label">CRY</span>
+              </div>
+              <div class="btn-label-pair">
+                <button id="btn-shiny" class="btn-action btn-b" title="Toggle Shiny">
+                  <span class="btn-inner"></span>
+                </button>
+                <span class="btn-label">SHNY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen Tabs / Menu buttons (GBA horizontal tabs style) -->
+          <div class="tab-buttons-container">
+            <button class="tab-btn active" data-tab="info">INFO</button>
+            <button class="tab-btn" data-tab="stats">STATS</button>
+            <button class="tab-btn" data-tab="area">AREA</button>
+            <button class="tab-btn" data-tab="size">SIZE</button>
+            <button class="tab-btn" data-tab="evolution">EVO</button>
+          </div>
+
+          <!-- Start / Select Pill Buttons -->
+          <div class="pill-buttons-group">
+            <div class="pill-btn-wrapper">
+              <button id="btn-select" class="btn-pill" title="Next Form"></button>
+              <span class="pill-label">SELECT</span>
+            </div>
+            <div class="pill-btn-wrapper">
+              <button id="btn-start" class="btn-pill" title="Toggle Lid Open/Close"></button>
+              <span class="pill-label">START</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Pixel Modal Overlay -->
+  <div id="pokedex-modal" class="modal-overlay hidden">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="modal-leds">
+          <span class="modal-led red active"></span>
+          <span class="modal-led yellow" id="modal-led-yellow"></span>
+          <span class="modal-led green" id="modal-led-green"></span>
+        </div>
+        <h2 id="modal-title" class="pixel-text">SYSTEM SCAN</h2>
+        <button id="modal-close-btn" class="modal-close" title="Close Scan">&times;</button>
+      </div>
+      <div class="modal-content" id="modal-content-area">
+        <!-- Dynamic content goes here based on active tab -->
+      </div>
+      <div class="modal-footer">
+        <span class="pixel-text">PRESS [SELECT], [B], OR [ESC] TO CLOSE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio elements & Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
