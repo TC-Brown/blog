@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Path to site icon (relative to templates folder) -->
+    <link rel="icon" type="image/jpeg" href="../static/img/index-img/seal.jpg">
+    
+    <!-- REPLACE: Page Title -->
+    <title>The Brown Family | Dynamic Template Title</title>
+    
+    <!-- Google Fonts (Shared across the site) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Main shared CSS stylesheet -->
+    <link rel="stylesheet" href="../static/css/blog.css">
+    
+    <!-- REPLACE/ADD: Page-specific stylesheets -->
+    <!-- <link rel="stylesheet" href="../static/css/page-style.css"> -->
+    
+    <!-- Shared layout component script (Loads and registers <blog-nav> and <blog-footer>) -->
+    <script src="../static/js/layout.js" defer></script>
+</head>
+<body>
+
+    <!-- Premium Navigation (Dynamic Component)
+         - active: Set the name of the active navigation tab:
+                   "Home", "About", "Contact", "Blog", "Our Things", "Mini Games", "Chat Room"
+         - depth:  The folder depth of this page relative to the blog root directory.
+                   Root index.html -> depth="0"
+                   templates/contact.html -> depth="1"
+                   templates/about/about.html -> depth="2"
+                   templates/blog/blogs/template.html -> depth="3"
+    -->
+    <blog-nav active="Blog" depth="1"></blog-nav>
+
+    <!-- Premium Hero Header (Optional: remove or customize if not needed) -->
+    <header class="hero">
+        <div class="hero-content">
+            <!-- REPLACE: Hero Header Content -->
+            <h1 class="hero-badge">Dynamic Page Header</h1>
+            <p class="hero-subtitle">This page uses central layout components for the navbar and footer. Future menu changes will automatically update this page!</p>
+        </div>
+    </header>
+
+    <!-- Main Content Area with Responsive Grid layout -->
+    <main class="content-container">
+        <!-- REPLACE: Put your main page content here -->
+        <div class="main-grid">
+            
+            <!-- Main Content Column -->
+            <div class="main-content">
+                <section class="card">
+                    <div class="card-header">
+                        <h2>Content Section</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Write your main article, paragraph, or interface here.</p>
+                        <p>Since this template uses Web Components, the navbar and footer are rendered dynamically. When you add a new page or update a link, you only have to edit the menu links once in <code>static/js/layout.js</code>, and all pages using these components will update instantly!</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Optional Sidebar (Remove this <aside> if you want a full-width layout) -->
+            <aside class="sidebar-content">
+                <div class="card widget-card">
+                    <h3>Sidebar Widget</h3>
+                    <p class="widget-desc">Add supplementary links, updates, or details here.</p>
+                </div>
+            </aside>
+
+        </div> 
+    </main>
+
+    <!-- Premium Footer (Dynamic Component) -->
+    <blog-footer></blog-footer>
+
+    <!-- Shared main site scripts (non-navigation interactions) -->
+    <script src="../static/js/main.js"></script>
+    
+    <!-- REPLACE/ADD: Page-specific scripts -->
+</body>
+</html>

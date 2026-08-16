@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Path to site icon (relative to templates folder) -->
+    <link rel="icon" type="image/jpeg" href="../static/img/index-img/seal.jpg">
+    
+    <!-- REPLACE: Page Title -->
+    <title>The Brown Family | New Page Title</title>
+    
+    <!-- Google Fonts (Shared across the site) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Main shared CSS stylesheet -->
+    <link rel="stylesheet" href="../static/css/blog.css">
+    
+    <!-- REPLACE/ADD: Page-specific stylesheets -->
+    <!-- <link rel="stylesheet" href="../static/css/page-style.css"> -->
+</head>
+<body>
+
+    <!-- Premium Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img class="profile-img" src="../static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
+            </div>
+            
+            <!-- Toggle Menu for Mobile -->
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
+                <span class="hamburger"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <ul class="nav-menu" id="navMenu">
+                <!-- Add class "active" to the current page link -->
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="about/about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="blog/index.html" class="nav-link">Blog</a></li>
+                <li><a href="our-things/index.html" class="nav-link">Our Things</a></li>
+                <li><a href="about/index.html" class="nav-link">Mini Games</a></li>
+                <li><a href="../chat/index.html" class="nav-link">Chat Room</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Premium Hero Header (Optional: remove or customize if not needed) -->
+    <header class="hero">
+        <div class="hero-content">
+            <!-- REPLACE: Hero Header Content -->
+            <h1 class="hero-badge">Page Header Title</h1>
+            <p class="hero-subtitle">Introduce the purpose of this page here in a short sentence.</p>
+        </div>
+    </header>
+
+    <!-- Main Content Area with Responsive Grid layout -->
+    <main class="content-container">
+        <!-- REPLACE: Put your main page content here -->
+        <div class="main-grid">
+            
+            <!-- Main Content Column -->
+            <div class="main-content">
+                <section class="card">
+                    <div class="card-header">
+                        <h2>Section Title</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Write your main article, paragraph, or interface here.</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Optional Sidebar (Remove this <aside> if you want a full-width layout) -->
+            <aside class="sidebar-content">
+                <div class="card widget-card">
+                    <h3>Sidebar Widget</h3>
+                    <p class="widget-desc">Add supplementary links, updates, or details here.</p>
+                </div>
+            </aside>
+
+        </div> 
+    </main>
+
+    <!-- Premium Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h4>More Info</h4>
+                <p>Information about sources and the site</p>
+                <p>&copy; Copyright 2026 The Brown Family | T.C. Brown</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shared main site scripts (handles mobile menu toggle & other shared features) -->
+    <script src="../static/js/main.js"></script>
+    
+    <!-- REPLACE/ADD: Page-specific scripts -->
+</body>
+</html>
