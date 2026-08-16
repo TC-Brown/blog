@@ -53,6 +53,14 @@
                     <p>Draw with neon colors and drop sparkly stamps!</p>
                     <span class="creator-badge">A.G. Brown</span>
                 </div>
+
+                <!-- Dino Meteor Dodge Game Tile -->
+                <div class="game-tile tile-amber" id="tileDino">
+                    <div class="tile-icon">🦖</div>
+                    <h3>Dino Meteor Dodge</h3>
+                    <p>Dodge meteors & collect power-ups for wings, shields & fire breath!</p>
+                    <span class="creator-badge">T.C. Brown</span>
+                </div>
             </div>
         </section>
 
@@ -182,6 +190,37 @@
                     <canvas id="paintCanvas"></canvas>
                 </div>
             </div>
+
+            <!-- GAME 4: DINO METEOR DODGE ARENA -->
+            <div id="dinoPanel" class="game-panel" style="display: none;">
+                <div class="panel-header">
+                    <h2>Dino Meteor Dodge ☄️</h2>
+                    <p>Use Left/Right arrows (or A/D) to move & Space/Up to Jump/Fly! Collect power-up capsules for special abilities!</p>
+                </div>
+                <div class="game-hud">
+                    <div class="hud-item">SCORE: <span id="dinoScoreVal" class="neon-text-pink">0</span></div>
+                    <div class="hud-item">POWERUP: <span id="dinoActivePowerupVal" style="color: #ff8c00;">None</span></div>
+                    <div class="hud-item">HIGH SCORE: <span id="dinoHighScoreVal" class="neon-text-white">0</span></div>
+                    <button id="startDinoBtn" class="game-btn btn-amber">START GAME</button>
+                </div>
+                <div class="game-screen screen-amber" id="dinoScreen">
+                    <canvas id="dinoCanvas"></canvas>
+                    <div id="dinoOverlay" class="game-overlay">
+                        <span class="overlay-text text-amber" style="color: #ff8c00;">Dodge the Meteors!</span>
+                    </div>
+                </div>
+
+                <!-- On-Screen Touch Controls for Mobile/Tablet -->
+                <div class="dino-touch-controls">
+                    <div class="dino-touch-group">
+                        <button id="dinoBtnLeft" class="touch-btn">◀ Left</button>
+                        <button id="dinoBtnRight" class="touch-btn">Right ▶</button>
+                    </div>
+                    <div class="dino-touch-group">
+                        <button id="dinoBtnJump" class="touch-btn">▲ Jump</button>
+                    </div>
+                </div>
+            </div>
         </section>
 
     </main>
@@ -201,6 +240,7 @@
     <script src="../../static/js/game-popper.js"></script>
     <script src="../../static/js/game-heartpop.js"></script>
     <script src="../../static/js/game-paint.js"></script>
+    <script src="../../static/js/game-dino.js"></script>
     <script src="../../static/js/main.js"></script>
 
     <!-- Page Hub Router Script -->
@@ -214,6 +254,7 @@
             const popperPanel = document.getElementById('popperPanel');
             const heartpopPanel = document.getElementById('heartpopPanel');
             const paintPanel = document.getElementById('paintPanel');
+            const dinoPanel = document.getElementById('dinoPanel');
 
             let activeGameDestructor = null;
 
@@ -226,6 +267,7 @@
                 popperPanel.style.display = 'none';
                 heartpopPanel.style.display = 'none';
                 paintPanel.style.display = 'none';
+                dinoPanel.style.display = 'none';
 
                 // Stop any previous active game
                 if (activeGameDestructor) {
@@ -248,6 +290,11 @@
                     paintPanel.style.display = 'block';
                     if (window.initPaintGame) {
                         activeGameDestructor = window.initPaintGame();
+                    }
+                } else if (gameKey === 'dino') {
+                    dinoPanel.style.display = 'block';
+                    if (window.initDinoGame) {
+                        activeGameDestructor = window.initDinoGame();
                     }
                 }
 
@@ -278,6 +325,9 @@
             });
             document.getElementById('tilePaint').addEventListener('click', () => {
                 showGame('paint');
+            });
+            document.getElementById('tileDino').addEventListener('click', () => {
+                showGame('dino');
             });
 
             backToMenuBtn.addEventListener('click', showMenu);
