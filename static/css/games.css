@@ -308,31 +308,42 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
     margin-top: 15px;
-    padding: 10px;
+    padding: 12px;
     background: rgba(255, 255, 255, 0.45);
     border: var(--border);
     border-radius: 14px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .dino-touch-group {
     display: flex;
     gap: 10px;
+    flex: 1;
 }
 
 .touch-btn {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(241, 245, 249, 0.8));
-    border: 1px solid rgba(255, 140, 0, 0.3);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.85));
+    border: 2px solid rgba(255, 140, 0, 0.4);
     color: #1f2937;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    padding: 14px 22px;
+    min-height: 52px;
+    border-radius: 12px;
     cursor: pointer;
     user-select: none;
+    -webkit-user-select: none;
     touch-action: manipulation;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.1s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transition: transform 0.1s ease, background 0.2s ease;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .touch-btn:active {
@@ -341,8 +352,8 @@
     color: #ffffff;
 }
 
-#popperCanvas, #heartpopCanvas {
-    display: block; width: 100%; height: 100%; cursor: pointer;
+#popperCanvas, #heartpopCanvas, #dinoCanvas {
+    display: block; width: 100%; height: 100%; cursor: pointer; touch-action: none;
 }
 
 /* Overlays */
@@ -499,10 +510,14 @@
     /* Compact HUD & Screen for Mobile Displays */
     .game-screen { height: 300px; border-radius: 10px; }
     .canvas-wrapper { height: 300px; border-radius: 10px; }
-    .game-hud { flex-direction: column; gap: 8px; text-align: center; font-size: 0.9rem; padding: 8px 10px; }
-    .hud-item { width: 100%; }
-    .game-btn { width: 100%; text-align: center; }
+    .game-hud { flex-direction: row; flex-wrap: wrap; justify-content: space-between; gap: 8px; text-align: center; font-size: 0.85rem; padding: 8px 10px; }
+    .hud-item { flex: 1 1 40%; }
+    .game-btn { width: 100%; text-align: center; margin-top: 4px; }
     
+    .dino-touch-controls { padding: 8px; gap: 8px; }
+    .dino-touch-group { gap: 6px; }
+    .touch-btn { padding: 10px 8px; font-size: 0.95rem; min-height: 48px; }
+
     .tool-group { align-items: center; text-align: center; }
     .size-options, .color-palette, .stamp-palette { justify-content: center; }
     .btn-toggle-group { width: 100%; }

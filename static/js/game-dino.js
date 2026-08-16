@@ -842,6 +842,10 @@
             btnJump.addEventListener('mouseleave', endJumpOrFire);
         }
 
+        const preventTouchScroll = (e) => { e.preventDefault(); };
+        canvas.addEventListener('touchstart', preventTouchScroll, { passive: false });
+        canvas.addEventListener('touchmove', preventTouchScroll, { passive: false });
+
         window.addEventListener('keydown', onKeyDown);
         window.addEventListener('keyup', onKeyUp);
         if (startGameBtn) startGameBtn.addEventListener('click', startGame);
@@ -863,6 +867,8 @@
             clearInterval(spawnMeteorInterval);
             clearInterval(spawnPowerupInterval);
             cancelAnimationFrame(animationFrameId);
+            canvas.removeEventListener('touchstart', preventTouchScroll);
+            canvas.removeEventListener('touchmove', preventTouchScroll);
             window.removeEventListener('resize', resizeCanvas);
             window.removeEventListener('keydown', onKeyDown);
             window.removeEventListener('keyup', onKeyUp);
