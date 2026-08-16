@@ -6,34 +6,13 @@
     <title>The Brown Family | Chat Room</title>
     <meta name="description" content="A real-time simulated family chat room matching the design guidelines of The Brown Family Blog.">
     <link rel="stylesheet" href="style.css">
+    <script src="../static/js/layout.js" defer></script>
     <script src="app.js" defer></script>
 </head>
 <body>
 
-    <!-- Premium Navigation Header (Matches Blog Sidebar / Top drawer layout) -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <img class="profile-img" src="../blog/static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
-                <h1 class="name">The Brown Family</h1>
-            </div>
-            
-            <!-- Toggle Menu for Mobile -->
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
-                <span class="hamburger"></span>
-            </button>
-
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="../blog/index.html" class="nav-link">Home</a></li>
-                <li><a href="../blog/templates/about/about.html" class="nav-link">About</a></li>
-                <li><a href="../blog/templates/contact.html" class="nav-link">Contact</a></li>
-                <li><a href="../blog/templates/blog/index.html" class="nav-link">Blog</a></li>
-                <li><a href="../blog/templates/our-things/index.html" class="nav-link">Our Things</a></li>
-                <li><a href="../blog/error/error.html" class="nav-link">Mini Games</a></li>
-                <li><a href="index.html" class="nav-link active">Chat Room</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Premium Navigation Header (Dynamic Component) -->
+    <blog-nav active="Chat Room" depth="1"></blog-nav>
 
     <!-- Main Chat Room workspace -->
     <main class="chat-workspace">
