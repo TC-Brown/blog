@@ -44,6 +44,7 @@ class BlogNav extends HTMLElement {
 
         if (navToggle && navMenu) {
             navToggle.addEventListener('click', (e) => {
+                e.stopImmediatePropagation();
                 e.stopPropagation();
                 navMenu.classList.toggle('open');
                 navToggle.classList.toggle('open');

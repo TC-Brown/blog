@@ -12,34 +12,15 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="../../static/css/blog.css">
     <link rel="stylesheet" href="../../static/css/games.css">
+    <script src="../../static/js/layout.js" defer></script>
 </head>
 <body>
 
-    <!-- Premium Navigation Header -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <img class="profile-img" src="../../static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
-            </div>
-            
-            <!-- Toggle Menu for Mobile -->
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
-                <span class="hamburger"></span>
-            </button>
-
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="../../index.html" class="nav-link">Home</a></li>
-                <li><a href="../about/about.html" class="nav-link">About</a></li>
-                <li><a href="../contact.html" class="nav-link">Contact</a></li>
-                <li><a href="../blog/index.html" class="nav-link">Blog</a></li>
-                <li><a href="../our-things/index.html" class="nav-link">Our Things</a></li>
-                <li><a href="../../error/error.html" class="nav-link active">Mini Games</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Premium Navigation Header (Dynamic Component) -->
+    <blog-nav active="Mini Games" depth="2"></blog-nav>
 
     <!-- Main Container -->
-    <main class="main-content">
+    <main class="games-main-content">
         
         <!-- SECTION 1: HUB MENU (SELECTION GRID) -->
         <section id="selectionGrid" class="hub-section">
@@ -269,6 +250,9 @@
                         activeGameDestructor = window.initPaintGame();
                     }
                 }
+
+                // Force canvas resize measurement after panel is rendered visible
+                setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
             }
 
             function showMenu() {

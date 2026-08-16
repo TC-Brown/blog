@@ -69,8 +69,13 @@
 .neon-text-white { color: var(--neon-white); text-shadow: var(--glow-white); }
 
 /* Main layout content */
-.main-content {
-    max-width: 1000px; margin: 0 auto; padding: 40px 20px 80px 20px;
+.games-main-content {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px 80px 20px;
+    box-sizing: border-box;
 }
 
 /* HUB MENU (SELECTION GRID) */
@@ -402,10 +407,49 @@
 }
 
 @media (max-width: 768px) {
-    .games-grid { grid-template-columns: 1fr; }
-    .paint-toolbar { flex-direction: column; align-items: stretch; }
-    .actions-group { margin-left: 0; }
-    .color-palette, .stamp-palette { flex-wrap: wrap; height: auto; min-height: 38px; padding: 4px 0; }
+    .games-main-content { padding: 20px 16px 60px 16px; }
+    .hub-header { margin-bottom: 30px; }
     .hub-header h1 { font-size: 2.2rem; }
-    .main-content { padding: 20px 16px 60px 16px; }
+    .subtitle { font-size: 1rem; }
+    .games-grid { grid-template-columns: 1fr; gap: 20px; }
+    .game-tile { padding: 24px 20px; }
+    .game-panel { padding: 20px 15px; }
+    .panel-header h2 { font-size: 1.6rem; }
+    
+    /* Responsive Game Area */
+    .game-screen { height: 350px; }
+    .canvas-wrapper { height: 350px; }
+    .game-hud { flex-wrap: wrap; gap: 12px; justify-content: space-around; padding: 10px 14px; font-size: 0.95rem; }
+    
+    /* Paint Toolbar Responsive */
+    .paint-toolbar { flex-direction: column; align-items: stretch; gap: 14px; padding: 14px; }
+    .actions-group { margin-left: 0; justify-content: stretch; }
+    .action-btn { width: 100%; text-align: center; }
+    .color-palette, .stamp-palette { flex-wrap: wrap; height: auto; min-height: 38px; padding: 4px 0; }
+}
+
+@media (max-width: 480px) {
+    .hub-header h1 { font-size: 1.75rem; }
+    .subtitle { font-size: 0.9rem; }
+    .game-tile { padding: 20px 16px; gap: 10px; }
+    .tile-icon { font-size: 2.8rem; }
+    .game-tile h3 { font-size: 1.3rem; }
+    
+    .game-panel { padding: 16px 12px; border-radius: 14px; }
+    .panel-header h2 { font-size: 1.35rem; }
+    .panel-header p { font-size: 0.85rem; }
+    
+    /* Compact HUD & Screen for Mobile Displays */
+    .game-screen { height: 300px; border-radius: 10px; }
+    .canvas-wrapper { height: 300px; border-radius: 10px; }
+    .game-hud { flex-direction: column; gap: 8px; text-align: center; font-size: 0.9rem; padding: 8px 10px; }
+    .hud-item { width: 100%; }
+    .game-btn { width: 100%; text-align: center; }
+    
+    .tool-group { align-items: center; text-align: center; }
+    .size-options, .color-palette, .stamp-palette { justify-content: center; }
+    .btn-toggle-group { width: 100%; }
+    .toggle-btn { flex: 1; text-align: center; }
+    
+    .overlay-text { font-size: 1.4rem; }
 }

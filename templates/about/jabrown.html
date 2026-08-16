@@ -13,31 +13,12 @@
     <link rel="stylesheet" href="../../static/css/blog.css">
     <!-- About CSS -->
     <link rel="stylesheet" href="../../static/css/about.css">
+    <script src="../../static/js/layout.js" defer></script>
 </head>
 <body>
 
-    <!-- Premium Navigation Header -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <img class="profile-img" src="../../static/img/index-img/seal.jpg" alt="The Brown Family Seal" />
-            </div>
-            
-            <!-- Toggle Menu for Mobile -->
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation" id="navToggle">
-                <span class="hamburger"></span>
-            </button>
-
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="../../index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link active">About</a></li>
-                <li><a href="../contact.html" class="nav-link">Contact</a></li>
-                <li><a href="../blog/index.html" class="nav-link">Blog</a></li>
-                <li><a href="../our-things/index.html" class="nav-link">Our Things</a></li>
-                <li><a href="../../error/error.html" class="nav-link">Mini Games</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Premium Navigation Header (Dynamic Component) -->
+    <blog-nav active="About" depth="2"></blog-nav>
 
     <!-- Main Container -->
     <main class="content-container" style="flex-grow:1; padding-top: 30px;">
