@@ -78,6 +78,7 @@
                     <div class="hud-item">SCORE: <span id="popScoreVal" class="neon-text-blue">0</span></div>
                     <div class="hud-item">HIGH SCORE: <span id="popHighScoreVal" class="neon-text-white">0</span></div>
                     <button id="startPopperBtn" class="game-btn btn-blue">START GAME</button>
+                    <button class="fullscreen-btn" data-target="popperPanel" aria-label="Toggle Fullscreen" title="Toggle Fullscreen Mode">⛶ Fullscreen</button>
                 </div>
                 <div class="game-screen screen-blue" id="popperScreen">
                     <canvas id="popperCanvas"></canvas>
@@ -97,6 +98,7 @@
                     <div class="hud-item">SCORE: <span id="heartScoreVal" class="neon-text-pink">0</span></div>
                     <div class="hud-item">HIGH SCORE: <span id="heartHighScoreVal" class="neon-text-white">0</span></div>
                     <button id="startHeartpopBtn" class="game-btn btn-pink">START GAME</button>
+                    <button class="fullscreen-btn" data-target="heartpopPanel" aria-label="Toggle Fullscreen" title="Toggle Fullscreen Mode">⛶ Fullscreen</button>
                 </div>
                 <div class="game-screen screen-pink" id="heartpopScreen">
                     <canvas id="heartpopCanvas"></canvas>
@@ -183,6 +185,7 @@
                     <!-- Action buttons -->
                     <div class="tool-group actions-group">
                         <button id="clearPaintBtn" class="action-btn">✨ Clear</button>
+                        <button class="fullscreen-btn" data-target="paintPanel" aria-label="Toggle Fullscreen" title="Toggle Fullscreen Mode">⛶ Fullscreen</button>
                     </div>
                 </div>
 
@@ -202,6 +205,7 @@
                     <div class="hud-item">POWERUP: <span id="dinoActivePowerupVal" style="color: #ff8c00;">None</span></div>
                     <div class="hud-item">HIGH SCORE: <span id="dinoHighScoreVal" class="neon-text-white">0</span></div>
                     <button id="startDinoBtn" class="game-btn btn-amber">START GAME</button>
+                    <button class="fullscreen-btn" data-target="dinoPanel" aria-label="Toggle Fullscreen" title="Toggle Fullscreen Mode">⛶ Fullscreen</button>
                 </div>
                 <div class="game-screen screen-amber" id="dinoScreen">
                     <canvas id="dinoCanvas"></canvas>
@@ -258,7 +262,99 @@
 
             let activeGameDestructor = null;
 
+            // Fullscreen Manager Logic
+            function updateFullscreenBtnLabels(panel, isActive) {
+                const fsBtn = panel.querySelector('.fullscreen-btn');
+                if (fsBtn) {
+                    if (isActive) {
+                        fsBtn.innerHTML = '↙ Exit Fullscreen';
+                        fsBtn.classList.add('active');
+                    } else {
+                        fsBtn.innerHTML = '⛶ Fullscreen';
+                        fsBtn.classList.remove('active');
+                    }
+                }
+            }
+
+            function toggleFullscreen(panelId) {
+                const panel = document.getElementById(panelId);
+                if (!panel) return;
+
+                const isFSActive = panel.classList.contains('fullscreen-active') || 
+                                   !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+
+                if (!isFSActive) {
+                    panel.classList.add('fullscreen-active');
+                    document.body.classList.add('game-fullscreen-open');
+                    updateFullscreenBtnLabels(panel, true);
+
+                    if (panel.requestFullscreen) {
+                        panel.requestFullscreen().catch(() => {});
+                    } else if (panel.webkitRequestFullscreen) {
+                        panel.webkitRequestFullscreen();
+                    } else if (panel.mozRequestFullScreen) {
+                        panel.mozRequestFullScreen();
+                    } else if (panel.msRequestFullscreen) {
+                        panel.msRequestFullscreen();
+                    }
+                } else {
+                    exitAllFullscreen();
+                }
+
+                setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
+            }
+
+            function exitAllFullscreen() {
+                const activePanels = document.querySelectorAll('.game-panel.fullscreen-active');
+                activePanels.forEach(p => {
+                    p.classList.remove('fullscreen-active');
+                    updateFullscreenBtnLabels(p, false);
+                });
+                document.body.classList.remove('game-fullscreen-open');
+
+                if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen().catch(() => {});
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    }
+                }
+
+                setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
+            }
+
+            // Listen for native Fullscreen state change events
+            ['fullscreenchange', 'webkitfullscreenchange', 'mozfullscreenchange', 'MSFullscreenChange'].forEach(evtName => {
+                document.addEventListener(evtName, () => {
+                    const nativeFS = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+                    if (!nativeFS) {
+                        const activePanels = document.querySelectorAll('.game-panel.fullscreen-active');
+                        activePanels.forEach(p => {
+                            p.classList.remove('fullscreen-active');
+                            updateFullscreenBtnLabels(p, false);
+                        });
+                        document.body.classList.remove('game-fullscreen-open');
+                    }
+                    setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
+                });
+            });
+
+            // Bind click events on all full-screen toggle buttons
+            document.querySelectorAll('.fullscreen-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const targetId = btn.getAttribute('data-target');
+                    if (targetId) toggleFullscreen(targetId);
+                });
+            });
+
             function showGame(gameKey) {
+                exitAllFullscreen();
+
                 // Hide menu
                 selectionGrid.style.display = 'none';
                 gameArena.style.display = 'block';
@@ -303,6 +399,8 @@
             }
 
             function showMenu() {
+                exitAllFullscreen();
+
                 // Stop active game
                 if (activeGameDestructor) {
                     activeGameDestructor();
